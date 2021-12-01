@@ -64,29 +64,29 @@ const Navbar = () => {
                     <li className="extend">
                         <a href="/">About</a>
                         <ul className="dropdown">
-                            <li><i className="fas fa-graduation-cap"></i><a href="/education">Education</a></li>
+                            <a href="/education"><li><i className="fas fa-graduation-cap"></i>Education</li></a>
                         </ul>
                     </li>
                     <li className="extend">
                         <a href="/">Skills</a>
                         <ul className="dropdown">
-                            <li><i className="fas fa-laptop-code"></i><a href="/coding">Coding Profiles</a></li>
-                            <li><i className="fas fa-code"></i><a href="/opensource">Open Source Profiles</a></li>
+                            <a href="/coding"><li><i className="fas fa-laptop-code"></i>Coding Profiles</li></a>
+                            <a href="/opensource"><li><i className="fas fa-code"></i>Open Source Profiles</li></a>
                         </ul>
                     </li>
                     <li className="extend">
                         <a href="/">Work</a>
                         <ul className="dropdown">
-                            <li><i className="fas fa-clipboard"></i><a href="/projects">Projects</a></li>
-                            <li><i className="fas fa-users"></i><a href="/experience">Experience</a></li>
+                            <a href="/projects"><li><i className="fas fa-clipboard"></i>Projects</li></a>
+                            <a href="/experience"><li><i className="fas fa-users"></i>Experience</li></a>
                         </ul>
                     </li>
                     <li className="extend">
                         <a href="/">Other</a>
                         <ul className="dropdown">
-                            <li><i className="fas fa-certificate"></i><a href="/certificates">Certificates</a></li>
-                            <li><i className="fas fa-trophy"></i><a href="/achievmenets">Achievmenets</a></li>
-                            <li><i className="fas fa-snowboarding"></i><a href="/eca">Extra-Curricular</a></li>
+                            <a href="/certificates"><li><i className="fas fa-certificate"></i>Certificates</li></a>
+                            <a href="/achievmenets"><li><i className="fas fa-trophy"></i>Achievmenets</li></a>
+                            <a href="/eca"><li><i className="fas fa-snowboarding"></i>Extra-Curricular</li></a>
                         </ul>
                     </li>
                     <li><a href="/contact">Contact</a></li>
