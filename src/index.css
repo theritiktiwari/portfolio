@@ -12,8 +12,10 @@
   --sec-hover: rgba(0, 96, 255, 0.3);
   --bg-main: #ffffff;
   --bg-touch: #ffffff;
+  --footer-bg: #f5f5f5;
   --badge: #000000;
   --shadow: rgba(0, 0, 0, 0.25);
+  --circle-shadow: rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="dark"] {
@@ -22,8 +24,10 @@
   --sec-hover: rgba(57, 150, 255, 0.3);
   --bg-main: #1a1e23;
   --bg-touch: #2a2f35;
+  --footer-bg: #2a2f35;
   --badge: #000000;
-  --shadow: rgba(1, 0, 0, 0.25);
+  --circle-shadow: rgba(1, 0, 0, 0.25);
+  /* --shadow: rgba(1, 0, 0, 0.25); */
 }
 
 :root {
@@ -34,6 +38,7 @@
   --youtube: #ff0000;
   --twitter: #1da1f2;
   --facebook: #3b5998;
+  --email: #ea4335;
 
   /* Fonts */
   --font: "Roboto", sans-serif;
@@ -309,7 +314,7 @@ header .right-nav .mode:hover {
 
 .skills {
   height: 70vh;
-  padding: 60px 60px 80px 60px;
+  padding: 60px 60px 150px 60px;
   color: var(--primary);
   background-color: var(--bg-main);
 }
@@ -355,7 +360,7 @@ header .right-nav .mode:hover {
   height: 15px;
   border-radius: 100%;
   margin-right: 5px;
-  box-shadow: inset 0 0 10px 0 var(--shadow);
+  box-shadow: inset 0 0 10px 0 var(--circle-shadow);
 }
 
 .left .skill:nth-child(1) .circles:nth-child(1),
@@ -365,7 +370,6 @@ header .right-nav .mode:hover {
 .left .skill:nth-child(1) .circles:nth-child(5),
 .left .skill:nth-child(1) .circles:nth-child(6),
 .left .skill:nth-child(1) .circles:nth-child(7),
-
 .left .skill:nth-child(2) .circles:nth-child(1),
 .left .skill:nth-child(2) .circles:nth-child(2),
 .left .skill:nth-child(2) .circles:nth-child(3),
@@ -374,20 +378,17 @@ header .right-nav .mode:hover {
 .left .skill:nth-child(2) .circles:nth-child(6),
 .left .skill:nth-child(2) .circles:nth-child(7),
 .left .skill:nth-child(2) .circles:nth-child(8),
-
 .left .skill:nth-child(3) .circles:nth-child(1),
 .left .skill:nth-child(3) .circles:nth-child(2),
 .left .skill:nth-child(3) .circles:nth-child(3),
 .left .skill:nth-child(3) .circles:nth-child(4),
 .left .skill:nth-child(3) .circles:nth-child(5),
-
 .right .skill:nth-child(1) .circles:nth-child(1),
 .right .skill:nth-child(1) .circles:nth-child(2),
 .right .skill:nth-child(1) .circles:nth-child(3),
 .right .skill:nth-child(1) .circles:nth-child(4),
 .right .skill:nth-child(1) .circles:nth-child(5),
 .right .skill:nth-child(1) .circles:nth-child(6),
-
 .right .skill:nth-child(2) .circles:nth-child(1),
 .right .skill:nth-child(2) .circles:nth-child(2),
 .right .skill:nth-child(2) .circles:nth-child(3),
@@ -395,7 +396,6 @@ header .right-nav .mode:hover {
 .right .skill:nth-child(2) .circles:nth-child(5),
 .right .skill:nth-child(2) .circles:nth-child(6),
 .right .skill:nth-child(2) .circles:nth-child(7),
-
 .right .skill:nth-child(3) .circles:nth-child(1),
 .right .skill:nth-child(3) .circles:nth-child(2),
 .right .skill:nth-child(3) .circles:nth-child(3),
@@ -405,4 +405,94 @@ header .right-nav .mode:hover {
 .right .skill:nth-child(3) .circles:nth-child(7),
 .right .skill:nth-child(3) .circles:nth-child(8) {
   background-color: var(--secondary);
+}
+
+/* 7. TIME SECTION STYLING */
+
+.time{
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  margin: 0 auto;
+  color: var(--bg-main);
+  background-color: var(--secondary);
+}
+.time .left, .time .right {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* 8. FOOTER PAGE STYLING */
+
+.footer {
+  height: 25vh;
+  padding: 30px;
+  color: var(--primary);
+  background-color: var(--footer-bg);
+}
+.footer .thanks {
+  text-align: center;
+}
+
+.footer h2 {
+  font-size: 25px;
+  font-weight: 400;
+}
+.footer h1 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.footer hr {
+  width: 95%;
+  margin: 20px auto;
+  border-radius: 5px;
+  border: 2px solid var(--primary);
+}
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: auto;
+}
+
+.footer .container .social ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer .container .social ul li {
+  height: 20px;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.footer .container .social ul a:nth-child(1) li:hover {
+  color: var(--linkedin);
+}
+.footer .container .social ul a:nth-child(2) li:hover {
+  color: var(--github);
+}
+.footer .container .social ul a:nth-child(3) li:hover {
+  color: var(--instagram);
+}
+.footer .container .social ul a:nth-child(4) li:hover {
+  color: var(--twitter);
+}
+.footer .container .social ul a:nth-child(5) li:hover {
+  color: var(--facebook);
+}
+.footer .container .social ul a:nth-child(6) li:hover {
+  color: var(--email);
+}
+
+.footer .container .copyright {
+  font-size: 20px;
+}
+.footer .container .copyright .name {
+  color: var(--secondary);
+  font-weight: 700;
 }
