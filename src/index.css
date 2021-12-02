@@ -107,6 +107,13 @@ header .center-nav .nav-list li {
 header .center-nav .nav-list .extend {
   position: relative;
 }
+header .center-nav .nav-list .extend .fa-caret-down {
+  margin-left: 5px;
+  color: var(--secondary);
+}
+header .center-nav .nav-list .extend:hover .fa-caret-down {
+  transform: rotate(180deg);
+}
 header .center-nav .nav-list .extend .dropdown {
   display: none;
   position: absolute;
@@ -441,6 +448,7 @@ header .right-nav .mode:hover {
   border-radius: 5px;
   margin: 10px;
   position: relative;
+  overflow: hidden;
 }
 .projects .projects-container .project-card .project-badge {
   position: absolute;
@@ -456,6 +464,7 @@ header .right-nav .mode:hover {
   height: 250px;
   border-radius: 5px;
   cursor: pointer;
+  background-color: var(--card-color);
   transition: all 0.3s ease;
 }
 .projects .projects-container .project-card .project-card-image img {

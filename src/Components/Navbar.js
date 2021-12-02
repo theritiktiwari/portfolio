@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Navbar = () => {
+const Navbar = (props) => {
     useEffect(() => {
 
         // Change theme of the website
@@ -62,27 +62,28 @@ const Navbar = () => {
                 <ul className="nav-list">
                     <li><a href="/">Home</a></li>
                     <li className="extend">
-                        <a href="/">About</a>
+                        <a href="/">About <i className="fas fa-caret-down"></i></a>
                         <ul className="dropdown">
                             <a href="/education"><li><i className="fas fa-graduation-cap"></i>Education</li></a>
+                            <a href={props.resume} target="_blank" rel="noreferrer"><li><i className="fas fa-file"></i>View Resume</li></a>
                         </ul>
                     </li>
                     <li className="extend">
-                        <a href="/">Skills</a>
+                        <a href="/">Skills <i className="fas fa-caret-down"></i></a>
                         <ul className="dropdown">
                             <a href="/coding"><li><i className="fas fa-laptop-code"></i>Coding Profiles</li></a>
                             <a href="/opensource"><li><i className="fas fa-code"></i>Open Source Profiles</li></a>
                         </ul>
                     </li>
                     <li className="extend">
-                        <a href="/">Work</a>
+                        <a href="/">Work <i className="fas fa-caret-down"></i></a>
                         <ul className="dropdown">
                             <a href="/projects"><li><i className="fas fa-clipboard"></i>Projects</li></a>
                             <a href="/experience"><li><i className="fas fa-users"></i>Experience</li></a>
                         </ul>
                     </li>
                     <li className="extend">
-                        <a href="/">Other</a>
+                        <a href="/">Other <i className="fas fa-caret-down"></i></a>
                         <ul className="dropdown">
                             <a href="/certificates"><li><i className="fas fa-certificate"></i>Certificates</li></a>
                             <a href="/achievmenets"><li><i className="fas fa-trophy"></i>Achievmenets</li></a>

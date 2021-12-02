@@ -14,12 +14,12 @@ const Footer = () => {
             <div className="container">
                 <div className="social">
                     <ul>
-                        <a href="/"><li><i className="fab fa-linkedin-in"></i></li></a>
-                        <a href="/"><li><i className="fab fa-github"></i></li></a>
-                        <a href="/"><li><i className="fab fa-instagram"></i></li></a>
-                        <a href="/"><li><i className="fab fa-twitter"></i></li></a>
-                        <a href="/"><li><i className="fab fa-facebook-square"></i></li></a>
-                        <a href="/"><li><i className="fas fa-envelope"></i></li></a>
+                        <a href="https://linkedin.com/in/theritiktiwari" target="_blank" rel="noreferrer"><li><i className="fab fa-linkedin-in"></i></li></a>
+                        <a href="https://github.com/theritiktiwari" target="_blank" rel="noreferrer"><li><i className="fab fa-github"></i></li></a>
+                        <a href="https://instagram.com/theritiktiwari" target="_blank" rel="noreferrer"><li><i className="fab fa-instagram"></i></li></a>
+                        <a href="https://twitter.com/theritiktiwari" target="_blank" rel="noreferrer"><li><i className="fab fa-twitter"></i></li></a>
+                        <a href="https://facebook.com/theritiktiwari" target="_blank" rel="noreferrer"><li><i className="fab fa-facebook-square"></i></li></a>
+                        <a href="mailto:theritiktiwari@gmail.com" target="_blank" rel="noreferrer"><li><i className="fas fa-envelope"></i></li></a>
                     </ul>
                 </div>
                 <div className="copyright">

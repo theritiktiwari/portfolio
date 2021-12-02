@@ -8,12 +8,14 @@ import Projects from "./Components/Projects";
 import Skills from "./Components/Skills";
 import Time from "./Components/Time";
 
+import resume from './Files/Resume.pdf';
+
 function App() {
   return (
     <>
-      <Navbar />
+      <Navbar resume={resume} />
       <Landing />
-      <About />
+      <About resume={resume} />
       <Skills/>
       <Projects/>
       <Follow/>
