@@ -13,9 +13,10 @@
   --bg-main: #ffffff;
   --bg-touch: #ffffff;
   --footer-bg: #f5f5f5;
-  --badge: #000000;
+  --badge: rgba(0, 0, 0, 0.75);
   --shadow: rgba(0, 0, 0, 0.25);
   --circle-shadow: rgba(0, 0, 0, 0.25);
+  --card-color: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -25,15 +26,15 @@
   --bg-main: #1a1e23;
   --bg-touch: #2a2f35;
   --footer-bg: #2a2f35;
-  --badge: #000000;
+  --badge: rgba(0, 0, 0, 0.75);
   --circle-shadow: rgba(1, 0, 0, 0.25);
-  /* --shadow: rgba(1, 0, 0, 0.25); */
+  --card-color: #ffffff;
 }
 
 :root {
   /* Social Media Colors */
   --linkedin: #0e76a8;
-  --github: #333333;
+  --github: #171515;
   --instagram: #bc2a8d;
   --youtube: #ff0000;
   --twitter: #1da1f2;
@@ -407,25 +408,173 @@ header .right-nav .mode:hover {
   background-color: var(--secondary);
 }
 
-/* 7. TIME SECTION STYLING */
+/* 5. PROJECTS SECTION STYLING */
 
-.time{
-  height: 10vh;
+.projects {
+  height: 70vh;
+  padding: 60px 60px 150px 60px;
+  color: var(--bg-main);
+  background-color: var(--secondary);
+}
+.projects h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin: 20px 0 50px 30px;
+  position: relative;
+}
+.projects h1::before {
+  content: "";
+  position: absolute;
+  top: 115%;
+  width: 150px;
+  height: 5px;
+  background-color: var(--bg-main);
+}
+.projects .projects-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-items: center;
+}
+.projects .projects-container .project-card {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  margin: 10px;
+  position: relative;
+}
+.projects .projects-container .project-card .project-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px 20px;
+  border-radius: 5px 0 5px 0;
+  color: #fff;
+  background-color: var(--badge);
+}
+.projects .projects-container .project-card .project-card-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.projects .projects-container .project-card .project-card-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.projects .projects-container .project-card .project-card-info {
+  display: none;
+  background-color: var(--badge);
+  border-radius: 0 0 5px 5px;
+  color: var(--card-color);
+  padding: 15px;
+  bottom: 0;
+}
+.projects .projects-container .project-card:hover .project-card-info {
+  display: block;
+  position: absolute;
+}
+.projects .projects-container .project-card .project-card-info p {
+  text-align: justify;
+  margin: 10px 0;
+}
+.projects .projects-container .project-card .project-card-info .read {
+  color: var(--badge);
+  font-size: 15px;
+  padding: 7px 15px;
+  border: 1px solid var(--card-color);
+  background-color: var(--card-color);
+  transition: all 0.3s ease;
+}
+.projects .projects-container .project-card .project-card-info .read:hover {
+  background-color: transparent;
+  color: var(--card-color);
+}
+
+/* 6. FOLLOW SECTION STYLING */
+.follow {
+  padding: 40px;
+  margin: auto;
+  color: var(--primary);
+  background-color: var(--bg-main);
+}
+.follow h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin: 20px 0 50px 30px;
+}
+.follow .container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: auto auto auto auto;
+  margin-bottom: 30px;
+}
+.follow .container .box {
+  width: 220px;
+  height: 75px;
+  border-radius: 8px;
+  background-color: var(--bg-touch);
+  box-shadow: 0 1px 5px 0 var(--shadow);
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: all 0.7s ease;
+}
+.follow .container .box:hover {
+  background-color: var(--sec-hover);
+}
+.follow .container .box .logo {
+  border-radius: 5px;
+  margin-right: 15px;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.follow .container .box:nth-child(1) .logo {
+  background-color: var(--linkedin);
+}
+.follow .container .box:nth-child(2) .logo {
+  background-color: var(--github);
+}
+.follow .container .box:nth-child(3) .logo {
+  background-color: var(--instagram);
+}
+.follow .container .box:nth-child(4) .logo {
+  background-color: var(--youtube);
+}
+.follow .container .box .logo .fab {
+  font-size: 30px;
+  color: var(--card-color);
+  transition: all 0.3s ease;
+}
+.follow .container .box .text h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+/* 7. TIME SECTION STYLING */
+.time {
+  height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  margin: 0 auto;
+  margin: auto;
   color: var(--bg-main);
   background-color: var(--secondary);
 }
-.time .left, .time .right {
+.time .left,
+.time .right {
   padding: 20px;
   font-size: 20px;
   font-weight: 400;
 }
 
-/* 8. FOOTER PAGE STYLING */
+/* 8. FOOTER SECTION STYLING */
 
 .footer {
   height: 25vh;
