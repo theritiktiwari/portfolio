@@ -1,5 +1,6 @@
 import React from 'react';
 import DeFRAUDER from '../Files/Images/DeFRAUDER.png';
+import VITCRMS from '../Files/Images/VITCRMS.png';
 
 const Projects = () => {
     return (
@@ -11,10 +12,10 @@ const Projects = () => {
                         <p>March 02, 2021</p>
                     </div>
                     <div className="project-card-image">
-                        <img src="http://vitcrms.tk/images/logo.png" alt="VITCRMS project" />
+                        <img src={VITCRMS} alt="VITCRMS project" />
                     </div>
                     <div className="project-card-info">
-                        <h2>VITCRMS</h2>
+                        <h2>VIT-CRMS</h2>
                         <p>A website to provide the resources related to college.</p>
                         <div className="project-card-info-links">
                             <a className="btn read" href="https://github.com/theritiktiwari/VIT-CRMS" target="_blank" rel="noreferrer">Read More</a>
