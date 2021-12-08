@@ -1,6 +1,13 @@
 import React from 'react'
 
-const Landing = () => {
+import About from "./About";
+import Skills from "./Skills";
+import Projects from "./Projects";
+import Follow from "./Follow";
+import Time from "./Time";
+import Footer from "./Footer";
+
+const Landing = (props) => {
     return (
         <>
             <section className="landing">
@@ -32,6 +39,12 @@ const Landing = () => {
                     </svg>
                 </div>
             </section>
+            <About resume={props.resume} />
+            <Skills />
+            <Projects />
+            <Follow />
+            <Time />
+            <Footer />
         </>
     )
 }

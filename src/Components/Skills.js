@@ -9,13 +9,13 @@ const Skills = () => {
                     <div className="skill">
                         <p>HTML</p>
                         <div className="progress">
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
@@ -24,14 +24,14 @@ const Skills = () => {
                     <div className="skill">
                         <p>CSS</p>
                         <div className="progress">
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                         </div>
@@ -39,11 +39,11 @@ const Skills = () => {
                     <div className="skill">
                         <p>JS</p>
                         <div className="progress">
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
@@ -56,12 +56,12 @@ const Skills = () => {
                     <div className="skill">
                         <p>C</p>
                         <div className="progress">
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
@@ -71,13 +71,13 @@ const Skills = () => {
                     <div className="skill">
                         <p>PHP</p>
                         <div className="progress">
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
@@ -86,14 +86,14 @@ const Skills = () => {
                     <div className="skill">
                         <p>MySQL</p>
                         <div className="progress">
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                         </div>
