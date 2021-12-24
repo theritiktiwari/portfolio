@@ -533,6 +533,9 @@ header {
   overflow: scroll;
   border-left: 5px solid var(--white-color);
 }
+.projects-container::-webkit-scrollbar {
+  display: none;
+}
 .myProject {
   display: flex;
   justify-content: center;
@@ -899,9 +902,9 @@ header {
 /* 10. Skills Page Styling */
 
 .skill-set {
-  margin: 8vh auto;
+  margin: auto;
   width: 90%;
-  padding: 50px 0 100px;
+  padding: 15vh 0 100px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
   grid-gap: 50px;
@@ -947,6 +950,89 @@ header {
 }
 
 /* 11. Coding Profiles Page Styling */
+
+.coding-profile {
+  padding: 15vh 60px;
+}
+.coding-profile .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 50px;
+  place-items: center;
+}
+.coding-profile .container .box {
+  background-color: var(--bg-touch);
+  box-shadow: 0 1px 5px 0 var(--black-shadow);
+  border-radius: 5px;
+  width: 175px;
+  height: 225px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.coding-profile .container .box .logo {
+  width: 85%;
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.coding-profile .container .box .logo img {
+  height: 100%;
+}
+.coding-profile .container .box .text {
+  width: 100%;
+  padding: 10px;
+}
+.coding-profile .container .box .text p {
+  margin: 5px 0;
+}
+.coding-profile .container .box .profile-btn {
+  padding: 2px 20px;
+  color: var(--white-color);
+  background-color: var(--secondary);
+}
+
+.total-problem {
+  width: 85%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 40px;
+  background-color: var(--bg-touch);
+  box-shadow: 0 25px 100px 0 var(--black-shadow);
+}
+.total-problem .title {
+  font-size: var(--h2);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.total-problem table {
+  position: relative;
+  width: 80%;
+  margin: 0 auto 20px;
+  border-collapse: collapse;
+}
+.total-problem table tr:hover {
+  background-color: var(--sec-hover);
+  cursor: pointer;
+}
+.total-problem table th,
+.total-problem table td {
+  text-align: left;
+  padding: 10px;
+  width: 60%;
+  border-bottom: 1px solid var(--primary);
+}
+.total-problem span {
+  position: absolute;
+  bottom: -20%;
+  right: 0;
+}
+.total-problem span a {
+  color: var(--secondary);
+}
 
 /* RESPONSIVENESS */
 
@@ -1002,7 +1088,7 @@ header {
     width: 100%;
   }
   .skill-set {
-    margin: 0 auto;
+    padding-top: 50px;
   }
 }
 
@@ -1029,6 +1115,12 @@ header {
   }
   .skill-set {
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+  .coding-profile {
+    padding: 50px;
+  }
+  .total-problem table {
+    width: 100%;
   }
 }
 @media only screen and (max-width: 750px) {
@@ -1150,5 +1242,15 @@ header {
   .row-1 .box .icon,
   .row-2 .box .icon {
     left: -55px;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .coding-profile .container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+@media only screen and (max-width: 415px) {
+  .coding-profile .container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }

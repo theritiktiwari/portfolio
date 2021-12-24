@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import VITFAM from '../../Files/Images/VITFAM.png';
 import VIT from '../../Files/Images/VIT.png';

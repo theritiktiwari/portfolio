@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import landscape from '../Files/Images/landscape.png';
 import displayNone from '../Files/Images/displayNone.png';
 import maintenance from '../Files/Images/maintenance.png';
+import error from '../Files/Images/error.png';
 
 const Mode = (props) => {
     const mainStyle = {
@@ -60,6 +61,17 @@ const Mode = (props) => {
                     <h2>Work on Progress</h2>
                     <p>This page is under maintenance. Sorry for inconvenience.</p>
                     <Link to="/" className="btn" style={btnStyle}>HOME</Link>
+                </div>
+            }
+            {props.error &&
+                <div className="container" style={boxStyle}>
+                    <div className="container" style={boxStyle}>
+                        <img src={error} alt="mode" style={imgStyle} />
+                        <h2>404</h2>
+                        <p>NOT FOUND</p>
+                        <p>Click the below button for your destination.</p>
+                        <Link to="/" className="btn" style={btnStyle}>WEBSITE</Link>
+                    </div>
                 </div>
             }
         </section>

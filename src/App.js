@@ -12,6 +12,7 @@ import Experience from "./Components/Pages/Experience";
 import SkillSet from "./Components/Pages/SkillSet";
 
 import resume from './Files/Resume.pdf';
+import CodingProfile from "./Components/Pages/CodingProfile";
 
 function App() {
   AOS.init();
@@ -39,12 +40,10 @@ function App() {
         {mode && <Mode mode={mode} />}
         {displayNone && <Mode displayNone={displayNone} />}
         <Navbar resume={resume} />
-        <Route exact path="/">
-          <Landing resume={resume} />
-        </Route>
+        <Route exact path="/"><Landing resume={resume} /></Route>
         <Route exact path="/education"><Education/></Route>
         <Route exact path="/skills"><SkillSet/></Route>
-        <Route exact path="/codingProfile"><Mode work="work" /></Route>
+        <Route exact path="/codingProfile"><CodingProfile/></Route>
         <Route exact path="/projects"><Mode work="work" /></Route>
         <Route exact path="/projects"><Mode work="work" /></Route>
         <Route exact path="/experience"><Experience/></Route>

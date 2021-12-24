@@ -1,6 +1,7 @@
 import React from 'react'
 
 const SkillSet = () => {
+    document.title = "Skills | Ritik Tiwari";
     return (
         <>
             <section className='skill-set'>
@@ -8,27 +9,27 @@ const SkillSet = () => {
                     <h2 className='title'>Languages</h2>
                     <div className="skill-type">
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/ios-filled/50/6063C5/circled-c.png" className='icon' />
-                            <p>C</p>
-                        </div>
-                        <div className="skill-box">
-                            <img src="https://img.icons8.com/ios-filled/50/122CA3/c-plus-plus-logo.png" className='icon' />
+                            <img src="https://img.icons8.com/ios-filled/1000/122CA3/c-plus-plus-logo.png" alt="cpp" className='icon' />
                             <p>C++</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/ios-glyphs/30/FFDC00/python.png" className='icon' />
+                            <img src="https://img.icons8.com/ios-filled/1000/6063C5/circled-c.png" alt="c" className='icon' />
+                            <p>C</p>
+                        </div>
+                        <div className="skill-box">
+                            <img src="https://img.icons8.com/ios-glyphs/1000/FFDC00/python.png" alt="python" className='icon' />
                             <p>Python</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/ios-glyphs/50/E34C26/html-5.png" className='icon' />
+                            <img src="https://img.icons8.com/ios-glyphs/1000/E34C26/html-5.png" alt="html" className='icon' />
                             <p>HTML</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/color/50/F0DB4F/javascript--v1.png" className='icon' />
+                            <img src="https://img.icons8.com/color/1000/F0DB4F/javascript--v1.png" alt="js" className='icon' />
                             <p>JavaScript</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/ios-filled/50/4B568B/php-server.png" className='icon' />
+                            <img src="https://img.icons8.com/ios-filled/1000/4B568B/php-server.png" alt="php" className='icon' />
                             <p>PHP</p>
                         </div>
                     </div>
@@ -38,15 +39,15 @@ const SkillSet = () => {
                     <h2 className='title'>Frameworks</h2>
                     <div className="skill-type">
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/color/48/000000/bootstrap.png" className='icon' />
+                            <img src="https://img.icons8.com/color/1000/000000/bootstrap.png" alt="bootstrap" className='icon' />
                             <p>Bootstrap</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/material-outlined/48/151C2E/css-filetype.png" className='icon' />
+                            <img src="https://img.icons8.com/material-outlined/1000/151C2E/css-filetype.png" alt="tailwind" className='icon' />
                             <p>Tailwind CSS</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/ios-glyphs/30/00CEF8/react.png" className='icon' />
+                            <img src="https://img.icons8.com/ios-glyphs/1000/00CEF8/react.png" alt="react" className='icon' />
                             <p>React JS</p>
                         </div>
                         <div className="skill-box">
@@ -60,11 +61,11 @@ const SkillSet = () => {
                     <h2 className='title'>Databases</h2>
                     <div className="skill-type">
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/material-sharp/24/F29111/mysql-logo.png" className='icon' />
+                            <img src="https://img.icons8.com/material-sharp/1000/F29111/mysql-logo.png" alt="mysql" className='icon' />
                             <p>MySQL</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/000000/external-mongodb-a-cross-platform-document-oriented-database-program-logo-shadow-tal-revivo.png" className='icon' />
+                            <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/1000/000000/external-mongodb-a-cross-platform-document-oriented-database-program-logo-shadow-tal-revivo.png" alt="mongodb" className='icon' />
                             <p>MongoDB</p>
                         </div>
                     </div>
@@ -74,19 +75,19 @@ const SkillSet = () => {
                     <h2 className='title'>Tools & Technologies</h2>
                     <div className="skill-type">
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/color/48/000000/git.png" className='icon' />
+                            <img src="https://img.icons8.com/color/1000/000000/git.png" alt="git" className='icon' />
                             <p>Git/Github</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/color/50/000000/firebase.png" className='icon' />
+                            <img src="https://img.icons8.com/color/1000/000000/firebase.png" alt="firebase" className='icon' />
                             <p>Firebase</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" className='icon' />
+                            <img src="https://img.icons8.com/color/1000/000000/visual-studio-code-2019.png" alt="vscode" className='icon' />
                             <p>VS Code</p>
                         </div>
                         <div className="skill-box">
-                            <img src="https://img.icons8.com/color/48/000000/figma.png" className='icon' />
+                            <img src="https://img.icons8.com/color/1000/000000/figma.png" alt="figma" className='icon' />
                             <p>Figma</p>
                         </div>
                     </div>
