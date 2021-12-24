@@ -88,48 +88,48 @@ const Navbar = (props) => {
                             <li>
                                 <Link className="nav-link" to="/">About Me <i className="fas fa-caret-down"></i></Link>
                                 <ul className="dropdown">
-                                    <li><Link to="/"><i className="fas fa-graduation-cap"></i>Education</Link></li>
+                                    <li><Link to="/education"><i className="fas fa-graduation-cap"></i>Education</Link></li>
                                     <li><Link to={props.resume} target="_blank" rel="noreferrer"><i className="fas fa-file"></i>View Resume</Link></li>
                                 </ul>
                             </li>
                             <li>
                                 <Link className="nav-link" to="/">Skills <i className="fas fa-caret-down"></i></Link>
                                 <ul className="dropdown">
-                                    <li><Link to="/"><i className="fas fa-laptop-code"></i>Coding Profiles</Link></li>
-                                    <li><Link to="/"><i className="fas fa-code"></i>Open Source Profiles</Link></li>
+                                    <li><Link to="/skills"><i className="fas fa-code"></i>Skill Set</Link></li>
+                                    <li><Link to="/codingProfile"><i className="fas fa-laptop-code"></i>Coding Profiles</Link></li>
                                 </ul>
                             </li>
                             <li>
                                 <Link className="nav-link" to="/">Work <i className="fas fa-caret-down"></i></Link>
                                 <ul className="dropdown">
-                                    <li><Link to="/"><i className="fas fa-clipboard"></i>Projects</Link></li>
-                                    <li><Link to="/"><i className="fas fa-users"></i>Experience</Link></li>
+                                    <li><Link to="/projects"><i className="fas fa-clipboard"></i>Projects</Link></li>
+                                    <li><Link to="/experience"><i className="fas fa-users"></i>Experience</Link></li>
                                 </ul>
                             </li>
                             <li>
                                 <Link className="nav-link" to="/">Other<i className="fas fa-caret-down"></i></Link>
                                 <ul className="dropdown">
-                                    <li><Link to="/"><i className="fas fa-certificate"></i>Certificates</Link></li>
-                                    {/* <li><Link to="/"><i className="fas fa-trophy"></i>Achievements</Link></li> */}
-                                    {/* <li><Link to="/"><i className="fas fa-snowboarding"></i>Extra Curricular</Link></li> */}
+                                    <li><Link to="/certificates"><i className="fas fa-certificate"></i>Certificates</Link></li>
+                                    {/* <li><Link to="/achievements"><i className="fas fa-trophy"></i>Achievements</Link></li> */}
+                                    <li><Link to="/eca"><i className="fas fa-snowboarding"></i>Extra Curricular</Link></li>
                                 </ul>
                             </li>
-                            <li><Link className="nav-link link" to="/">Contact Me</Link></li>
+                            <li><Link className="nav-link link" to="/contact">Contact Me</Link></li>
                         </ul>
                     </div>
                     <div className="mob-nav">
                         <ul className="mob-links">
                             <li><Link className="mob-link" to="/"><i className="fas fa-home main-icon"></i>Home</Link></li>
-                            <li><Link className="mob-link" to="/"><i className="fas fa-graduation-cap"></i>Education</Link></li>
+                            <li><Link className="mob-link" to="/education"><i className="fas fa-graduation-cap"></i>Education</Link></li>
                             <li><Link className="mob-link" to={props.resume} target="_blank" rel="noreferrer"><i className="fas fa-file"></i>View Resume</Link></li>
-                            <li><Link className="mob-link" to="/"><i className="fas fa-laptop-code"></i>Coding Profiles</Link></li>
-                            <li><Link className="mob-link" to="/"><i className="fas fa-code"></i>Open Source</Link></li>
-                            <li><Link className="mob-link" to="/"><i className="fas fa-clipboard"></i>Projects</Link></li>
-                            <li><Link className="mob-link" to="/"><i className="fas fa-users"></i>Experience</Link></li>
-                            <li><Link className="mob-link" to="/"><i className="fas fa-certificate"></i>Certificates</Link></li>
-                            {/* <li><Link className="mob-link" to="/"><i className="fas fa-trophy"></i>Achievements</Link></li> */}
-                            {/* <li><Link className="mob-link" to="/"><i className="fas fa-snowboarding"></i>Extra Curricular</Link></li> */}
-                            <li><Link className="nav-link link mob-link" to="/"><i className="fas fa-address-card main-icon"></i>Contact Me</Link></li>
+                            <li><Link className="mob-link" to="/skills"><i className="fas fa-code"></i>Skill Set</Link></li>
+                            <li><Link className="mob-link" to="/codingProfile"><i className="fas fa-laptop-code"></i>Coding Profiles</Link></li>
+                            <li><Link className="mob-link" to="/projects"><i className="fas fa-clipboard"></i>Projects</Link></li>
+                            <li><Link className="mob-link" to="/experience"><i className="fas fa-users"></i>Experience</Link></li>
+                            <li><Link className="mob-link" to="/certificates"><i className="fas fa-certificate"></i>Certificates</Link></li>
+                            {/* <li><Link className="mob-link" to="/achievements"><i className="fas fa-trophy"></i>Achievements</Link></li> */}
+                            {/* <li><Link className="mob-link" to="/eca"><i className="fas fa-snowboarding"></i>Extra Curricular</Link></li> */}
+                            <li><Link className="nav-link link mob-link" to="/contact"><i className="fas fa-address-card main-icon"></i>Contact Me</Link></li>
                         </ul>
                     </div>
                     <div className="right-nav">

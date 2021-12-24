@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const About = (props) => {
     return (
         <section className="about">
-            <div className="container">
+            <div className="container"  data-aos="fade-up">
                 <div className="left">
                     <h1>About Me</h1>
                 </div>
@@ -15,8 +16,8 @@ const About = (props) => {
                         Since September 2020, I have been pursuing a profession in B.Tech Computer Science.
                         I utilise social media to help young hustlers realise their true potential so they can help us win. I enjoy spending my free time studying new things while I am not working.
                     </p>
-                    <a className="btn resume" href={props.resume} target="_blank" rel="noreferrer">View Resume</a>
-                    <a className="btn education" href="/education">Education</a>
+                    <Link className="btn resume" to={props.resume} target="_blank" rel="noreferrer">View Resume</Link>
+                    <Link className="btn education" to="/education">Education</Link>
                 </div>
             </div>
         </section>

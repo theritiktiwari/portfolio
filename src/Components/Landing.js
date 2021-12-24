@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import About from "./About";
 import Skills from "./Skills";
@@ -19,7 +20,7 @@ const Landing = (props) => {
                     <h1 className="name">Ritik Tiwari</h1>
                     {/* <h1 className="name">RitiK tiWARi</h1> */}
                     <h5 className="title">Developer | Mentor | Influencer</h5>
-                    <a href="/" className="btn cta">HIRE ME</a>
+                    <Link to="/contact" className="btn cta">HIRE ME</Link>
                 </div>
                 <div className="right">
                     <svg width="465" height="496" viewBox="0 0 465 496" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">

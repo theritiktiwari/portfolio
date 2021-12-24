@@ -1,6 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import landscape from '../Files/Images/landscape.png';
 import displayNone from '../Files/Images/displayNone.png';
+import maintenance from '../Files/Images/maintenance.png';
 
 const Mode = (props) => {
     const mainStyle = {
@@ -29,6 +32,12 @@ const Mode = (props) => {
         width: '200px',
         margin: '0 0 20px',
     }
+    const btnStyle = {
+        margin: '20px 0',
+        backgroundColor: '#fff',
+        color: '#0060ff',
+        cursor: 'pointer',
+    }
     return (
         <section style={mainStyle}>
             {props.mode &&
@@ -43,6 +52,14 @@ const Mode = (props) => {
                     <img src={displayNone} alt="mode" style={imgStyle} />
                     <h2>Please Change your device</h2>
                     <p>Your device is not supported for this website. Please switch the device for the best experience.</p>
+                </div>
+            }
+            {props.work &&
+                <div className="container" style={boxStyle}>
+                    <img src={maintenance} alt="mode" style={imgStyle} />
+                    <h2>Work on Progress</h2>
+                    <p>This page is under maintenance. Sorry for inconvenience.</p>
+                    <Link to="/" className="btn" style={btnStyle}>HOME</Link>
                 </div>
             }
         </section>

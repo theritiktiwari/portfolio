@@ -4,7 +4,7 @@ const Skills = () => {
     return (
         <section className="skills">
             <h1>Top Skills</h1>
-            <div className="container">
+            <div className="container" data-aos="zoom-in">
                 <div className="left">
                     <div className="skill">
                         <p>HTML</p>
