@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OtherCard from './OtherCard';
+import ModalCard from './ModalCard';
 import AchievementData from './Data/AchievementData';
 
 const Achievements = () => {
@@ -11,10 +11,11 @@ const Achievements = () => {
         <section className='info-container'>
             {
                 AchievementData.map((val, index) => {
-                    return <OtherCard
+                    return <ModalCard
                         key={index}
+                        info={true}
                         img={val.img}
-                        time={val.time}
+                        date={val.date}
                         title={val.title}
                         position={val.position}
                         link={val.link}

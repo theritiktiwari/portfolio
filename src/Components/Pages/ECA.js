@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OtherCard from './OtherCard';
+import ModalCard from './ModalCard';
 import ECAData from './Data/ECAData';
 
 const ECA = () => {
@@ -11,10 +11,11 @@ const ECA = () => {
         <section className='info-container'>
             {
                 ECAData.map((val, index) => {
-                    return <OtherCard
+                    return <ModalCard
                         key={index}
+                        info={true}
                         img={val.img}
-                        time={val.time}
+                        date={val.date}
                         title={val.title}
                         link={val.link}
                         description={val.description}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProjectData from './Data/ProjectData';
-import ProjectCard from './ProjectCard';
+import ModalCard from './ModalCard';
 
 const Project = () => {
 
@@ -11,7 +11,8 @@ const Project = () => {
         <section className="projects-container project-page">
             {
                 ProjectData.map((val, index) => {
-                    return <ProjectCard
+                    return <ModalCard
+                        project={true}
                         key={index}
                         img={val.img}
                         title={val.title}

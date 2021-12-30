@@ -102,15 +102,19 @@ a {
 /* MODAL */
 
 .modal {
-  display: none;
   position: fixed;
-  z-index: 1;
+  top: -100%;
+  left: -100%;
+}
+.modal-show {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   overflow: auto;
   background-color: var(--shadow);
+  z-index: 1;
 }
 .description {
   width: 75%;
@@ -1134,14 +1138,14 @@ header {
   font-size: var(--h4);
   margin: 10px 0;
 }
-.info-card .right .cert {
+.info-card .right .info-btn {
   padding: 5px 25px;
   border: none;
   color: var(--white-color);
   background-color: var(--secondary);
   cursor: pointer;
 }
-.info-card .right .cert:hover {
+.info-card .right .info-btn:hover {
   color: var(--primary);
   background-color: var(--sec-hover);
 }

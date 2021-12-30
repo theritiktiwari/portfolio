@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OtherCard from './OtherCard';
+import ModalCard from './ModalCard';
 import CertificateData from './Data/CertificateData';
 
 const Certificates = () => {
@@ -11,10 +11,11 @@ const Certificates = () => {
         <section className='info-container'>
             {
                 CertificateData.map((val, index) => {
-                    return <OtherCard
+                    return <ModalCard
                         key={index}
+                        info={true}
                         img={val.img}
-                        time={val.time}
+                        date={val.date}
                         title={val.title}
                         link={val.link}
                         description={val.description}
