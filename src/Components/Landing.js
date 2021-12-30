@@ -9,6 +9,7 @@ import Time from "./Time";
 import Footer from "./Footer";
 
 const Landing = (props) => {
+    document.title = "Ritik Tiwari | Developer";
     return (
         <>
             <section className="landing">
@@ -44,7 +45,7 @@ const Landing = (props) => {
             <Skills />
             <Projects />
             <Follow />
-            <Time />
+            <Time count={props.count} />
             <Footer />
         </>
     )

@@ -17,6 +17,7 @@
   --bg-main: #ffffff;
   --bg-touch: #ffffff;
   --footer-bg: #f5f5f5;
+  --placeholder: #666666;
   /* Shadow */
   --shadow: rgba(0, 0, 0, 0.25);
   --badge: rgba(0, 0, 0, 0.75);
@@ -32,6 +33,7 @@
   --bg-main: #1a1e23;
   --bg-touch: #2a2f35;
   --footer-bg: #2a2f35;
+  --placeholder: #bbbbbb;
   /* Shadow */
   --shadow: rgba(0, 0, 0, 0.25);
   --badge: rgba(0, 0, 0, 0.75);
@@ -74,7 +76,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   font-family: var(--font);
   color: var(--primary);
   background: var(--bg-main);
@@ -95,6 +97,61 @@ a {
   padding: 8px 30px;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
+}
+
+/* MODAL */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: var(--shadow);
+}
+.description {
+  width: 75%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  color: var(--primary);
+  background-color: var(--bg-touch);
+  box-shadow: 0 4px 50px 0 var(--black-shadow);
+}
+.description .heading {
+  font-size: var(--h3);
+  font-weight: 500;
+  padding: 20px;
+}
+.description .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: var(--h3);
+  cursor: pointer;
+}
+.description span {
+  display: inline-block;
+  padding: 20px 20px 0;
+}
+.description p {
+  padding: 20px 20px 0;
+  text-align: justify;
+}
+.description .more {
+  margin: 20px;
+  border: 1px solid var(--secondary);
+  color: var(--white-color);
+  background-color: var(--secondary);
+}
+.description .more:hover {
+  color: var(--secondary);
+  background-color: transparent;
 }
 
 /* 1 : NAVBAR STYLING */
@@ -499,7 +556,7 @@ header {
   background-color: var(--secondary);
 }
 
-/* 5. PROJECTS SECTION STYLING */
+/* 5. PROJECTS SECTION AND PROJECT PAGE STYLING */
 
 .projects {
   padding: 50px 0 60px;
@@ -522,72 +579,71 @@ header {
   height: 5px;
   background-color: var(--white-color);
 }
-
 .projects-container {
   position: relative;
-  width: 80%;
-  height: 45vh;
+  width: 85%;
   margin: auto;
-  padding: 0 20px;
-  background-attachment: fixed;
-  overflow: scroll;
-  border-left: 5px solid var(--white-color);
-}
-.projects-container::-webkit-scrollbar {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  grid-gap: 50px;
+  place-items: center;
 }
 .myProject {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 80%;
+  position: relative;
+  overflow: hidden;
 }
 .myProject .left {
-  flex: 1;
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .myProject .left img {
   width: 100%;
-  border-radius: 8px;
+  cursor: pointer;
 }
-
 .myProject .right {
-  flex: 3;
-  height: inherit;
-  padding: 50px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  width: 100%;
+  position: absolute;
+  bottom: -1000px;
+  padding: 15px;
+  background-color: var(--badge);
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
-.myProject .right h2 {
-  font-size: var(--h2);
-  font-weight: 700;
-  margin: 0 0 20px;
+.myProject:hover .right {
+  bottom: 0;
 }
 .myProject .right .duration {
-  filter: opacity(0.7);
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: italic;
-}
-.myProject .right p {
-  font-size: var(--p);
-  margin: 10px 0;
-  text-align: justify;
-  line-height: 1.5;
-  padding-right: 15px;
+  margin: 5px 0 10px;
 }
 .myProject .right .read {
-  border: 1px solid var(--white-color);
-  color: var(--secondary);
-  background-color: var(--white-color);
-  margin: 10px 0 0;
+  font-size: 15px;
+  padding: 5px 15px;
+  background-color: var(--secondary);
+  color: var(--white-color);
 }
 .myProject .right .read:hover {
+  background-color: var(--sec-hover);
+}
+.project-page {
   color: var(--white-color);
-  background-color: transparent;
+  padding: 15vh 50px;
+  height: auto !important;
+}
+.project-page .myProject {
+  border-bottom: 5px solid var(--secondary);
+  box-shadow: 0 -10px 10px 0 var(--shadow);
+}
+.project-page .myProject .right {
+  background-color: var(--secondary);
+}
+.project-page .myProject .right .read {
+  outline: none;
+  border: none;
+  color: var(--secondary);
+  background-color: var(--white-color);
+  cursor: pointer;
 }
 
 /* 6. FOLLOW SECTION STYLING */
@@ -1025,15 +1081,167 @@ header {
   width: 60%;
   border-bottom: 1px solid var(--primary);
 }
-.total-problem span {
+.total-problem .source {
   position: absolute;
   bottom: -20%;
   right: 0;
 }
-.total-problem span a {
+.total-problem .source a {
   color: var(--secondary);
 }
 
+/* 13. Other Section Styling */
+
+.info-container {
+  padding: 15vh 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  grid-gap: 50px;
+  place-items: center;
+  width: 85%;
+  margin: auto;
+}
+.info-card {
+  background-color: var(--bg-touch);
+  height: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid var(--black-shadow);
+}
+.info-card .left {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+.info-card .right {
+  width: 100%;
+  padding: 0 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.info-card .right h2 {
+  font-size: var(--h4);
+  margin: 10px 0;
+}
+.info-card .right .cert {
+  padding: 5px 25px;
+  border: none;
+  color: var(--white-color);
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+.info-card .right .cert:hover {
+  color: var(--primary);
+  background-color: var(--sec-hover);
+}
+
+/* 15. Contact Page Styling */
+.contact {
+  padding: 13vh 70px 0;
+}
+.contact .title {
+  font-size: var(--h1);
+  font-weight: 700;
+}
+.contact form {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bg-touch);
+  box-shadow: 0 25px 100px 0 var(--black-shadow);
+}
+.contact form .msg {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+.contact form .success {
+  color: #0f0;
+}
+.contact form .error {
+  color: #f00;
+}
+.contact form .left,
+.contact form .right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.contact form .input {
+  width: 100%;
+  padding: 15px;
+  margin: 13px 0;
+  font-size: var(--p);
+  font-family: var(--font);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: var(--secondary);
+  box-shadow: inset 0 2px 15px 0 var(--shadow);
+  background-color: var(--bg-touch);
+}
+.contact form .input::placeholder {
+  color: var(--placeholder);
+}
+.contact form .submit {
+  align-self: flex-end;
+  font-size: var(--p);
+  margin-top: 10px;
+  color: var(--white-color);
+  border: 1px solid var(--secondary);
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+.contact form .submit:hover {
+  color: var(--primary);
+  background-color: transparent;
+}
+.social-media {
+  margin: 40px auto 15px;
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.social-media a {
+  background-color: var(--sec-hover);
+  width: 50px;
+  height: 50px;
+  background-color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  transition: all 0.3s ease-in-out;
+}
+.social-media a:hover {
+  transform: scale(1.1);
+}
+.social-media .fab {
+  font-size: var(--h4);
+  color: var(--white-color);
+}
+.mail {
+  text-align: center;
+}
+.mail a {
+  color: var(--secondary);
+}
 /* RESPONSIVENESS */
 
 @media only screen and (max-width: 1000px) {
@@ -1075,6 +1283,12 @@ header {
   .projects-container {
     height: 35vh;
   }
+  .project-page {
+    padding-top: 50px;
+  }
+  .project-page .myProject {
+    width: 100%;
+  }
   .follow .container {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
@@ -1087,8 +1301,19 @@ header {
     padding-bottom: 70px;
     width: 100%;
   }
-  .skill-set {
+  .skill-set,
+  .contact {
     padding-top: 50px;
+  }
+  .social-media {
+    width: 30%;
+  }
+  .info-container {
+    padding-top: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  }
+  .grecaptcha-badge {
+    bottom: -100px !important;
   }
 }
 
@@ -1121,6 +1346,9 @@ header {
   }
   .total-problem table {
     width: 100%;
+  }
+  .contact {
+    padding: 50px 20px 100px;
   }
 }
 @media only screen and (max-width: 750px) {
@@ -1175,20 +1403,8 @@ header {
     margin: 0 30px 50px;
   }
   .projects-container {
-    height: 75vh;
-  }
-  .myProject {
-    width: 100%;
-    flex-direction: column;
-  }
-  .myProject .left img {
-    width: 70%;
-  }
-  .myProject .right {
-    padding: 10px 20px 60px;
-  }
-  .myProject .right p {
-    padding-right: 0;
+    height: auto;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   }
   .follow h1 {
     font-size: var(--h2);
@@ -1243,14 +1459,44 @@ header {
   .row-2 .box .icon {
     left: -55px;
   }
+  .social-media {
+    width: 40%;
+  }
+  .contact {
+    text-align: center;
+  }
+  .contact form {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact form .left {
+    width: 90%;
+    margin-bottom: 0;
+  }
+  .contact form .right {
+    width: 90%;
+    margin-top: 0;
+  }
+  .contact form .submit {
+    align-self: flex-start;
+  }
 }
 @media only screen and (max-width: 460px) {
   .coding-profile .container {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
+  .social-media {
+    width: 50%;
+  }
+  .info-container {
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 415px) {
   .coding-profile .container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .social-media {
+    width: 60%;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Time = () => {
+const Time = (props) => {
     const [time, setTime] = useState();
     
     useEffect(() => {
@@ -24,7 +24,7 @@ const Time = () => {
                 <p className="clock">{time}</p>
             </div>
             <div className="right">
-                <p className="visitor">TOTAL VISITORS : 1.3k+</p>
+                <p className="visitor">TOTAL VISITORS : {props.count ? props.count : "1.3k+"}</p>
             </div>
         </section>
     )

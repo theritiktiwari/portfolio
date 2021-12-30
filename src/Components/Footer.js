@@ -1,8 +1,9 @@
 import React from 'react'
 
 const Footer = () => {
-    // get the current year
-    const year = new Date().getFullYear();
+
+    let year = new Date().getFullYear();
+    year %= 100;
 
     return (
         <footer className="footer">
@@ -23,7 +24,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className="copyright">
-                    <p>&copy; {year} By <a className="name" href="/">Ritik Tiwari</a>. All Rights Reserved.</p>
+                    <p>&copy; 2021-{year} By <a className="name" href="/">Ritik Tiwari</a>. All Rights Reserved.</p>
                 </div>
             </div>
 
