@@ -7,14 +7,19 @@ const Experience = () => {
     const time = (startingMonth, startingYear) => {
         let year = new Date().getFullYear();
         let month = new Date().getMonth();
+        month++;
 
-        if (startingYear === year) {
-            let m = month - startingMonth + 2;
-            return m + (m === 1 ? ' Month' : ' Months');
-        } else {
-            let y = year - startingYear;
-            return y + (y === 1 ? ' Year' : ' Years') + ` ${month - startingMonth + 2} Months`;
+        let y = year - startingYear;
+        let m = month + (12 * y) - startingMonth;
+        y = 0;
+        m++;
+        
+        while (m >= 12) {
+            m -= 12;
+            y++;
         }
+
+        return (y ? y + (y === 1 ? ' Year ' : ' Years ') : '') + (m ? m + (m === 1 ? ' Month' : ' Months') : '');
     }
 
     const VITFAM = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/experience%2FVITFAM.png?alt=media&token=4f23f695-351a-430d-aadd-49cd7ed908f9';

@@ -1,15 +1,19 @@
 // const time = (startingMonth, startingYear) => {
-
 //     let year = new Date().getFullYear();
 //     let month = new Date().getMonth();
+//     month++;
 
-//     if (startingYear === year) {
-//         let m = month - startingMonth + 2;
-//         return m + (m === 1 ? ' Month' : ' Months');
-//     } else {
-//         let y = year - startingYear;
-//         return y + (y === 1 ? ' Year' : ' Years') + ` ${month - startingMonth + 2} Months`;
+//     let y = year - startingYear;
+//     let m = month + (12 * y) - startingMonth;
+//     y = 0;
+//     m++;
+    
+//     while (m >= 12) {
+//         m -= 12;
+//         y++;
 //     }
+
+//     return (y ? y + (y === 1 ? ' Year ' : ' Years ') : '') + (m ? m + (m === 1 ? ' Month' : ' Months') : '');
 // }
 
 // time: time(11, 2021),
