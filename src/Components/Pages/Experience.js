@@ -19,7 +19,7 @@ const Experience = () => {
             y++;
         }
 
-        return (y ? y + (y === 1 ? ' Year ' : ' Years ') : '') + (m ? m + (m === 1 ? ' Month' : ' Months') : '');
+        return (y ? y + (y === 1 ? ' yr ' : ' yrs ') : '') + (m ? m + (m === 1 ? ' mo' : ' mos') : '');
     }
 
     const VITFAM = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/experience%2FVITFAM.png?alt=media&token=4f23f695-351a-430d-aadd-49cd7ed908f9';

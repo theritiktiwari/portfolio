@@ -13,7 +13,7 @@
 //         y++;
 //     }
 
-//     return (y ? y + (y === 1 ? ' Year ' : ' Years ') : '') + (m ? m + (m === 1 ? ' Month' : ' Months') : '');
+//     return (y ? y + (y === 1 ? ' yr ' : ' yrs ') : '') + (m ? m + (m === 1 ? ' mo' : ' mos') : '');
 // }
 
 // time: time(11, 2021),
