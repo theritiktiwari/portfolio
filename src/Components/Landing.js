@@ -15,7 +15,7 @@ const Landing = (props) => {
             <section className="landing">
                 <div className="left">
                     <div className="tipbox">
-                        <h2 className="greet">Hy! I Am</h2>
+                        <h2 className="greet">Hey! I Am</h2>
                     </div>
                     {/* <h2 className="greet">Hy! I Am</h2> */}
                     <h1 className="name">Ritik Tiwari</h1>

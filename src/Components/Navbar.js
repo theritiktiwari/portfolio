@@ -58,16 +58,24 @@ const Navbar = (props) => {
 
         // show and hide navbar when click on hamburger icon (mobile)
         const toggle_btn = document.getElementById('toggle');
+        const mobile_nav = document.querySelector('.mob-nav');
 
         toggle_btn.addEventListener('click', () => {
-            const mobile_nav = document.querySelector('.mob-nav');
-
             if (toggle_btn.checked) {
                 mobile_nav.style.display = 'block';
             } else {
                 mobile_nav.style.display = 'none';
             }
         });
+
+        const mob = document.querySelectorAll('.mob-link');
+        mob.forEach(item => {
+            item.addEventListener('click', () => {
+                toggle_btn.checked = false;
+                mobile_nav.style.display = 'none';
+            });
+        });
+
     }, []);
 
     return (

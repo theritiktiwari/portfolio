@@ -18,6 +18,7 @@ import Project from "./Components/Pages/Project";
 import Experience from "./Components/Pages/Experience";
 
 import Certificates from "./Components/Pages/Certificates";
+// import Achievements from "./Components/Pages/Achievements";
 import ECA from "./Components/Pages/ECA";
 
 import Contact from "./Components/Pages/Contact";
@@ -70,6 +71,7 @@ function App() {
         <Route exact path="/certificates"><Certificates /></Route>
         
         <Route exact path="/achievements"><Mode work="work" /></Route>
+        {/* <Route exact path="/achievements"><Achievements /></Route> */}
 
         <Route exact path="/eca"><ECA /></Route>
 
