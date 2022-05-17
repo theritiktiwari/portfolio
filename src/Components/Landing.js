@@ -5,8 +5,9 @@ import About from "./About";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Follow from "./Follow";
-import Time from "./Time";
 import Footer from "./Footer";
+import Testimonials from './Testimonials';
+import Offers from './Offers';
 
 const Landing = (props) => {
     document.title = "Ritik Tiwari | Developer";
@@ -20,7 +21,7 @@ const Landing = (props) => {
                     {/* <h2 className="greet">Hy! I Am</h2> */}
                     <h1 className="name">Ritik Tiwari</h1>
                     {/* <h1 className="name">RitiK tiWARi</h1> */}
-                    <h5 className="title">Developer | Mentor | Influencer</h5>
+                    <h5 className="title">Developer | Learner | Freelancer</h5>
                     <Link to="/contact" className="btn cta">HIRE ME</Link>
                 </div>
                 <div className="right">
@@ -44,9 +45,10 @@ const Landing = (props) => {
             <About resume={props.resume} />
             <Skills />
             <Projects />
+            <Offers />
+            <Testimonials />
             <Follow />
-            <Time count={props.count} />
-            <Footer />
+            <Footer count={props.count} />
         </>
     )
 }

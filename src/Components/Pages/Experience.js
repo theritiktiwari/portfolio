@@ -22,13 +22,17 @@ const Experience = () => {
         return (y ? y + (y === 1 ? ' yr ' : ' yrs ') : '') + (m ? m + (m === 1 ? ' mo' : ' mos') : '');
     }
 
+    const styleName = {
+        textAlign: 'justify',
+    }
+
     const VITFAM = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/experience%2FVITFAM.png?alt=media&token=4f23f695-351a-430d-aadd-49cd7ed908f9';
     const VIT = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/experience%2FVIT.png?alt=media&token=caf10cd9-0f75-481a-8016-66cb9eb49123';
     const FYI = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/experience%2FFYI.png?alt=media&token=8265ea90-8db8-4f97-9eaa-8e4b2d0d43c6';
 
     return (
         <>
-            <section className="details-container">
+            <section className="details-container" style={styleName}>
                 <div className="center-line exp-center"></div>
                 <div className="row row-1">
                     <div className="box" data-aos="fade-right">

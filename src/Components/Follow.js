@@ -3,7 +3,7 @@ import React from 'react'
 const Follow = () => {
     return (
         <section className="follow">
-            <h1>Stay Connect With Me</h1>
+            <h1>Stay Connected</h1>
             <div className="container">
                 <a className="box" href="https://linkedin.com/in/theritiktiwari" target="_blank" rel="noreferrer">
                     <div className="logo"><i className="fab fa-linkedin-in"></i></div>

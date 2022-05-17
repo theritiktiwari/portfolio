@@ -113,6 +113,7 @@ const Navbar = (props) => {
                                 <ul className="dropdown">
                                     <li><Link to="/projects"><i className="fas fa-clipboard"></i>Projects</Link></li>
                                     <li><Link to="/experience"><i className="fas fa-users"></i>Experience</Link></li>
+                                    {/* <li><Link to="/services"><i className="fas fa-microchip"></i>Services</Link></li> */}
                                 </ul>
                             </li>
                             <li>
@@ -132,6 +133,7 @@ const Navbar = (props) => {
                             <li><Link className="mob-link" to="/education"><i className="fas fa-graduation-cap"></i>Education</Link></li>
                             <li><Link className="mob-link" to="/skills"><i className="fas fa-code"></i>Skill Set</Link></li>
                             <li><Link className="mob-link" to={props.resume} target="_blank" rel="noreferrer"><i className="fas fa-file"></i>View Resume</Link></li>
+                            {/* <li><Link className="mob-link" to="/services"><i className="fas fa-microchip"></i>Services</Link></li> */}
                             <li><Link className="mob-link" to="/experience"><i className="fas fa-users"></i>Experience</Link></li>
                             <li><Link className="mob-link" to="/projects"><i className="fas fa-clipboard"></i>Projects</Link></li>
                             <li><Link className="mob-link" to="/codingProfile"><i className="fas fa-laptop-code"></i>Coding Profiles</Link></li>

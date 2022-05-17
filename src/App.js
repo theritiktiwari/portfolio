@@ -16,6 +16,7 @@ import CodingProfile from "./Components/Pages/CodingProfile";
 
 import Project from "./Components/Pages/Project";
 import Experience from "./Components/Pages/Experience";
+import Services from "./Components/Pages/Services";
 
 import Certificates from "./Components/Pages/Certificates";
 // import Achievements from "./Components/Pages/Achievements";
@@ -67,6 +68,7 @@ function App() {
         
         <Route exact path="/projects"><Project /></Route>
         <Route exact path="/experience"><Experience /></Route>
+        <Route exact path="/services"><Services /></Route>
         
         <Route exact path="/certificates"><Certificates /></Route>
         
