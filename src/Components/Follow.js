@@ -9,7 +9,7 @@ const Follow = () => {
                     <div className="logo"><i className="fab fa-linkedin-in"></i></div>
                     <div className="text">
                         <h3>LinkedIn</h3>
-                        <p>600+ Followers</p>
+                        <p>700+ Followers</p>
                     </div>
                 </a>
 
@@ -25,7 +25,7 @@ const Follow = () => {
                     <div className="logo"><i className="fab fa-instagram"></i></div>
                     <div className="text">
                         <h3>Instagram</h3>
-                        <p>1k+ Followers</p>
+                        <p>1.5k+ Followers</p>
                     </div>
                 </a>
 

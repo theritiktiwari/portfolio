@@ -23,7 +23,7 @@ const CodingProfile = () => {
                         <div className="logo"><img src="https://img.icons8.com/color/1000/000000/GeeksforGeeks.png" alt='gfg' /></div>
                         <div className="text">
                             <h3>GeeksforGeeks</h3>
-                            <p><b>Rating :</b> 699</p>
+                            <p><b>Rating :</b> 809</p>
                             {/* <span>Stars</span> */}
                         </div>
                         <a href="https://auth.geeksforgeeks.org/user/theritiktiwari/profile/" target="_blank" rel="noreferrer" className='btn profile-btn'>theritiktiwari</a>
@@ -33,7 +33,7 @@ const CodingProfile = () => {
                         <div className="logo"><img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/1000/000000/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-shadow-tal-revivo.png" alt='leetcode' /></div>
                         <div className="text">
                             <h3>LeetCode</h3>
-                            <p><b>Rating :</b> NIL</p>
+                            <p><b>Rating :</b> 1,885,213</p>
                             {/* <span>1 Star</span> */}
                         </div>
                         <a href="https://www.leetcode.com/theritiktiwari/" target="_blank" rel="noreferrer" className='btn profile-btn'>theritiktiwari</a>
@@ -43,8 +43,8 @@ const CodingProfile = () => {
                         <div className="logo"><img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/1000/000000/external-hackerrank-is-a-technology-company-that-focuses-on-competitive-programming-logo-color-tal-revivo.png" alt='hackerrank' /></div>
                         <div className="text">
                             <h3>HackerRank</h3>
-                            <p><b>Rating :</b> NIL</p>
-                            {/* <span>CPP - 5 Stars</span> */}
+                            {/* <p><b>Rating :</b> NIL</p> */}
+                            <span><b>CPP :</b> 5 Stars</span>
                         </div>
                         <a href="https://www.hackerrank.com/theritiktiwari/" target="_blank" rel="noreferrer" className='btn profile-btn'>theritiktiwari</a>
                     </div>

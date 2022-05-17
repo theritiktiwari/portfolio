@@ -837,6 +837,7 @@ header {
   width: calc(50% - 50px);
   padding: 20px;
   position: relative;
+  text-align: justify;
 }
 .details-container .row .box::before {
   position: absolute;

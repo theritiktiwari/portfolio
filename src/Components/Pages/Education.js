@@ -19,7 +19,7 @@ const Education = () => {
                         <b>Vellore Institute of Technology, Chennai</b>
                     </div>
                     <p className='details'>Computer Science and Engineering, Specialization in Cyber Physical System</p>
-                    <div className="bottom"><b>8.26 CGPA</b></div>
+                    <div className="bottom"><b>8.28 CGPA</b></div>
                     <div className="bottom">2020 - Present</div>
                 </div>
             </div>

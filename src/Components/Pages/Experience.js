@@ -13,7 +13,7 @@ const Experience = () => {
         let m = month + (12 * y) - startingMonth;
         y = 0;
         m++;
-        
+
         while (m >= 12) {
             m -= 12;
             y++;
@@ -83,6 +83,30 @@ const Experience = () => {
                         <div className="bottom">
                             <a href="https://www.linkedin.com/company/fraternity-of-young-innovators" target="_blank" rel="noreferrer" className='info btn'>More Info</a>
                             {/* <Link to="/" className='cert btn'>Certificate</Link> */}
+                        </div>
+                    </div>
+                </div>
+                <div className="row row-2">
+                    <div className="box" data-aos="fade-left">
+                        <i className='icon exp-icon'><img src={VITFAM} alt="VITFAM" loading='lazy' /></i>
+                        <div className="main">
+                            <div className="title">Social Media Strategist</div>
+                            <b>VIT Finance & Management Club (VITFAM)</b>
+                        </div>
+                        <p className='date'>Oct 2020 - Oct 2021 • 1 yr 1 mo</p>
+                        <ul className='detail'>
+                            <li>I work in this organization's social media department, where I come up with strategies for boosting reach and engagement in order to get more people to learn something new.</li>
+                            <li>
+                                Part of Organising Committee <br/>
+                                • Among Us<br />
+                                • VITFAM Open<br />
+                                • Stock Market Workshop<br />
+                                • FAM Premiere League<br />
+                            </li>
+                        </ul>
+                        <div className="bottom">
+                            <a href="https://www.linkedin.com/school/vellore-institute-of-technology/" target="_blank" rel="noreferrer" className='info btn'>More Info</a>
+                            <a href="https://drive.google.com/file/d/19C4qE3WQjGPZC3zhjye9pdDv4PpouEPD/view" target={"_blank"} rel="noreferrer" className='cert btn'>Certificate</a>
                         </div>
                     </div>
                 </div>
