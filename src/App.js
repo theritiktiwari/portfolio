@@ -68,7 +68,7 @@ function App() {
         
         <Route exact path="/projects"><Project /></Route>
         <Route exact path="/experience"><Experience /></Route>
-        <Route exact path="/services"><Services /></Route>
+        {/* <Route exact path="/services"><Services /></Route> */}
         
         <Route exact path="/certificates"><Certificates /></Route>
         
