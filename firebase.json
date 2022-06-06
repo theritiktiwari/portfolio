@@ -1,15 +1,105 @@
 {
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
   "hosting": {
     "site": "theritiktiwari",
-    "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-    } ]
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/education",
+        "destination": "/education.html"
+      },
+      {
+        "source": "/skills",
+        "destination": "/skills.html"
+      },
+      {
+        "source": "/codingprofile",
+        "destination": "/codingprofile.html"
+      },
+      {
+        "source": "/opensource",
+        "destination": "/opensource.html"
+      },
+      {
+        "source": "/projects",
+        "destination": "/projects.html"
+      },
+      {
+        "source": "/experience",
+        "destination": "/experience.html"
+      },
+      {
+        "source": "/services",
+        "destination": "/services.html"
+      },
+      {
+        "source": "/certificates",
+        "destination": "/certificates.html"
+      },
+      {
+        "source": "/achievements",
+        "destination": "/achievements.html"
+      },
+      {
+        "source": "/eca",
+        "destination": "/eca.html"
+      },
+      {
+        "source": "/contact",
+        "destination": "/contact.html"
+      },
+      {
+        "source": "/admin",
+        "destination": "/admin.html"
+      },
+      {
+        "source": "/admin/home",
+        "destination": "/admin/home.html"
+      },
+      {
+        "source": "/admin/testimonials",
+        "destination": "/admin/testimonials.html"
+      },
+      {
+        "source": "/admin/education",
+        "destination": "/admin/education.html"
+      },
+      {
+        "source": "/admin/codingprofile",
+        "destination": "/admin/codingprofile.html"
+      },
+      {
+        "source": "/admin/projects",
+        "destination": "/admin/projects.html"
+      },
+      {
+        "source": "/admin/experience",
+        "destination": "/admin/experience.html"
+      },
+      {
+        "source": "/admin/certificates",
+        "destination": "/admin/certificates.html"
+      },
+      {
+        "source": "/admin/achievements",
+        "destination": "/admin/achievements.html"
+      },
+      {
+        "source": "/admin/eca",
+        "destination": "/admin/eca.html"
+      },
+      {
+        "source": "/admin/users",
+        "destination": "/admin/users.html"
+      }
+    ]
   }
 }
