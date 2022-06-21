@@ -17,7 +17,7 @@ const About = (props) => {
     }, []);
     return (
         <section className="about">
-            <div className="container" data-aos="fade-up">
+            {(mainText && subText) ? <div className="container" data-aos="fade-up">
                 <div className="left">
                     <h1>About Me</h1>
                 </div>
@@ -27,7 +27,7 @@ const About = (props) => {
                     <a className="btn resume" href={props.resume} target="_blank" rel="noreferrer">View Resume</a>
                     <Link href="/education"><a className="btn education">Education</a></Link>
                 </div>
-            </div>
+            </div> : null}
         </section>
     )
 }
