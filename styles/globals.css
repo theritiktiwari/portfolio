@@ -216,6 +216,10 @@ header {
   justify-content: space-around;
 }
 
+.nav-links .nav-link {
+  cursor: pointer;
+}
+
 .nav-links .link {
   position: relative;
 }
@@ -731,7 +735,7 @@ header {
 
 /* 6. OFFERS (SERVICE) SECTION STYLING */
 
-.service-list{
+.service-list {
   padding: 50px 0 60px;
   width: 85%;
   margin: 20px auto;
@@ -767,7 +771,7 @@ header {
 
 /* 6. TESTIMONIALS SECTION STYLING */
 
-.testimonial{
+.testimonial {
   background-color: var(--secondary);
   padding: 80px 20px;
   overflow: hidden;
@@ -790,7 +794,8 @@ header {
   border-radius: 12px;
   position: relative;
 }
-.slide-content{
+
+.slide-content {
   display: block;
   width: 450px;
   padding: 50px;
@@ -799,6 +804,7 @@ header {
   border-radius: 15px;
   background-color: var(--white-color);
 }
+
 .img-area {
   width: 100px;
   height: 100px;
@@ -1657,16 +1663,16 @@ header {
     height: auto;
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
   }
-  
-  .service-list .container{
+
+  .service-list .container {
     flex-direction: column;
   }
 
-  .testimonial h1{
+  .testimonial h1 {
     margin-left: 20px;
   }
 
-  .slide-content{
+  .slide-content {
     width: 350px;
   }
 
