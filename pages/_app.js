@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
     countapi.visits().then((result) => {
       let c = result.value > 1000 ? result.value / 1000 : result.value;
       c = c > 100 ? parseInt(c) : c.toFixed(1);
-      result.value > 1000 ? setCount(parseInt(c) + 'k+') : setCount(parseInt(c) + '');
+      result.value > 1000 ? setCount(c + 'k+') : setCount(parseInt(c) + '');
     });
 
     const detectDevice = () => {
