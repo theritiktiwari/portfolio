@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { db } from '../Components/firebase';
-import { collection, getDocs } from "firebase/firestore";
+import { query, collection, getDocs, orderBy, limit } from "firebase/firestore";
 
 import ModalCard from '../Components/ModalCard';
 
@@ -9,7 +9,7 @@ const Project = (props) => {
     const [projectData, setProjectData] = useState();
     useEffect(() => {
         const getData = async () => {
-            const querySnapshot = await getDocs(collection(db, "project"));
+            const querySnapshot = await getDocs(query(collection(db, "project"), orderBy("timestamp", "desc")));
             let data = [];
             querySnapshot.forEach((doc) => {
                 data.push({
