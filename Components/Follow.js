@@ -24,7 +24,7 @@ const Follow = () => {
     return (
         <section className="follow">
             <h1>Stay Connected</h1>
-            <div className="container">
+            {(linkedIn && github && instagram && youtube) ? <div className="container">
                 <a className="box" href="https://linkedin.com/in/theritiktiwari" target="_blank" rel="noreferrer">
                     <div className="logo"><i className="fab fa-linkedin-in"></i></div>
                     <div className="text">
@@ -56,7 +56,7 @@ const Follow = () => {
                         <p>{youtube}+ Subscribers</p>
                     </div>
                 </a>
-            </div>
+            </div> : null}
         </section>
     )
 }
