@@ -85,7 +85,7 @@ const CodingProfile = (props) => {
                     </div>
                 </section>
 
-                <section className="total-problem" data-aos="zoom-in">
+                {totalProbelm ? <section className="total-problem" data-aos="zoom-in">
                     <h2 className='title'>Total Problems</h2>
                     <table>
                         <thead>
@@ -102,15 +102,15 @@ const CodingProfile = (props) => {
                                 </tr>
                             })}
                         </tbody>
-                        {totalProbelm && <tfoot>
+                        <tfoot>
                             <tr>
                                 <td><b>Total</b></td>
                                 <td><b>{totalProbelm}+</b></td>
                             </tr>
-                        </tfoot>}
+                        </tfoot>
                         <p className='source'>Source : <a href="https://www.stopstalk.com/user/profile/theritiktiwari/" target="_blank" rel='noreferrer'>Click Here</a></p>
                     </table>
-                </section>
+                </section> : null}
             </div>
         </>
     )
