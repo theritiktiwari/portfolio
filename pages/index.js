@@ -20,7 +20,7 @@ const index = (props) => {
                     {/* <h2 className="greet">Hy! I Am</h2> */}
                     <h1 className="name">Ritik Tiwari</h1>
                     {/* <h1 className="name">RitiK tiWARi</h1> */}
-                    <h5 className="title">Developer | Learner | Freelancer</h5>
+                    <h5 className="title">Developer | Student | Freelancer</h5>
                     <Link href="/contact"><a className="btn cta">HIRE ME</a></Link>
                 </div>
                 <div className="right">

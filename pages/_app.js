@@ -15,6 +15,8 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   const name = "Ritik Tiwari";
+  const color = "#0060FF";
+
   const router = useRouter();
   const [progress, setProgress] = useState(0);
   const [count, setCount] = useState();
@@ -31,7 +33,7 @@ function MyApp({ Component, pageProps }) {
     router.events.on('routeChangeComplete', () => {
       setProgress(100)
     })
-    
+
     const myUser = JSON.parse(localStorage.getItem("myUser"));
     if (myUser) {
       setUser({ token: myUser.token, email: myUser.email });
@@ -49,7 +51,7 @@ function MyApp({ Component, pageProps }) {
     countapi.visits().then((result) => {
       let c = result.value > 1000 ? result.value / 1000 : result.value;
       c = c > 100 ? parseInt(c) : c.toFixed(1);
-      result.value > 1000 ? setCount(c + 'k+') : setCount(parseInt(c) + '');
+      result.value > 1000 ? setCount(parseInt(c) + 'k+') : setCount(parseInt(c) + '');
     });
 
     const detectDevice = () => {
@@ -80,21 +82,17 @@ function MyApp({ Component, pageProps }) {
       <link rel="apple-touch-icon" href="/logo192.png" />
       <link rel="manifest" href="/manifest.json" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="theme-color" content="#0060FF" />
+      <meta name="theme-color" content={color} />
       <meta
-        name="RITIK TIWARI | DEVELOPER"
+        name={`${name} | Developer`}
         content="A passionate web developer and blockchain enthusiast. Love to think about new ideas and build them."
       />
-
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-
       <title>{name} | Developer</title>
     </Head>
     <Script src="https://kit.fontawesome.com/767a85f1ee.js" crossorigin="anonymous" />
 
     <LoadingBar
-      color='#0060FF'
+      color={color}
       height={3}
       progress={progress}
       waitingTime={800}
