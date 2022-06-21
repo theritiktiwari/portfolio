@@ -1,50 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { db } from './firebase';
+import { query, collection, getDocs, orderBy, limit } from "firebase/firestore";
 
 const Projects = () => {
+    const [projectData, setProjectData] = useState();
+    useEffect(() => {
+        const getData = async () => {
+            const querySnapshot = await getDocs(query(collection(db, "project"), orderBy("timestamp", "desc"), limit(3)));
+            let data = [];
+            querySnapshot.forEach((doc) => {
+                data.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+            setProjectData(data);
+        }
+        getData();
+    }, []);
 
-    const GTA = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/projects%2FGTA.png?alt=media&token=f7868095-272d-4b3d-b59f-47a08ae8ce6b';
-    const VITCRMS = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/projects%2FVITCRMS.png?alt=media&token=e610b4d8-2ed2-461a-bace-8d3e43852501';
-    const DeFRAUDER = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/projects%2FDeFRAUDER.png?alt=media&token=28219448-f1bb-4373-9ac3-fc2da9439dc9';
+    const handledate = (date) => {
+        const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const dateObj = new Date(date);
+        return `${month[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
+    }
 
     const b_radius = {
         borderRadius: '10px'
     }
+
     return (
         <section className="projects">
             <h1>My Projects</h1>
             <div className="projects-container">
-                <div className="myProject" data-aos="flip-left" style={b_radius}>
-                    <div className="left">
-                        <img src={GTA} alt="GTA Project" />
-                    </div>
-                    <div className="right">
-                        <h2>GTA</h2>
-                        <div className="duration">January 15, 2022</div>
-                        <a className="btn read" href="https://github.com/theritiktiwari/GTA" target="_blank" rel="noreferrer">Read More</a>
-                    </div>
-                </div>
 
-                <div className="myProject" data-aos="zoom-in" style={b_radius}>
-                    <div className="left">
-                        <img src={VITCRMS} alt="VIT CRMS Project" />
+                {projectData && projectData.map((val, index) => {
+                    return <div key={index} className="myProject" data-aos="zoom-in" style={b_radius}>
+                        <div className="left">
+                            <img src={val.img} alt={val.title} />
+                        </div>
+                        <div className="right">
+                            <h2>{val.title}</h2>
+                            <div className="duration">{handledate(val.timestamp.toDate())}</div>
+                            <a className="btn read" href={val.link} target="_blank" rel="noreferrer">Check Now</a>
+                        </div>
                     </div>
-                    <div className="right">
-                        <h2>VIT-CRMS</h2>
-                        <div className="duration">March 02, 2021</div>
-                        <a className="btn read" href="https://github.com/theritiktiwari/VIT-CRMS" target="_blank" rel="noreferrer">Read More</a>
-                    </div>
-                </div>
+                })}
 
-                <div className="myProject" data-aos="flip-right" style={b_radius}>
-                    <div className="left">
-                        <img src={DeFRAUDER} alt="DeFrauder Project" />
-                    </div>
-                    <div className="right">
-                        <h2>DeFrauder</h2>
-                        <div className="duration">November 13, 2021</div>
-                        <a className="btn read" href="https://github.com/theritiktiwari/DeFrauder" target="_blank" rel="noreferrer">Read More</a>
-                    </div>
-                </div>
             </div>
         </section>
     )
