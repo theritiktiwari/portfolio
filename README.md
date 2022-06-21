@@ -2,7 +2,7 @@
 
 Hello, I am Ritik Tiwari. This is my portfolio.
 
-###Technologies:
+### Technologies:
 - NextJS
 - CSS
 - Bootstrap
