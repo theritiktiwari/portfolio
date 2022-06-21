@@ -107,6 +107,7 @@ const Projects = (props) => {
         e.preventDefault();
         try {
             if (newTitle && newDescription && newImage && newStarting && newEnding && newTime && newLink) {
+                let date = new Date();
                 let projAdd = await addDoc(collection(db, "project"), {
                     title: newTitle,
                     description: newDescription,
@@ -114,7 +115,8 @@ const Projects = (props) => {
                     starting: newStarting,
                     ending: newEnding,
                     time: newTime,
-                    link: newLink
+                    link: newLink,
+                    timestamp: date
                 });
                 if (projAdd.id) {
                     tst("Project added successfully", "success");
