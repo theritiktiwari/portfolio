@@ -44,7 +44,7 @@ const Skills = () => {
                             <span className="circles fill-circle"></span>
                             <span className="circles fill-circle"></span>
                             <span className="circles fill-circle"></span>
-                            <span className="circles"></span>
+                            <span className="circles fill-circle"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
                             <span className="circles"></span>
@@ -54,7 +54,7 @@ const Skills = () => {
                 </div>
                 <div className="right">
                     <div className="skill">
-                        <p>C</p>
+                        <p>C++</p>
                         <div className="progress">
                             <span className="circles fill-circle"></span>
                             <span className="circles fill-circle"></span>
