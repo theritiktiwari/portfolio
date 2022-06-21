@@ -44,7 +44,7 @@ const CodingProfile = (props) => {
             <Head>
                 <title>Coding Profiles | {props.name}</title>
             </Head>
-            <div style={{ paddingBottom: '15vh' }}>
+            {(codechef && gfg && leetcode && hackeRank && totalProbelm) ? <div style={{ paddingBottom: '15vh' }}>
                 <section className="coding-profile">
                     <div className="container">
                         <div className="box" data-aos="fade-down">
@@ -85,7 +85,7 @@ const CodingProfile = (props) => {
                     </div>
                 </section>
 
-                {totalProbelm ? <section className="total-problem" data-aos="zoom-in">
+                <section className="total-problem" data-aos="zoom-in">
                     <h2 className='title'>Total Problems</h2>
                     <table>
                         <thead>
@@ -110,8 +110,8 @@ const CodingProfile = (props) => {
                         </tfoot>
                         <p className='source'>Source : <a href="https://www.stopstalk.com/user/profile/theritiktiwari/" target="_blank" rel='noreferrer'>Click Here</a></p>
                     </table>
-                </section> : null}
-            </div>
+                </section>
+            </div> : null}
         </>
     )
 }
