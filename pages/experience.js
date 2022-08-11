@@ -61,7 +61,7 @@ const Experience = ({ name, client, router, imgURL }) => {
                             </ul>}
                             <div className="bottom">
                                 <a href={val.link} target="_blank" rel="noreferrer" className='info btn'>More Info</a>
-                                {val.link && <a href={val.link} target={"_blank"} rel="noreferrer" className='cert btn'>Certificate</a>}
+                                {val.certificate && <a href={val.certificate} target={"_blank"} rel="noreferrer" className='cert btn'>Certificate</a>}
                             </div>
                         </div>
                     </div>
