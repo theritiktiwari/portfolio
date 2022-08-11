@@ -1,26 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { db } from '../Components/firebase';
-import { query, collection, getDocs, orderBy, limit } from "firebase/firestore";
 
 import ModalCard from '../Components/ModalCard';
 
-const Project = (props) => {
+const Project = ({ name, client, router, imgURL }) => {
     const [projectData, setProjectData] = useState();
     useEffect(() => {
         const getData = async () => {
-            const querySnapshot = await getDocs(query(collection(db, "project"), orderBy("timestamp", "desc")));
-            let data = [];
-            querySnapshot.forEach((doc) => {
-                data.push({
-                    id: doc.id,
-                    ...doc.data()
-                });
-            });
+            const data = await client.fetch(`*[_type == "projects"] | order(publishedAt desc)`);
             setProjectData(data);
         }
         getData();
-    }, []);
+    }, [router]);
 
     const time = (startingMonth, startingYear) => {
         let year = new Date().getFullYear();
@@ -42,16 +33,17 @@ const Project = (props) => {
     return (
         <>
             <Head>
-                <title>Projects | {props.name}</title>
+                <title>Projects | {name}</title>
             </Head>
             <section className="projects-container project-page">
 
                 {
                     projectData && projectData.map((val, index) => {
                         return <ModalCard
+                            imgURL={imgURL}
                             project={true}
                             key={index}
-                            img={val.img}
+                            img={val.image}
                             title={val.title}
                             description={val.description}
                             starting={val.starting}

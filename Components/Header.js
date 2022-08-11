@@ -99,7 +99,7 @@ const Header = (props) => {
                                 <a className="nav-link">About Me <i className="fas fa-caret-down"></i></a>
                                 <ul className="dropdown">
                                     <li><Link href="/education"><a><i className="fas fa-graduation-cap"></i>Education</a></Link></li>
-                                    <li><a href={props.resume} target="_blank" rel="noreferrer"><i className="fas fa-file"></i>View Resume</a></li>
+                                    <li><Link href="/resume"><a><i className="fas fa-file"></i>View Resume</a></Link></li>
                                 </ul>
                             </li>
                             <li>
@@ -134,7 +134,7 @@ const Header = (props) => {
                             <li><Link href="/"><a className="mob-link"><i className="fas fa-home main-icon"></i>Home</a></Link></li>
                             <li><Link href="/education"><a className="mob-link"><i className="fas fa-graduation-cap"></i>Education</a></Link></li>
                             <li><Link href="/skills"><a className="mob-link"><i className="fas fa-code"></i>Skill Set</a></Link></li>
-                            <li><a href={props.resume} className="mob-link" target="_blank" rel="noreferrer"><i className="fas fa-file"></i>View Resume</a></li>
+                            <li><Link href="/resume"><a className="mob-link"><i className="fas fa-file"></i>View Resume</a></Link></li>
                             {/* <li><Link href="/services"><a className="mob-link"><i className="fas fa-microchip"></i>Services</a></Link></li> */}
                             <li><Link href="/experience"><a className="mob-link"><i className="fas fa-users"></i>Experience</a></Link></li>
                             <li><Link href="/projects"><a className="mob-link"><i className="fas fa-clipboard"></i>Projects</a></Link></li>

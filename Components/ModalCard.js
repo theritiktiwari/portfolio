@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PortableText from "react-portable-text"
 
 const ModalCard = (props) => {
 
@@ -21,7 +22,7 @@ const ModalCard = (props) => {
         <>
             {props.project && <div className="myProject">
                 <div className="left">
-                    <img src={props.img} alt={`${props.title} Project`} loading='lazy' />
+                    <img src={props.imgURL(props.img).url()} alt={`${props.title} Project`} loading='lazy' />
                 </div>
                 <div className="right">
                     <h2>{props.title}</h2>
@@ -32,7 +33,7 @@ const ModalCard = (props) => {
 
             {props.info && <div className='info-card'>
                 <div className='left'>
-                    <img src={props.img} alt={`Certificate of ${props.title} Completion`} loading='lazy' />
+                    <img src={props.imgURL(props.img).url()} alt={`Certificate of ${props.title} Completion`} loading='lazy' />
                 </div>
                 <div className='right'>
                     <h2>{props.title}</h2>
@@ -46,7 +47,13 @@ const ModalCard = (props) => {
                     <span className="close">&times;</span>
                     <hr />
                     {props.date && <span>Issued : <b>{props.date}</b></span>}
-                    {props.description && <p>{props.description}</p>}
+                    {props.description && <PortableText className="text"
+                        content={props.description}
+                        serializers={{
+                            h1: props => <h1 style={{ color: "red" }} {...props} />,
+                            li: ({ children }) => <li className="special-list-item">{children}</li>,
+                        }}
+                    />}
                     {props.position && <p>Position : <b>{props.position}</b></p>}
                     <a className="btn more" href={props.link} target="_blank" rel="noreferrer">View More</a>
                 </div>

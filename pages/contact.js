@@ -3,7 +3,7 @@ import Head from 'next/head';
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from 'emailjs-com';
 
-const Contact = (props) => {
+const Contact = ({ name }) => {
     const [verified, setVerified] = useState(false);
     const recaptchaRef = useRef();
     const sitekey = '6LdtQckdAAAAAOnDHn2huXidyPplZcFrOFtskLN9';
@@ -42,9 +42,9 @@ const Contact = (props) => {
 
     return (
         <>
-        <Head>
-            <title>Contact Me | {props.name}</title>
-        </Head>
+            <Head>
+                <title>Contact Me | {name}</title>
+            </Head>
             <section className='contact'>
                 <h1 className='title'>Contact Me</h1>
                 <p>For all enquiries, please send the message through the given form.</p>

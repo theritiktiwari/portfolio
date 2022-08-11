@@ -1,33 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { db } from '../Components/firebase';
-import { collection, getDocs } from "firebase/firestore";
+import PortableText from "react-portable-text"
 
-const Experience = (props) => {
+const dummyImage = "https://i.ibb.co/yWZR9j0/Avatar.png";
+
+const Experience = ({ name, client, router, imgURL }) => {
     const [experienceData, setExperienceData] = useState();
 
     useEffect(() => {
         const getData = async () => {
-            const querySnapshot = await getDocs(collection(db, "experience"));
-            let data = [];
-            querySnapshot.forEach((doc) => {
-                data.push({
-                    id: doc.id,
-                    ...doc.data()
-                });
-            });
+            const data = await client.fetch(`*[_type == "experience"] | order(publishedAt desc)`);
             setExperienceData(data);
         }
         getData();
     }, []);
-
-    const detail = (data) => {
-        let det = data.split("/n");
-        det.forEach((val, index) => {
-            det[index] = val.split("/b");
-        })
-        return det;
-    }
 
     const time = (startingMonth, startingYear) => {
         let year = new Date().getFullYear();
@@ -50,7 +36,7 @@ const Experience = (props) => {
     return (
         <>
             <Head>
-                <title>Experience | {props.name}</title>
+                <title>Experience | {name}</title>
             </Head>
             <section className="details-container" style={{ textAlign: 'justify' }}>
                 <div className="center-line exp-center"></div>
@@ -58,22 +44,24 @@ const Experience = (props) => {
                 {experienceData && experienceData.map((val, index) => {
                     return <div key={index} className={`row row-${index % 2 == 0 ? `1` : `2`}`}>
                         <div className="box" data-aos={`fade-${index % 2 == 0 ? `right` : `left`}`}>
-                            <i className='icon exp-icon'><img src={val.img} alt={val.organisation} loading='lazy' /></i>
+                            <i className='icon exp-icon'><img src={val.image ? imgURL(val.image).url() : dummyImage} alt={val.organisation} loading='lazy' /></i>
                             <div className="main">
                                 <div className="title">{val.title}</div>
                                 <b>{val.organisation}</b>
                             </div>
                             <p className='date'>{val.starting} - {val.ending} • {val.ending === "Present" ? time(val.time.split(",")[0], val.time.split(",")[1]) : val.time}</p>
-                            <ul className='detail'>
-                                {detail(val.detail).map((v, i) => {
-                                    return <li key={i}>{v && v.map((b, ind) => {
-                                        return <sapn key={ind}>{b}<br /></sapn>
-                                    })}</li>
-                                })}
-                            </ul>
+                            {val.detail && <ul className='detail'>
+                                <PortableText className="text"
+                                    content={val.detail}
+                                    serializers={{
+                                        h1: props => <h1 style={{ color: "red" }} {...props} />,
+                                        li: ({ children }) => <li className="special-list-item">{children}</li>,
+                                    }}
+                                />
+                            </ul>}
                             <div className="bottom">
                                 <a href={val.link} target="_blank" rel="noreferrer" className='info btn'>More Info</a>
-                                {val.certificate && <a href={val.certificate} target={"_blank"} rel="noreferrer" className='cert btn'>Certificate</a>}
+                                {val.link && <a href={val.link} target={"_blank"} rel="noreferrer" className='cert btn'>Certificate</a>}
                             </div>
                         </div>
                     </div>
