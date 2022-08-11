@@ -4,9 +4,9 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
-  /* user-select: none;
+  user-select: none;
   -webkit-user-select: none;
-  -moz-user-select: none; */
+  -moz-user-select: none;
 }
 
 [data-theme="light"] {
@@ -1456,6 +1456,18 @@ header {
 
 .mail a {
   color: var(--secondary);
+}
+
+/* 13. Resume Page Styline */
+.resume-container {
+  /* margin-top: 60px; */
+  width: 100vw;
+  height: 100vh;
+}
+
+.resume-container iframe {
+  width: 100%;
+  height: 100%;
 }
 
 /* RESPONSIVENESS */

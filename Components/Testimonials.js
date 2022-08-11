@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { db } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
 
-const Testimonials = () => {
+const dummyImage = "https://i.ibb.co/yWZR9j0/Avatar.png";
+
+const Testimonials = ({ client, router, imgURL }) => {
     const [testimonialsData, setTestimonialsData] = useState();
 
     useEffect(() => {
@@ -28,18 +28,11 @@ const Testimonials = () => {
         });
 
         const getData = async () => {
-            const querySnapshot = await getDocs(collection(db, "testimonials"));
-            let data = [];
-            querySnapshot.forEach((doc) => {
-                data.push({
-                    id: doc.id,
-                    ...doc.data()
-                });
-            });
+            const data = await client.fetch(`*[_type == "testimonials"] | order(_createdAt asc)`);
             setTestimonialsData(data);
         }
         getData();
-    }, []);
+    }, [router]);
 
 
     return (
@@ -48,19 +41,17 @@ const Testimonials = () => {
                 <h1>Testimonials</h1>
                 <div className="slid-er">
                     <div className="slides" id="slides">
-                        {
-                            testimonialsData && testimonialsData.map((val, index) => {
-                                return <div key={index} className="slide">
-                                    <div className="slide-content">
-                                        <div className="img-area">
-                                            <img src={val.img} alt={val.name} />
-                                        </div>
-                                        <h4>{val.name}</h4>
-                                        <p>&quot;{val.content}&quot;</p>
+                        {testimonialsData && testimonialsData.map((val, index) => {
+                            return <div key={index} className="slide">
+                                <div className="slide-content">
+                                    <div className="img-area">
+                                        <img src={val.image ? imgURL(val.image).url() : dummyImage} alt={val.name} />
                                     </div>
+                                    <h4>{val.name}</h4>
+                                    <p>&quot;{val.content}&quot;</p>
                                 </div>
-                            })
-                        }
+                            </div>
+                        })}
                     </div>
                 </div>
             </section>

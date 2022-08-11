@@ -6,8 +6,8 @@ import LoadingBar from 'react-top-loading-bar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import countapi from 'countapi-js';
-import { doc, getDoc } from "firebase/firestore";
-import { db } from '../Components/firebase';
+import { createClient } from "next-sanity";
+import imageUrlBuilder from '@sanity/image-url';
 
 import Mode from "../Components/Mode";
 import Header from '../Components/Header'
@@ -24,7 +24,11 @@ function MyApp({ Component, pageProps }) {
   const [mode, setMode] = useState(false);
   const [displayNone, setDisplayNone] = useState(false);
 
-  const [user, setUser] = useState({ token: null, email: null });
+  const client = createClient({ projectId: "v15x0wbi", dataset: "production", apiVersion: '2022-08-01', useCdn: false });
+  const builder = imageUrlBuilder(client);
+  const imgURL = (source) => {
+    return builder.image(source)
+  }
 
   useEffect(() => {
     router.events.on('routeChangeStart', () => {
@@ -34,17 +38,7 @@ function MyApp({ Component, pageProps }) {
       setProgress(100)
     })
 
-    const myUser = JSON.parse(localStorage.getItem("myUser"));
-    if (myUser) {
-      setUser({ token: myUser.token, email: myUser.email });
-    }
   }, [router]);
-
-  const logout = () => {
-    localStorage.removeItem("myUser");
-    setUser({ token: null, email: null });
-    router.push("/admin");
-  }
 
   useEffect(() => {
     AOS.init();
@@ -68,9 +62,8 @@ function MyApp({ Component, pageProps }) {
     window.addEventListener('resize', detectDevice);
 
     const getResume = async () => {
-      const docRef = doc(db, "resume", "resumelink");
-      const docSnap = await getDoc(docRef);
-      setResume(docSnap.data().link);
+      const data = await client.fetch(`*[_type == "home"]{"resume": resume.asset->url}`);
+      setResume(data[0].resume)
     }
     getResume();
   }, []);
@@ -100,8 +93,8 @@ function MyApp({ Component, pageProps }) {
     />
     {mode && <Mode mode={mode} name={name} />}
     {displayNone && <Mode displayNone={displayNone} name={name} />}
-    {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && !router.pathname.includes('/admin') && <Header name={name} resume={resume} />}
-    <Component {...pageProps} name={name} count={count} resume={resume} logout={logout} user={user} />
+    {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && <Header name={name} resume={resume} />}
+    <Component {...pageProps} name={name} count={count} client={client} router={router} imgURL={imgURL} resume={resume} />
   </>
 }
 
