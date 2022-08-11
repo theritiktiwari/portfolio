@@ -9,7 +9,7 @@ import Testimonials from "../Components/Testimonials";
 import Follow from "../Components/Follow";
 import Footer from "../Components/Footer";
 
-const index = ({ name, count, resume, client, router, imgURL }) => {
+const Index = ({ name, count, resume, client, router, imgURL }) => {
     const [data, setData] = useState();
     useEffect(() => {
         const getData = async () => {
@@ -63,4 +63,4 @@ const index = ({ name, count, resume, client, router, imgURL }) => {
     )
 }
 
-export default index
+export default Index
