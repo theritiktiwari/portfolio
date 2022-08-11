@@ -56,6 +56,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'certificate',
+      title: 'Certificate',
+      type: 'string',
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
