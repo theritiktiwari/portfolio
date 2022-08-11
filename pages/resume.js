@@ -8,7 +8,7 @@ const resume = ({ resume, name }) => {
                 <title>Resume | {name}</title>
             </Head>
             <section className="resume-container">
-                <iframe src={resume} frameborder="0" width={"100%"}></iframe>
+                <iframe src={resume} frameBorder="0" width={"100%"}></iframe>
             </section>
         </>
     )
