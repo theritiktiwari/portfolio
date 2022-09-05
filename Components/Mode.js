@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 const Mode = (props) => {
-    const landscape = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/other%2Flandscape.png?alt=media&token=48c3e22b-4056-4c8b-8951-6ab1ac1d6864';
-    const displayNone = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/other%2FdisplayNone.png?alt=media&token=303e7e7f-3cdc-4b31-be2d-31fc07f2fb45';
-    const maintenance = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/other%2Fmaintenance.png?alt=media&token=2d991f75-2389-44ff-be15-058b0dec6ca9';
-    const error = 'https://firebasestorage.googleapis.com/v0/b/dev-ritik.appspot.com/o/other%2Ferror.png?alt=media&token=b00d49dc-bddc-4b6d-bf6d-78776a6ac975';
+    const landscape = 'https://i.ibb.co/4tsX2x3/landscape.png';
+    const displayNone = 'https://i.ibb.co/0tyvSZ3/display-None.png';
+    const maintenance = 'https://i.ibb.co/LtwJNyg/maintenance.png';
+    const error = 'https://i.ibb.co/Nyb8btM/error.png';
 
     const mainStyle = {
         width: '100vw',
