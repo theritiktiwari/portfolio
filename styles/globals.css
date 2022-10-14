@@ -1470,9 +1470,174 @@ header {
   height: 100%;
 }
 
+/* 14. Blog Page Styling */
+.blog {
+  padding: 50px 0 60px;
+  width: 85%;
+  margin: 20px auto;
+  color: var(--primary);
+}
+
+.blog h1 {
+  font-size: var(--h1);
+  font-weight: 700;
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.blog .container {
+  display: grid;
+  grid-template-columns: auto;
+  place-items: center;
+  grid-gap: 50px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.blog .container .card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bg-touch);
+  box-shadow: 0 25px 100px 0 var(--black-shadow);
+}
+
+.blog .container .card .image {
+  flex: 1;
+}
+
+.blog .container .card .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.blog .container .card .content {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-left: 30px;
+}
+
+.blog .container .card .content p {
+  margin: 20px 0;
+}
+
+
+.blog .container .card .content .card-title {
+  text-transform: capitalize;
+  font-size: var(--h3);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.blog .container .card .btn {
+  border: 1px solid var(--secondary);
+  color: var(--white-color);
+  background-color: var(--secondary);
+}
+
+.blog .container .card .btn:hover {
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--primary);
+}
+
+/* 15. Blog Post Page Styling */
+.blog-post {
+  padding: 60px 0 60px;
+  width: 70%;
+  margin: 20px auto;
+  color: var(--primary);
+}
+
+.blog-post .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.blog-post .image img {
+  width: 100%;
+  height: 100%;
+}
+
+.blog-post .box .heading {
+  margin: 25px 0;
+}
+
+.blog-post .box .blog-content h1,
+.blog-post .box .blog-content h2,
+.blog-post .box .blog-content h3,
+.blog-post .box .blog-content h4,
+.blog-post .box .blog-content h5,
+.blog-post .box .blog-content p {
+  margin: 15px 0;
+}
+
+.blog-post .box .blog-content h1 {
+  font-size: var(--h1);
+}
+
+.blog-post .box .blog-content h2 {
+  font-size: var(--h2);
+}
+
+.blog-post .box .blog-content h3 {
+  font-size: var(--h3);
+}
+
+.blog-post .box .blog-content h4 {
+  font-size: var(--h4);
+}
+
+.blog-post .box .blog-content h5 {
+  font-size: var(--h5);
+}
+
+.blog-post .box .blog-content p {
+  font-size: var(--p);
+}
+
+.blog-post .related-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.blog-post .related-post .card {
+  flex: 1;
+  margin: 20px;
+}
+
+.blog-post .related-post img {
+  width: 100%;
+  height: 100%;
+}
+
 /* RESPONSIVENESS */
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   header {
     position: fixed;
     bottom: 0;
@@ -1561,6 +1726,20 @@ header {
   .grecaptcha-badge {
     bottom: -100px !important;
   }
+
+  .blog {
+    padding-top: 20px;
+    width: 95%;
+  }
+
+  .blog-post {
+    padding-top: 10px;
+    width: 90%;
+  }
+
+  .related-post {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 880px) {
@@ -1604,6 +1783,18 @@ header {
 
   .contact {
     padding: 50px 20px 100px;
+  }
+
+  .blog .container .card {
+    flex-direction: column;
+  }
+
+  .blog .container .card .card-title {
+    margin-top: 20px;
+  }
+
+  .blog .container .card .content {
+    padding: 0;
   }
 }
 
