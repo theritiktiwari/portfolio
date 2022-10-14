@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
   const [mode, setMode] = useState(false);
   const [displayNone, setDisplayNone] = useState(false);
 
-  const client = createClient({ projectId: "v15x0wbi", dataset: "production", apiVersion: '2022-08-01', useCdn: false });
+  const client = createClient({ projectId: "v15x0wbi", dataset: "production", apiVersion: '2022-08-01', useCdn: true });
   const builder = imageUrlBuilder(client);
   const imgURL = (source) => {
     return builder.image(source)

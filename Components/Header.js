@@ -126,6 +126,7 @@ const Header = (props) => {
                                     <li><Link href="/eca"><a><i className="fas fa-snowboarding"></i>Extra Curricular</a></Link></li>
                                 </ul>
                             </li>
+                            <li><Link href="/blog"><a className="nav-link link">Blog</a></Link></li>
                             <li><Link href="/contact"><a className="nav-link link">Contact Me</a></Link></li>
                         </ul>
                     </div>
@@ -142,7 +143,8 @@ const Header = (props) => {
                             <li><Link href="/opensource"><a className="mob-link"><i className="fas fa-code-branch"></i>Open Source Profiles</a></Link></li>
                             <li><Link href="/eca"><a className="mob-link"><i className="fas fa-snowboarding"></i>Extra Curricular</a></Link></li>
                             <li><Link href="/certificates"><a className="mob-link"><i className="fas fa-certificate"></i>Certificates</a></Link></li>
-                            <li><Link href="/achievements"><a className="mob-link"><i className="fas fa-trophy"></i>Achievements</a></Link></li>
+                            {/* <li><Link href="/achievements"><a className="mob-link"><i className="fas fa-trophy"></i>Achievements</a></Link></li> */}
+                            <li><Link href="/blog"><a className="mob-link"><i className="fas fa-address-card main-icon"></i>Blog</a></Link></li>
                             <li><Link href="/contact"><a className="mob-link"><i className="fas fa-address-card main-icon"></i>Contact Me</a></Link></li>
                         </ul>
                     </div>
