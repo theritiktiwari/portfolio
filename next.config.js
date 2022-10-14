@@ -12,6 +12,12 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   rewrites: () => [STUDIO_REWRITE],
+  images: {
+    domains: [
+      "cdn.sanity.io",
+      "i.ibb.co",
+    ],
+  },
 }
 
 module.exports = nextConfig
