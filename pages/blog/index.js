@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import Script from 'next/script';
 
 const Index = ({ name, client, router, imgURL }) => {
     const dummyImage = "https://i.ibb.co/8xRxbNh/Blog.png";
@@ -70,6 +71,7 @@ const Index = ({ name, client, router, imgURL }) => {
                     }) : null}
                 </div>
             </section>
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628956737718591" crossOrigin="anonymous"></Script>
         </>
     )
 }
