@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link'
+import Script from 'next/script';
 import PortableText from "react-portable-text";
 
 const Slug = ({ client, imgURL, name, router }) => {
@@ -98,6 +99,7 @@ const Slug = ({ client, imgURL, name, router }) => {
                     </div>
                 </div>
             </div> : null}
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628956737718591" crossOrigin="anonymous"></Script>
         </>
     )
 }
