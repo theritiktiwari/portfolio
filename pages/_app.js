@@ -81,6 +81,7 @@ function MyApp({ Component, pageProps }) {
         content="A passionate web developer and blockchain enthusiast. Love to think about new ideas and build them."
       />
       <title>{name} | Developer</title>
+      <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628956737718591" crossOrigin="anonymous"></Script>
     </Head>
     <Script src="https://kit.fontawesome.com/767a85f1ee.js" crossorigin="anonymous" />
 

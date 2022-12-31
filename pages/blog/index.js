@@ -71,7 +71,6 @@ const Index = ({ name, client, router, imgURL }) => {
                     }) : null}
                 </div>
             </section>
-            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628956737718591" crossOrigin="anonymous"></Script>
         </>
     )
 }
