@@ -82,7 +82,6 @@ function MyApp({ Component, pageProps }) {
       />
       <title>{name} | Developer</title>
     </Head>
-    <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1628956737718591" crossOrigin="anonymous"></Script>
     <Script src="https://kit.fontawesome.com/767a85f1ee.js" crossorigin="anonymous" />
 
     <LoadingBar
