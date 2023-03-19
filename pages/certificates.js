@@ -7,7 +7,10 @@ const Certificates = ({ name, client, router, imgURL }) => {
     const [certificateData, setCertificateData] = useState();
     useEffect(() => {
         const getData = async () => {
-            const data = await client.fetch(`*[_type == "certificates"] | order(date desc)`);
+            const data = await client.fetch(`*[_type == "certificates"]`);
+            data.sort((a, b) => {
+                return new Date(b.date) - new Date(a.date);
+            });
             setCertificateData(data);
         }
         getData();

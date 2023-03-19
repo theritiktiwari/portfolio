@@ -6,7 +6,10 @@ const Achievements = ({ name, client, router, imgURL }) => {
     const [achievementData, setAchievementData] = useState();
     useEffect(() => {
         const getData = async () => {
-            const data = await client.fetch(`*[_type == "achievements"] | order(date desc)`);
+            const data = await client.fetch(`*[_type == "achievements"]`);
+            data.sort((a, b) => {
+                return new Date(b.date) - new Date(a.date);
+            });
             setAchievementData(data);
         }
         getData();

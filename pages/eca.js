@@ -7,7 +7,10 @@ const ECA = ({ name, client, router, imgURL }) => {
     const [ecaData, setEcaData] = useState();
     useEffect(() => {
         const getData = async () => {
-            const data = await client.fetch(`*[_type == "eca"] | order(date desc)`);
+            const data = await client.fetch(`*[_type == "eca"]`);
+            data.sort((a, b) => {
+                return new Date(b.date) - new Date(a.date);
+            });
             setEcaData(data);
         }
         getData();
