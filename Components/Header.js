@@ -126,7 +126,7 @@ const Header = (props) => {
                                     <li><Link href="/eca"><a><i className="fas fa-snowboarding"></i>Extra Curricular</a></Link></li>
                                 </ul>
                             </li>
-                            <li><Link href="/blog"><a className="nav-link link">Blog</a></Link></li>
+                            <li><a className="nav-link link" href="https://medium.com/@theritiktiwari" target={"_blank"}>Blog</a></li>
                             <li><Link href="/contact"><a className="nav-link link">Contact Me</a></Link></li>
                         </ul>
                     </div>
@@ -144,7 +144,7 @@ const Header = (props) => {
                             <li><Link href="/eca"><a className="mob-link"><i className="fas fa-snowboarding"></i>Extra Curricular</a></Link></li>
                             <li><Link href="/certificates"><a className="mob-link"><i className="fas fa-certificate"></i>Certificates</a></Link></li>
                             {/* <li><Link href="/achievements"><a className="mob-link"><i className="fas fa-trophy"></i>Achievements</a></Link></li> */}
-                            <li><Link href="/blog"><a className="mob-link"><i className="fas fa-address-card main-icon"></i>Blog</a></Link></li>
+                            <li><a className="mob-link" href="https://medium.com/@theritiktiwari" target={"_blank"}><i className="fas fa-address-card main-icon"></i>Blog</a></li>
                             <li><Link href="/contact"><a className="mob-link"><i className="fas fa-address-card main-icon"></i>Contact Me</a></Link></li>
                         </ul>
                     </div>

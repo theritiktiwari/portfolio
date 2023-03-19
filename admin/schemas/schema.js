@@ -11,9 +11,6 @@ import certificates from './certificates'
 import achievements from './achievements'
 import eca from './eca'
 import testimonials from './testimonials'
-import post from './post'
-import author from './author'
-import category from './category'
 import blockContent from './blockContent'
 
 export default createSchema({
@@ -29,9 +26,6 @@ export default createSchema({
     achievements,
     eca,
     testimonials,
-    post,
-    author,
-    category,
     blockContent,
   ]),
 })
