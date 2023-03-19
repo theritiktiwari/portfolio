@@ -68,6 +68,17 @@ function MyApp({ Component, pageProps }) {
     getResume();
   }, []);
 
+  // block the right click
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    }
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    }
+  }, []);
+
   return <>
     <Head>
       <meta charSet="utf-8" />

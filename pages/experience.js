@@ -49,7 +49,7 @@ const Experience = ({ name, client, router, imgURL }) => {
                                 <div className="title">{val.title}</div>
                                 <b>{val.organisation}</b>
                             </div>
-                            <p className='date'>{val.starting} - {val.ending} • {val.ending === "Present" ? time(val.time.split(",")[0], val.time.split(",")[1]) : val.time}</p>
+                            <p className='date'>{val.starting} {val.ending && `- ${val.ending}`} • {val.ending === "Present" ? time(val.time.split(",")[0], val.time.split(",")[1]) : val.time}</p>
                             {val.detail && <ul className='detail'>
                                 <PortableText className="text"
                                     content={val.detail}
