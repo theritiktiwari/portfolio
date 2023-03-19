@@ -6,6 +6,24 @@ const SkillSet = ({ name, client, router, imgURL }) => {
     useEffect(() => {
         const getData = async () => {
             const data = await client.fetch(`*[_type == "skills"]`);
+            // sort by domain, first Language, then Frameworks, then tools and then others
+            data.sort((a, b) => {
+                if (a.domain === 'Languages') {
+                    return -1;
+                } else if (b.domain === 'Languages') {
+                    return 1;
+                } else if (a.domain === 'Frameworks') {
+                    return -1;
+                } else if (b.domain === 'Frameworks') {
+                    return 1;
+                } else if (a.domain === 'Tools & Technologies') {
+                    return -1;
+                } else if (b.domain === 'Tools & Technologies') {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
             const skills = {};
             data.forEach(skill => {
                 if (!skills[skill.domain]) {
