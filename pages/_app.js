@@ -70,7 +70,7 @@ function MyApp({ Component, pageProps }) {
 
   return <>
     <Head>
-      <meta charset="utf-8" />
+      <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" href="/logo192.png" />
       <link rel="manifest" href="/manifest.json" />
@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
       />
       <title>{name} | Developer</title>
     </Head>
-    <Script src="https://kit.fontawesome.com/767a85f1ee.js" crossorigin="anonymous" />
+    <Script src="https://kit.fontawesome.com/767a85f1ee.js" crossOrigin="anonymous" />
 
     <LoadingBar
       color={color}
