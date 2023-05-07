@@ -22,9 +22,9 @@ const Links = ({ name, client, router }) => {
                 <ul className='links'>
                     {linkData ? linkData.map((val, index) => {
                         return (
-                            <li key={index}>
-                                <a href={val.link} target='_blank' rel='noopener noreferrer'>- {val.name}</a>
-                            </li>
+                            <a key={index} href={val.link} target='_blank' rel='noopener noreferrer'>
+                                <li>- {val.name}</li>
+                            </a>
                         )
                     }) : <Loader />}
                 </ul>
