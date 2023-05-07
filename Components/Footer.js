@@ -8,19 +8,17 @@ const Footer = (props) => {
     }
     return (
         <>
-            {props.count ?
-                <footer className="footer">
-                    <div className="container">
-                        <div className="count-visitor">
-                            <p className="visitor">TOTAL VISITORS : {props.count || "1.5k+"}</p>
-                        </div>
-
-                        <div className="copyright">
-                            <p>&copy; {copyright(2020)} By <Link href="/"><a className="name">{props.name}</a></Link>. All Rights Reserved.</p>
-                        </div>
+            <footer className="footer">
+                <div className="container">
+                    <div className="count-visitor">
+                        <p className="visitor">TOTAL VISITORS : {props.count || "2.5k+"}</p>
                     </div>
 
-                </footer> : null}
+                    <div className="copyright">
+                        <p>&copy; {copyright(2020)} By <Link href="/"><a className="name">{props.name}</a></Link>. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </footer>
         </>
     )
 }

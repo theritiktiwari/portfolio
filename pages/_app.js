@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Head from 'next/head'
-import Script from 'next/script'
-import LoadingBar from 'react-top-loading-bar';
+import Head from 'next/head';
+import Script from 'next/script';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import countapi from 'countapi-js';
@@ -10,18 +9,19 @@ import { createClient } from "next-sanity";
 import imageUrlBuilder from '@sanity/image-url';
 
 import Mode from "../Components/Mode";
-import Header from '../Components/Header'
-import '../styles/globals.css'
+import Header from '../Components/Header';
+import Loader from '../Components/Loader';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const name = "Ritik Tiwari";
   const color = "#0060FF";
 
   const router = useRouter();
-  const [progress, setProgress] = useState(0);
   const [count, setCount] = useState();
   const [resume, setResume] = useState();
   const [mode, setMode] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [displayNone, setDisplayNone] = useState(false);
 
   const client = createClient({ projectId: "v15x0wbi", dataset: "production", apiVersion: '2022-08-01', useCdn: true });
@@ -32,17 +32,16 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     router.events.on('routeChangeStart', () => {
-      setProgress(40)
+      setLoading(true);
     })
     router.events.on('routeChangeComplete', () => {
-      setProgress(100)
+      setLoading(false);
     })
-
   }, [router]);
 
   useEffect(() => {
     AOS.init();
-    countapi.visits().then((result) => {
+    countapi.visits('global').then((result) => {
       let c = result.value > 1000 ? result.value / 1000 : result.value;
       c = c > 100 ? parseInt(c) : c.toFixed(1);
       result.value > 1000 ? setCount(c + 'k+') : setCount(parseInt(c) + '');
@@ -91,17 +90,11 @@ function MyApp({ Component, pageProps }) {
         name={`${name} | Developer`}
         content="A passionate web developer and blockchain enthusiast. Love to think about new ideas and build them."
       />
-      <title>{name} | Developer</title>
+      <title>{`${name} | Developer`}</title>
     </Head>
     <Script src="https://kit.fontawesome.com/767a85f1ee.js" crossOrigin="anonymous" />
 
-    <LoadingBar
-      color={color}
-      height={3}
-      progress={progress}
-      waitingTime={800}
-      onLoaderFinished={() => setProgress(0)}
-    />
+    {loading && <Loader />}
     {mode && <Mode mode={mode} name={name} />}
     {displayNone && <Mode displayNone={displayNone} name={name} />}
     {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && <Header name={name} resume={resume} />}
