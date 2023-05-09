@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -99,6 +100,7 @@ function MyApp({ Component, pageProps }) {
     {displayNone && <Mode displayNone={displayNone} name={name} />}
     {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && <Header name={name} resume={resume} />}
     <Component {...pageProps} name={name} count={count} client={client} router={router} imgURL={imgURL} resume={resume} />
+    <Analytics />
   </>
 }
 

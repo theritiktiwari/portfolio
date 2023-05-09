@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Loader from "./Loader";
 
 const dummyImage = "https://i.ibb.co/yWZR9j0/Avatar.png";
 
@@ -41,7 +42,7 @@ const Testimonials = ({ client, router, imgURL }) => {
                 <h1>Testimonials</h1>
                 <div className="slid-er">
                     <div className="slides" id="slides">
-                        {testimonialsData && testimonialsData.map((val, index) => {
+                        {testimonialsData ? testimonialsData.map((val, index) => {
                             return <div key={index} className="slide">
                                 <div className="slide-content">
                                     <div className="img-area">
@@ -51,7 +52,7 @@ const Testimonials = ({ client, router, imgURL }) => {
                                     <p>&quot;{val.content}&quot;</p>
                                 </div>
                             </div>
-                        })}
+                        }) : <Loader />}
                     </div>
                 </div>
             </section>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-
+import Loader from '../Components/Loader';
 
 const CodingProfile = ({ name, client, router }) => {
 
@@ -113,7 +113,7 @@ const CodingProfile = ({ name, client, router }) => {
                         <p className='source'>Source : <a href="https://www.stopstalk.com/user/profile/theritiktiwari/" target="_blank" rel='noreferrer'>Click Here</a></p>
                     </table>
                 </section>}
-            </div> : null}
+            </div> : <Loader />}
         </>
     )
 }

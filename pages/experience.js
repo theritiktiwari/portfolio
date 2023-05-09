@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import PortableText from "react-portable-text"
 
+import Loader from '../components/Loader';
+
 const dummyImage = "https://i.ibb.co/yWZR9j0/Avatar.png";
 
 const Experience = ({ name, client, router, imgURL }) => {
@@ -41,7 +43,7 @@ const Experience = ({ name, client, router, imgURL }) => {
             <section className="details-container" style={{ textAlign: 'justify' }}>
                 <div className="center-line exp-center"></div>
 
-                {experienceData && experienceData.map((val, index) => {
+                {experienceData ? experienceData.map((val, index) => {
                     return <div key={index} className={`row row-${index % 2 == 0 ? `1` : `2`}`}>
                         <div className="box" data-aos={`fade-${index % 2 == 0 ? `right` : `left`}`}>
                             <i className='icon exp-icon'><img src={val.image ? imgURL(val.image).url() : dummyImage} alt={val.organisation} loading='lazy' /></i>
@@ -65,7 +67,7 @@ const Experience = ({ name, client, router, imgURL }) => {
                             </div>
                         </div>
                     </div>
-                })}
+                }) : <Loader />}
             </section>
         </>
     )

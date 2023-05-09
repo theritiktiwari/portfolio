@@ -10,6 +10,7 @@
   "dependencies": {
     "@sanity/cli": "^2.30.3",
     "@sanity/image-url": "^1.0.1",
+    "@vercel/analytics": "^1.0.1",
     "aos": "^2.3.4",
     "concurrently": "^7.3.0",
     "countapi-js": "^1.0.2",

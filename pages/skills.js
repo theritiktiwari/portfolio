@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Loader from '../Components/Loader';
 
 const SkillSet = ({ name, client, router, imgURL }) => {
     const [skillData, setSkillData] = useState();
@@ -42,7 +43,7 @@ const SkillSet = ({ name, client, router, imgURL }) => {
                 <title>Skills | {name}</title>
             </Head>
             <section className='skill-set'>
-                {skillData && Object.keys(skillData).map((domain, index) => {
+                {skillData ? Object.keys(skillData).map((domain, index) => {
                     return (
                         <div key={index} className='cont'>
                             <h2 className='title'>{domain}</h2>
@@ -58,7 +59,7 @@ const SkillSet = ({ name, client, router, imgURL }) => {
                             </div>
                         </div>
                     )
-                })}
+                }) : <Loader />}
             </section>
         </>
     )

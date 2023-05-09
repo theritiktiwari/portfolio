@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link'
 import PortableText from "react-portable-text"
+import Loader from './Loader';
 
 const About = ({ resume, data }) => {
     return (
         <section className="about">
-            {(data) ? <div className="container" data-aos="fade-up">
+            {data ? <div className="container" data-aos="fade-up">
                 <div className="left">
                     <h1>About Me</h1>
                 </div>
@@ -27,7 +28,7 @@ const About = ({ resume, data }) => {
                     <a className="btn resume" href={`${resume}?dl=Resume.pdf`} target="_blank" rel="noreferrer">Download Resume</a>
                     <Link href="/education"><a className="btn education">Education</a></Link>
                 </div>
-            </div> : null}
+            </div> : <Loader />}
         </section>
     )
 }

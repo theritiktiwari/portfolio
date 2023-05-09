@@ -8,6 +8,7 @@ import Offers from "../Components/Offers";
 import Testimonials from "../Components/Testimonials";
 import Follow from "../Components/Follow";
 import Footer from "../Components/Footer";
+import Loader from '../components/Loader';
 
 const Index = ({ name, count, resume, client, router, imgURL }) => {
     const [data, setData] = useState();
@@ -58,7 +59,7 @@ const Index = ({ name, count, resume, client, router, imgURL }) => {
                 <Testimonials client={client} router={router} imgURL={imgURL} />
                 <Follow data={data} />
                 <Footer name={name} count={count} />
-            </> : null}
+            </> : <Loader />}
         </>
     )
 }

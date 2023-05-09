@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import ModalCard from '../Components/ModalCard';
+import Loader from '../Components/Loader';
 
 const ECA = ({ name, client, router, imgURL }) => {
     const [ecaData, setEcaData] = useState();
@@ -21,20 +22,18 @@ const ECA = ({ name, client, router, imgURL }) => {
                 <title>Extra Curricular | {name}</title>
             </Head>
             <section className='info-container'>
-                {
-                    ecaData && ecaData.map((val, index) => {
-                        return <ModalCard
-                            imgURL={imgURL}
-                            key={index}
-                            info={true}
-                            img={val.image}
-                            date={val.date}
-                            title={val.title}
-                            link={val.link}
-                            description={val.description}
-                        />
-                    })
-                }
+                {ecaData ? ecaData.map((val, index) => {
+                    return <ModalCard
+                        imgURL={imgURL}
+                        key={index}
+                        info={true}
+                        img={val.image}
+                        date={val.date}
+                        title={val.title}
+                        link={val.link}
+                        description={val.description}
+                    />
+                }) : <Loader />}
             </section>
         </>
     )
