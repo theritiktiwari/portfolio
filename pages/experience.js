@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import PortableText from "react-portable-text"
 
-import Loader from '../components/Loader';
+import Loader from '../Components/Loader';
 
 const dummyImage = "https://i.ibb.co/yWZR9j0/Avatar.png";
 
