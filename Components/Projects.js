@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loader from './Loader';
 
 const Projects = ({ client, router, imgURL }) => {
     const [projectData, setProjectData] = useState();
@@ -26,7 +27,7 @@ const Projects = ({ client, router, imgURL }) => {
             <h1>My Projects</h1>
             <div className="projects-container">
 
-                {projectData && projectData.map((val, index) => {
+                {projectData ? projectData.map((val, index) => {
                     return <div key={index} className="myProject" data-aos="zoom-in" style={b_radius}>
                         <div className="left">
                             <img src={imgURL(val.image).url()} alt={val.title} />
@@ -37,7 +38,7 @@ const Projects = ({ client, router, imgURL }) => {
                             <a className="btn read" href={val.link} target="_blank" rel="noreferrer">Check Now</a>
                         </div>
                     </div>
-                })}
+                }) : <Loader />}
 
             </div>
         </section>

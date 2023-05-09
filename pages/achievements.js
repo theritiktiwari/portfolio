@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import ModalCard from '../Components/ModalCard';
+import Loader from '../Components/Loader';
 
 const Achievements = ({ name, client, router, imgURL }) => {
     const [achievementData, setAchievementData] = useState();
@@ -21,7 +22,7 @@ const Achievements = ({ name, client, router, imgURL }) => {
                 <title>Achievements | {name}</title>
             </Head>
             <section className='info-container'>
-                {achievementData && achievementData.map((val, index) => {
+                {achievementData ? achievementData.map((val, index) => {
                     return <ModalCard
                         imgURL={imgURL}
                         key={index}
@@ -33,7 +34,7 @@ const Achievements = ({ name, client, router, imgURL }) => {
                         link={val.link}
                         description={val.description}
                     />
-                })}
+                }) : <Loader />}
             </section>
         </>
     )

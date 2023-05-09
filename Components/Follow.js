@@ -1,10 +1,11 @@
 import React from 'react';
+import Loader from './Loader';
 
 const Follow = ({ data }) => {
     return (
         <section className="follow">
             <h1>Stay Connected</h1>
-            {(data) ? <div className="container">
+            {data ? <div className="container">
                 <a className="box" href="https://linkedin.com/in/theritiktiwari" target="_blank" rel="noreferrer">
                     <div className="logo"><i className="fab fa-linkedin-in"></i></div>
                     <div className="text">
@@ -36,7 +37,7 @@ const Follow = ({ data }) => {
                         <p>{data.youtube}+ Subscribers</p>
                     </div>
                 </a>
-            </div> : null}
+            </div> : <Loader />}
         </section>
     )
 }

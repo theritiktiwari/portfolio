@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Loader from '../Components/Loader';
 
 const Education = ({ name, client, router, imgURL }) => {
     const [educationData, setEducationData] = useState();
@@ -19,7 +20,7 @@ const Education = ({ name, client, router, imgURL }) => {
             </Head>
             <section className="details-container">
                 <div className="center-line"></div>
-                {educationData && educationData.map((val, index) => {
+                {educationData ? educationData.map((val, index) => {
                     return <div key={index} className={`row row-${index % 2 == 0 ? `1` : `2`}`}>
                         <div className="box" data-aos={`fade-${index % 2 == 0 ? `right` : `left`}`}>
                             <i className={`icon edu-icon fas ${(val.title == "High School") ? "fa-school" : ((val.title == "Intermediate") ? "fa-university" : "fa-graduation-cap")}`}></i>
@@ -33,7 +34,7 @@ const Education = ({ name, client, router, imgURL }) => {
                             <div className="bottom">{val.year}</div>
                         </div>
                     </div>
-                })}
+                }) : <Loader />}
             </section>
         </>
     )

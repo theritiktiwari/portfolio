@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import ModalCard from '../Components/ModalCard';
+import Loader from '../Components/Loader';
 
 const Project = ({ name, client, router, imgURL }) => {
     const [projectData, setProjectData] = useState();
@@ -37,8 +38,7 @@ const Project = ({ name, client, router, imgURL }) => {
             </Head>
             <section className="projects-container project-page">
 
-                {
-                    projectData && projectData.map((val, index) => {
+                {projectData ? projectData.map((val, index) => {
                         return <ModalCard
                             imgURL={imgURL}
                             project={true}
@@ -51,8 +51,7 @@ const Project = ({ name, client, router, imgURL }) => {
                             time={val.ending === " - Present" ? time(val.time.split(",")[0], val.time.split(",")[1]) : val.time}
                             link={val.link}
                         />
-                    })
-                }
+                    }) : <Loader />}
             </section>
         </>
     )
