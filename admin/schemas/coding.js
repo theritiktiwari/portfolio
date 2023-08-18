@@ -24,6 +24,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'codingninja',
+      title: 'CodingNinja Level',
+      type: 'string',
+    },
+    {
       name: 'hackerrank',
       title: 'HackerRank Rating',
       type: 'string',
@@ -41,6 +46,11 @@ export default {
     {
       name: 'leetcodeProblem',
       title: 'LeetCode Problem',
+      type: 'string',
+    },
+    {
+      name: 'codingninjaProblem',
+      title: 'CodingNinja Problem',
       type: 'string',
     },
     {
