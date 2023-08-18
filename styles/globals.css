@@ -1201,7 +1201,7 @@ header {
   background-color: var(--bg-touch);
   box-shadow: 0 1px 5px 0 var(--black-shadow);
   border-radius: 5px;
-  width: 175px;
+  width: 190px;
   height: 225px;
   padding: 10px;
   display: flex;
@@ -1232,6 +1232,10 @@ header {
 }
 
 .coding-profile .container .box .profile-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2px 20px;
   color: var(--white-color);
   background-color: var(--secondary);
@@ -1274,7 +1278,7 @@ header {
 
 .total-problem .source {
   position: absolute;
-  bottom: -20%;
+  bottom: -15%;
   right: 0;
 }
 
