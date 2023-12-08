@@ -58,7 +58,8 @@ const Contact = ({ name }) => {
                         <input className='input' type="text" id='organisation' name="organisation" placeholder="Organisation" required />
                     </div>
                     <div className="right">
-                        <textarea className='input' name="message" id='message' cols="30" rows="9" placeholder="Type Your Message..." required></textarea>
+                        <input className='input' type="text" id='link' name="link" placeholder="Website Link" />
+                        <textarea className='input' name="message" id='message' cols="30" rows="5" placeholder="Type Your Message..." required></textarea>
                         <input className='btn submit' type="submit" value="Send Message" />
                     </div>
                 </form>
