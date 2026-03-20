@@ -1,16 +1,18 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "../globals.css";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const inter = Inter({
 	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const jetBrainsMono = JetBrains_Mono({
 	subsets: ["latin"],
+	display: "swap",
+	variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
@@ -28,13 +30,7 @@ export default function RootLayout({
 		<html
 			lang="en"
 			suppressHydrationWarning
-			className={cn(
-				"h-full",
-				"antialiased",
-				geistSans.variable,
-				geistMono.variable,
-				"font-sans"
-			)}
+			className={cn("antialiased", inter.variable, jetBrainsMono.variable)}
 		>
 			<body className="flex min-h-screen flex-col">{children}</body>
 		</html>

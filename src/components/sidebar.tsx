@@ -4,10 +4,7 @@ import { Button } from "@/components/ui/button";
 import { socialIcons } from "@/constants/images";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-interface LeftSidebarProps {
-	activeSection: string;
-}
+import { useEffect, useState } from "react";
 
 const navItems = [
 	{ id: "about", label: "About" },
@@ -22,7 +19,30 @@ const socialLinks = [
 	{ icon: socialIcons.twitter, href: "https://twitter.com", label: "Twitter" },
 ];
 
-export default function Sidebar({ activeSection }: LeftSidebarProps) {
+export default function Sidebar() {
+	const [activeSection, setActiveSection] = useState("about");
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const sections = ["about", "experience", "projects"];
+			const scrollPosition = window.scrollY + 150;
+
+			for (const section of sections) {
+				const element = document.getElementById(section);
+				if (element) {
+					const { offsetTop, offsetHeight } = element;
+					if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+						setActiveSection(section);
+						break;
+					}
+				}
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	const scrollToSection = (sectionId: string) => {
 		const element = document.getElementById(sectionId);
 		if (element) {
@@ -42,7 +62,7 @@ export default function Sidebar({ activeSection }: LeftSidebarProps) {
 					Software Engineer
 				</h2>
 				<p className="text-muted-foreground mt-4 max-w-xs leading-normal">
-					I build accessible, high-performance digital experiences for the web and mobile.
+					I build high-performance experiences for the web and mobile.
 				</p>
 
 				<nav className="nav hidden lg:block" aria-label="In-page jump links">
@@ -53,7 +73,7 @@ export default function Sidebar({ activeSection }: LeftSidebarProps) {
 									variant="link"
 									onClick={() => scrollToSection(item.id)}
 									className={cn(
-										"group flex items-center py-3 no-underline! transition-all",
+										"group my-1 flex items-center py-3 pl-0 no-underline! transition-all",
 										{
 											active: activeSection === item.id,
 										}
