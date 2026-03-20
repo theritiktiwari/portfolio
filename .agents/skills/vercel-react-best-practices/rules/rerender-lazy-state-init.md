@@ -23,9 +23,7 @@ function FilteredList({ items }: { items: Item[] }) {
 
 function UserProfile() {
 	// JSON.parse runs on every render
-	const [settings, setSettings] = useState(
-		JSON.parse(localStorage.getItem("settings") || "{}"),
-	);
+	const [settings, setSettings] = useState(JSON.parse(localStorage.getItem("settings") || "{}"));
 
 	return <SettingsForm settings={settings} onChange={setSettings} />;
 }
@@ -36,9 +34,7 @@ function UserProfile() {
 ```tsx
 function FilteredList({ items }: { items: Item[] }) {
 	// buildSearchIndex() runs ONLY on initial render
-	const [searchIndex, setSearchIndex] = useState(() =>
-		buildSearchIndex(items),
-	);
+	const [searchIndex, setSearchIndex] = useState(() => buildSearchIndex(items));
 	const [query, setQuery] = useState("");
 
 	return <SearchResults index={searchIndex} query={query} />;

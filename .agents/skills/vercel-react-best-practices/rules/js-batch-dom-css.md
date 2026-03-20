@@ -101,9 +101,7 @@ function Box({ isHighlighted }: { isHighlighted: boolean }) {
 
 // Correct: toggle class
 function Box({ isHighlighted }: { isHighlighted: boolean }) {
-	return (
-		<div className={isHighlighted ? "highlighted-box" : ""}>Content</div>
-	);
+	return <div className={isHighlighted ? "highlighted-box" : ""}>Content</div>;
 }
 ```
 

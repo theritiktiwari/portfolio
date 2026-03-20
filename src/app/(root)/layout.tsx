@@ -33,10 +33,10 @@ export default function RootLayout({
 				"antialiased",
 				geistSans.variable,
 				geistMono.variable,
-				"font-sans",
+				"font-sans"
 			)}
 		>
-			<body className="min-h-screen flex flex-col bg-background text-foreground">
+			<body className="bg-background text-foreground flex min-h-screen flex-col">
 				{children}
 			</body>
 		</html>
