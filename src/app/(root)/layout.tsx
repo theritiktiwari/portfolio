@@ -1,4 +1,6 @@
+import MouseGlow from "@/components/mouse-glow";
 import { ThemeProvider } from "@/components/theme-provider";
+import ThemeToggle from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
@@ -40,7 +42,19 @@ export default function RootLayout({
 					enableSystem={false}
 					disableTransitionOnChange
 				>
-					{children}
+					<div className="relative min-h-screen">
+						<MouseGlow />
+						<ThemeToggle className="fixed top-3 right-3 z-100" />
+						<div className="mx-auto min-h-screen max-w-7xl px-6 py-12 md:px-12 md:py-16 lg:py-0">
+							<a
+								href="#content"
+								className="bg-accent text-accent-foreground absolute top-0 left-0 block -translate-x-full rounded px-4 py-3 text-sm font-bold tracking-widest uppercase focus-visible:translate-x-0"
+							>
+								Skip to Content
+							</a>
+							{children}
+						</div>
+					</div>
 				</ThemeProvider>
 			</body>
 		</html>

@@ -1,9 +1,12 @@
 interface Project {
 	title: string;
-	description: string;
-	image: string;
-	url: string;
+	year: number;
 	technologies: string[];
+	description?: string;
+	url?: string;
+	repository?: string;
+	image?: string;
+	featured?: boolean;
 	stars?: number;
 	installs?: number;
 }
