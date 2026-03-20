@@ -1,4 +1,5 @@
 import AboutSection from "@/components/about-section";
+import ExperienceSection from "@/components/experience-section";
 import MouseGlow from "@/components/mouse-glow";
 import Sidebar from "@/components/sidebar";
 import ThemeToggle from "@/components/theme-toggle";
@@ -20,6 +21,7 @@ export default function Portfolio() {
 					<Sidebar />
 					<main id="content" className="pt-24 lg:w-[52%] lg:py-24">
 						<AboutSection />
+						<ExperienceSection />
 					</main>
 				</div>
 			</div>

@@ -57,22 +57,8 @@ export default function ThemeToggle({ className }: { className?: string }) {
 			aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
 			className={cn("rounded-full backdrop-blur-sm", className)}
 		>
-			<SunMedium
-				className={cn(
-					"absolute size-4 transition-all",
-					resolvedTheme === "light"
-						? "scale-100 rotate-0 opacity-100"
-						: "scale-0 rotate-90 opacity-0"
-				)}
-			/>
-			<MoonStar
-				className={cn(
-					"absolute size-4 transition-all",
-					resolvedTheme === "dark"
-						? "scale-100 rotate-0 opacity-100"
-						: "scale-0 -rotate-90 opacity-0"
-				)}
-			/>
+			<SunMedium className="absolute size-4 scale-100 rotate-0 opacity-100 transition-all dark:scale-0 dark:rotate-90 dark:opacity-0" />
+			<MoonStar className="absolute size-4 scale-0 -rotate-90 opacity-0 transition-all dark:scale-100 dark:rotate-0 dark:opacity-100" />
 			<span className="sr-only">Toggle theme</span>
 		</Button>
 	);
