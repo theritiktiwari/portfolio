@@ -27,24 +27,22 @@ export default function ExperienceSection() {
 								</header>
 
 								<div className="z-10 sm:col-span-6">
-									<h3 className="text-foreground leading-snug font-medium">
-										<div>
-											<Link
-												href={exp.companyUrl}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-baseline leading-tight font-medium"
-											>
-												<span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
-												<span>
-													{exp.title}{" "}
-													<span className="inline-block">
-														{exp.company && `· ${exp.company}`}
-														<ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
-													</span>
+									<h3>
+										<Link
+											href={exp.companyUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-baseline leading-tight font-medium"
+										>
+											<span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
+											<span>
+												{exp.title}{" "}
+												<span className="inline-block">
+													{exp.company && `· ${exp.company}`}
+													<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
 												</span>
-											</Link>
-										</div>
+											</span>
+										</Link>
 									</h3>
 
 									<p className="text-muted-foreground mt-2 text-sm leading-6">
