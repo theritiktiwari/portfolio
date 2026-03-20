@@ -16,3 +16,8 @@ export const socialIcons = {
 		maskSize: "108%",
 	},
 } as const;
+
+export const images = {
+	// TODO: add placeholder image
+	placeholder: "/images/placeholder.png",
+} as const;

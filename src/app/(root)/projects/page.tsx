@@ -3,7 +3,14 @@
 import { socialIcons } from "@/constants/images";
 import { projects } from "@/data/projects";
 import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "All Projects | Ritik Tiwari",
+	description:
+		"A full archive of projects built by Ritik Tiwari — spanning full-stack web apps, APIs, and open-source contributions.",
+};
 
 export default function ArchivePage() {
 	return (
@@ -32,10 +39,13 @@ export default function ArchivePage() {
 					</tr>
 				</thead>
 				<tbody>
-					{projects.map((project, index) => {
+					{projects.map((project) => {
 						const projectLink = project.url || project.repository;
 						return (
-							<tr key={index} className="border-muted/20 border-b last:border-none">
+							<tr
+								key={project.title}
+								className="border-muted/20 border-b last:border-none"
+							>
 								<td className="text-muted-foreground py-4 pr-8 align-top text-sm">
 									{project.year}
 								</td>

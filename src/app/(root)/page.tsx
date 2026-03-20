@@ -2,6 +2,13 @@ import AboutSection from "@/components/about-section";
 import ExperienceSection from "@/components/experience-section";
 import ProjectsSection from "@/components/projects-section";
 import Sidebar from "@/components/sidebar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Ritik Tiwari | Software Engineer",
+	description:
+		"Software Engineer dedicated to crafting seamless digital experiences. I bridge the gap between complex backend architecture and intuitive user interfaces, currently building automated wealth-tracking solutions.",
+};
 
 export default function Portfolio() {
 	return (

@@ -11,4 +11,5 @@ interface Project {
 	installs?: number;
 }
 
+// TODO: add projects list
 export const projects: Project[] = [];

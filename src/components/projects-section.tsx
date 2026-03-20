@@ -1,3 +1,4 @@
+import { images } from "@/constants/images";
 import { projects } from "@/data/projects";
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import Image from "next/image";
@@ -18,69 +19,74 @@ export default function ProjectsSection() {
 
 			<div>
 				<ul className="group/list space-y-12">
-					{projects.map((project, index) => (
-						<li key={index}>
-							<div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
-								<div className="lg:group-hover:bg-card/50 absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-[10px] transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-xl" />
+					{projects.map((project) => {
+						const projectLink = project.url || project.repository;
+						return (
+							<li key={project.title}>
+								<div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
+									<div className="lg:group-hover:bg-card/50 absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-[10px] transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-xl" />
 
-								<div className="z-10 sm:order-2 sm:col-span-6">
-									<h3>
-										<Link
-											href={project.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-baseline leading-tight font-medium"
+									<div className="z-10 sm:order-2 sm:col-span-6">
+										<h3>
+											{projectLink && (
+												<Link
+													href={projectLink}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-baseline leading-tight font-medium"
+												>
+													<span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
+													<span>
+														{project.title}
+														<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
+													</span>
+												</Link>
+											)}
+										</h3>
+
+										<p className="text-muted-foreground mt-2 text-sm leading-6">
+											{project.description}
+										</p>
+
+										{project.stars && (
+											<a
+												href={project.url}
+												className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
+											>
+												<Star className="mr-1 h-3 w-3" />
+												<span>{project.stars.toLocaleString()}</span>
+											</a>
+										)}
+
+										<ul
+											className="mt-2 flex flex-wrap"
+											aria-label="Technologies used"
 										>
-											<span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
-											<span>
-												{project.title}
-												<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
-											</span>
-										</Link>
-									</h3>
+											{project.technologies.map((tech) => (
+												<li key={tech} className="mt-2 mr-1.5">
+													<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
+														{tech}
+													</div>
+												</li>
+											))}
+										</ul>
+									</div>
 
-									<p className="text-muted-foreground mt-2 text-sm leading-6">
-										{project.description}
-									</p>
-
-									{project.stars && (
-										<a
-											href={project.url}
-											className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
-										>
-											<Star className="mr-1 h-3 w-3" />
-											<span>{project.stars.toLocaleString()}</span>
-										</a>
-									)}
-
-									<ul
-										className="mt-2 flex flex-wrap"
-										aria-label="Technologies used"
-									>
-										{project.technologies.map((tech) => (
-											<li key={tech} className="mt-2 mr-1.5">
-												<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
-													{tech}
-												</div>
-											</li>
-										))}
-									</ul>
-								</div>
-
-								<div className="z-10 sm:order-1 sm:col-span-2">
-									<div className="border-muted/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded border-2 transition">
-										<Image
-											src={project.image}
-											alt={`Screenshot of ${project.title}`}
-											width={200}
-											height={112}
-											className="size-full object-cover"
-										/>
+									<div className="z-10 sm:order-1 sm:col-span-2">
+										<div className="border-muted/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded border-2 transition">
+											<Image
+												src={project.image || images.placeholder}
+												alt={`Screenshot of ${project.title}`}
+												width={200}
+												height={112}
+												className="size-full object-cover"
+											/>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-					))}
+							</li>
+						);
+					})}
 				</ul>
 
 				<div className="mt-12">

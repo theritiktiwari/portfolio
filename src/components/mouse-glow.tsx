@@ -35,7 +35,7 @@ export default function MouseGlow() {
 		updatePageHeight();
 		window.addEventListener("mousemove", handleMouseMove);
 		window.addEventListener("resize", handleViewportChange);
-		window.addEventListener("scroll", handleViewportChange);
+		window.addEventListener("scroll", handleViewportChange, { passive: true });
 
 		return () => {
 			window.removeEventListener("mousemove", handleMouseMove);
