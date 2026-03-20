@@ -13,10 +13,18 @@ const navItems = [
 ];
 
 const socialLinks = [
-	{ icon: socialIcons.github, href: "https://github.com", label: "GitHub" },
-	{ icon: socialIcons.linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-	{ icon: socialIcons.instagram, href: "https://instagram.com", label: "Instagram" },
-	{ icon: socialIcons.twitter, href: "https://twitter.com", label: "Twitter" },
+	{ icon: socialIcons.github, href: "https://github.com/theritiktiwari", label: "GitHub" },
+	{
+		icon: socialIcons.linkedin,
+		href: "https://linkedin.com/in/theritiktiwari",
+		label: "LinkedIn",
+	},
+	{ icon: socialIcons.twitter, href: "https://twitter.com/theritiktiwari", label: "Twitter" },
+	{
+		icon: socialIcons.instagram,
+		href: "https://instagram.com/theritiktiwari",
+		label: "Instagram",
+	},
 ];
 
 export default function Sidebar() {

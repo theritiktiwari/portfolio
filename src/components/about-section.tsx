@@ -13,7 +13,7 @@ export default function AboutSection() {
 				</h2>
 			</div>
 
-			<div className="text-muted-foreground space-y-4">
+			<div className="text-muted-foreground space-y-5 leading-7">
 				<p>
 					I&apos;m a{" "}
 					<span className="text-foreground font-semibold">Software Engineer</span>{" "}
@@ -31,7 +31,7 @@ export default function AboutSection() {
 					>
 						rtCamp
 					</Link>
-					, where I worked on{" "}
+					, where I work on{" "}
 					<Link
 						href="https://webauditor.io/"
 						rel="noopener noreferrer"
@@ -43,7 +43,7 @@ export default function AboutSection() {
 					a platform designed to monitor and audit website performance. In this project, I
 					architected multi-tenant structures, modular APIs and built the{" "}
 					<span className="text-foreground font-semibold">entire frontend</span>. Beyond
-					that, I handle the{" "}
+					that, I handled the{" "}
 					<span className="text-foreground font-semibold">CI/CD pipelines</span>,{" "}
 					<span className="text-foreground font-semibold">payment integrations</span>, and
 					email systems, while constantly optimizing the platform to maintain{" "}
