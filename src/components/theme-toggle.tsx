@@ -7,10 +7,11 @@ import { useTheme } from "next-themes";
 import { useRef } from "react";
 import { flushSync } from "react-dom";
 
+const THEME_TRANSITION_DURATION = 500;
+
 export default function ThemeToggle({ className }: { className?: string }) {
 	const { resolvedTheme, setTheme } = useTheme();
 	const ref = useRef<HTMLButtonElement>(null);
-	const THEME_TRANSITION_DURATION = 500;
 
 	const toggleTheme = async () => {
 		const nextTheme = resolvedTheme === "dark" ? "light" : "dark";

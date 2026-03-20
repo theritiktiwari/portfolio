@@ -48,15 +48,17 @@ export default function ProjectsSection() {
 											{project.description}
 										</p>
 
-										{project.stars && (
-											<a
-												href={project.url}
+										{project.stars ? (
+											<Link
+												href={project.repository ?? project.url ?? "#"}
+												target="_blank"
+												rel="noopener noreferrer"
 												className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
 											>
 												<Star className="mr-1 h-3 w-3" />
 												<span>{project.stars.toLocaleString()}</span>
-											</a>
-										)}
+											</Link>
+										) : null}
 
 										<ul
 											className="mt-2 flex flex-wrap"

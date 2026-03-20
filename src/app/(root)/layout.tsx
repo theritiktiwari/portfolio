@@ -19,9 +19,54 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Ritik Tiwari | Software Engineer",
+	metadataBase: new URL("https://theritiktiwari.com"),
+	title: {
+		default: "Ritik Tiwari | Software Engineer",
+		template: "%s | Ritik Tiwari",
+	},
 	description:
 		"Software Engineer dedicated to crafting seamless digital experiences. I bridge the gap between complex backend architecture and intuitive user interfaces, currently building automated wealth-tracking solutions.",
+	keywords: [
+		"Ritik Tiwari",
+		"Software Engineer",
+		"Full-stack Developer",
+		"React",
+		"Next.js",
+		"TypeScript",
+		"Node.js",
+		"Portfolio",
+	],
+	authors: [{ name: "Ritik Tiwari", url: "https://theritiktiwari.com" }],
+	creator: "Ritik Tiwari",
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: "https://theritiktiwari.com",
+		siteName: "Ritik Tiwari",
+		title: "Ritik Tiwari | Software Engineer",
+		description:
+			"Software Engineer dedicated to crafting seamless digital experiences. I bridge the gap between complex backend architecture and intuitive user interfaces.",
+		images: [
+			{
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "Ritik Tiwari — Software Engineer",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "Ritik Tiwari | Software Engineer",
+		description: "Software Engineer dedicated to crafting seamless digital experiences.",
+		creator: "@theritiktiwari",
+		images: ["/og-image.png"],
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: { index: true, follow: true, "max-image-preview": "large" },
+	},
 };
 
 export default function RootLayout({

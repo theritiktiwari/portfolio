@@ -1,5 +1,3 @@
-"use client";
-
 import { socialIcons } from "@/constants/images";
 import { projects } from "@/data/projects";
 import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
@@ -7,7 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-	title: "All Projects | Ritik Tiwari",
+	title: "All Projects",
 	description:
 		"A full archive of projects built by Ritik Tiwari — spanning full-stack web apps, APIs, and open-source contributions.",
 };

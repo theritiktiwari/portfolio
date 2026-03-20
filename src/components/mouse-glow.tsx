@@ -1,25 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function MouseGlow() {
-	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-	const [pageHeight, setPageHeight] = useState(0);
+	const glowRef = useRef<HTMLDivElement>(null);
 	const lastPointerPosition = useRef<{ x: number; y: number } | null>(null);
 
 	useEffect(() => {
+		const el = glowRef.current;
+		if (!el) return;
+
 		const updatePageHeight = () => {
-			setPageHeight(document.documentElement.scrollHeight);
+			el.style.height = `${document.documentElement.scrollHeight}px`;
 		};
 
 		const syncGlowToViewportPointer = () => {
 			const pointer = lastPointerPosition.current;
-
-			if (!pointer) {
-				return;
-			}
-
-			setMousePosition({ x: pointer.x, y: pointer.y + window.scrollY });
+			if (!pointer) return;
+			const x = pointer.x;
+			const y = pointer.y + window.scrollY;
+			el.style.background = `radial-gradient(600px at ${x}px ${y}px, var(--mouse-glow), transparent 80%)`;
 		};
 
 		const handleMouseMove = (e: MouseEvent) => {
@@ -46,15 +46,9 @@ export default function MouseGlow() {
 
 	return (
 		<div
-			className="pointer-events-none fixed inset-x-0 top-0 z-30 transition-opacity duration-300 lg:absolute"
-			style={{
-				height: pageHeight ? `${pageHeight}px` : "100%",
-				background: `radial-gradient(
-					600px at ${mousePosition.x}px ${mousePosition.y}px,
-					var(--mouse-glow),
-					transparent 80%
-				)`,
-			}}
+			ref={glowRef}
+			className="pointer-events-none fixed inset-x-0 top-0 z-30 lg:absolute"
+			style={{ height: "100%" }}
 		/>
 	);
 }
