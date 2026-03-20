@@ -1,11 +1,13 @@
 import AboutSection from "@/components/about-section";
 import MouseGlow from "@/components/mouse-glow";
 import Sidebar from "@/components/sidebar";
+import ThemeToggle from "@/components/theme-toggle";
 
 export default function Portfolio() {
 	return (
 		<div className="relative min-h-screen">
 			<MouseGlow />
+			<ThemeToggle className="fixed top-4 right-4" />
 
 			<div className="mx-auto min-h-screen max-w-7xl px-6 py-12 font-sans md:px-12 md:py-16 lg:py-0">
 				<a

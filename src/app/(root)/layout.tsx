@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
@@ -32,7 +33,16 @@ export default function RootLayout({
 			suppressHydrationWarning
 			className={cn("antialiased", inter.variable, jetBrainsMono.variable)}
 		>
-			<body className="flex min-h-screen flex-col">{children}</body>
+			<body className="flex min-h-screen flex-col">
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					enableSystem={false}
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }
