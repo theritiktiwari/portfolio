@@ -10,6 +10,7 @@ const navItems = [
 	{ id: "about", label: "About" },
 	{ id: "experience", label: "Experience" },
 	{ id: "projects", label: "Projects" },
+	{ id: "education", label: "Education" },
 ];
 
 const socialLinks = [
@@ -32,7 +33,7 @@ export default function Sidebar() {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const sections = ["about", "experience", "projects"];
+			const sections = ["about", "experience", "education", "projects"];
 			const scrollPosition = window.scrollY + 150;
 
 			for (const section of sections) {

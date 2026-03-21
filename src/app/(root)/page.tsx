@@ -1,4 +1,5 @@
 import AboutSection from "@/components/about-section";
+import EducationSection from "@/components/education-section";
 import ExperienceSection from "@/components/experience-section";
 import ProjectsSection from "@/components/projects-section";
 import Sidebar from "@/components/sidebar";
@@ -11,6 +12,7 @@ export default function Portfolio() {
 				<AboutSection />
 				<ExperienceSection />
 				<ProjectsSection />
+				<EducationSection />
 			</main>
 		</div>
 	);
