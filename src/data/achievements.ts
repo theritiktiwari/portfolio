@@ -83,7 +83,7 @@ export const achievements: Achievement[] = [
 		link: { type: "certificate", url: certificates.awsome_day },
 	},
 	{
-		title: "Google Hash Code Participant",
+		title: "HashCode Participant",
 		date: new Date("2022-03-19"),
 		issuer: "Google",
 		tags: ["Competitive Programming", "Algorithms"],
@@ -125,7 +125,7 @@ export const achievements: Achievement[] = [
 		link: { type: "certificate", url: certificates.hackerrank_sql },
 	},
 	{
-		title: "Global Rank 6400 — Google Hash Code",
+		title: "Global Rank 6400 — HashCode",
 		date: new Date("2021-03-02"),
 		issuer: "Google",
 		description:

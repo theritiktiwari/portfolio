@@ -36,7 +36,7 @@ export function CertificateModal({
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
 					<DialogDescription>
-						{issuer} · {formatDate(date)}
+						{issuer} · {formatDate({ date, options: { day: "numeric" } })}
 					</DialogDescription>
 				</DialogHeader>
 				<div

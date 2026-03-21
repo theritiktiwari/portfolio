@@ -1,7 +1,7 @@
+import { MouseGlow } from "@/components/mouse-glow";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { ThemeProvider } from "@/components/theme-provider";
-import { MouseGlow } from "@/components/ui/mouse-glow";
-import { ScrollToTop } from "@/components/ui/scroll-to-top";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";

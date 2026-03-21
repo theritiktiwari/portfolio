@@ -6,12 +6,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-	title: "All Projects",
+	title: "Projects",
 	description:
 		"A full archive of projects built by Ritik Tiwari — spanning full-stack web apps, APIs, and open-source contributions.",
 };
 
-export default function ArchivePage() {
+export default function ProjectsPage() {
 	return (
 		<div className="md:py-20 lg:py-24">
 			<Link
@@ -23,7 +23,7 @@ export default function ArchivePage() {
 			</Link>
 
 			<h1 className="text-foreground flex items-end gap-1.5 text-4xl font-bold tracking-tight sm:text-5xl">
-				All Projects
+				Projects
 				<span className="text-muted-foreground text-base font-bold sm:text-lg">
 					({projects.length})
 				</span>

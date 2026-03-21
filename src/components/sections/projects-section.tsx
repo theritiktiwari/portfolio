@@ -1,4 +1,4 @@
-import ProjectImage from "@/components/project-image";
+import { CustomImage } from "@/components/ui/custom-image";
 import { projects } from "@/data/projects";
 import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
 import Link from "next/link";
@@ -56,29 +56,19 @@ export default function ProjectsSection() {
 
 										<div className="flex gap-3">
 											{project.stars ? (
-												<Link
-													href={project.repository ?? project.url ?? "#"}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
-												>
+												<div className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium">
 													<Star className="mr-1 size-4" />
 													<span>{project.stars.toLocaleString()}</span>
-												</Link>
+												</div>
 											) : null}
 
 											{project.downloads ? (
-												<Link
-													href={project.repository ?? project.url ?? "#"}
-													target="_blank"
-													rel="noopener noreferrer"
-													className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
-												>
+												<div className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium">
 													<Download className="mr-1 size-4" />
 													<span>
 														{project.downloads.toLocaleString()}
 													</span>
-												</Link>
+												</div>
 											) : null}
 										</div>
 
@@ -96,10 +86,12 @@ export default function ProjectsSection() {
 										</ul>
 									</div>
 
-									<ProjectImage
-										src={project.image}
-										alt={`Screenshot of ${project.title}`}
-									/>
+									<div className="z-10 sm:order-1 sm:col-span-2">
+										<CustomImage
+											src={project.image}
+											alt={`Screenshot of ${project.title}`}
+										/>
+									</div>
 								</div>
 							</li>
 						);

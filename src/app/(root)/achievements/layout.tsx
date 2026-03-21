@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "All Achievements",
+	title: "Achievements",
 	description:
 		"A full archive of achievements, certifications, and recognitions earned by Ritik Tiwari.",
 };

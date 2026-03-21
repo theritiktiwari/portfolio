@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import AboutSection from "@/components/sections/about-section";
 import AchievementsSection from "@/components/sections/achievements-section";
 import EducationSection from "@/components/sections/education-section";
@@ -18,6 +19,7 @@ export default function Portfolio() {
 				<ProjectsSection />
 				<EducationSection />
 				<AchievementsSection />
+				<Footer />
 			</main>
 		</div>
 	);

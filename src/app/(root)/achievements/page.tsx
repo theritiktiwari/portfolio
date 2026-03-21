@@ -5,7 +5,7 @@ import { achievements } from "@/data/achievements";
 import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "lucide-react";
 import Link from "next/link";
 
-export default function AchievementsArchivePage() {
+export default function AchievementsPage() {
 	return (
 		<div className="md:py-20 lg:py-24">
 			<Link
@@ -17,7 +17,7 @@ export default function AchievementsArchivePage() {
 			</Link>
 
 			<h1 className="text-foreground flex items-end gap-1.5 text-4xl font-bold tracking-tight sm:text-5xl">
-				All Achievements
+				Achievements
 				<span className="text-muted-foreground text-base font-bold sm:text-lg">
 					({achievements.length})
 				</span>
