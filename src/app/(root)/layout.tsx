@@ -20,7 +20,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://theritiktiwari.com"),
+	metadataBase: new URL("https://ritiktiwari.com"),
 	title: {
 		default: "Ritik Tiwari | Software Engineer",
 		template: "%s | Ritik Tiwari",
@@ -37,12 +37,12 @@ export const metadata: Metadata = {
 		"Node.js",
 		"Portfolio",
 	],
-	authors: [{ name: "Ritik Tiwari", url: "https://theritiktiwari.com" }],
+	authors: [{ name: "Ritik Tiwari", url: "https://ritiktiwari.com" }],
 	creator: "Ritik Tiwari",
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://theritiktiwari.com",
+		url: "https://ritiktiwari.com",
 		siteName: "Ritik Tiwari",
 		title: "Ritik Tiwari | Software Engineer",
 		description:

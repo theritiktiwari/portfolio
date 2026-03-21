@@ -1,4 +1,8 @@
 export const socialIcons = {
+	email: {
+		src: "/social-icons/email.svg",
+		maskSize: "108%",
+	},
 	github: {
 		src: "/social-icons/github.svg",
 		maskSize: "100%",

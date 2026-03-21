@@ -111,32 +111,57 @@ export default function Sidebar() {
 
 			{/* Social Links */}
 			<ul className="mt-8 ml-1 flex items-center gap-5" aria-label="Social media">
-				{socialLinks.map((social) => (
-					<li key={social.label} className="shrink-0 text-xs">
-						<Link
-							href={social.href}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-foreground hover:text-primary block transition-colors"
-							aria-label={`${social.label} (opens in a new tab)`}
-						>
-							<span
-								aria-hidden="true"
-								className="block h-6 w-6 bg-current transition-colors"
-								style={{
-									WebkitMaskImage: `url(${social.icon.src})`,
-									maskImage: `url(${social.icon.src})`,
-									WebkitMaskRepeat: "no-repeat",
-									maskRepeat: "no-repeat",
-									WebkitMaskPosition: "center",
-									maskPosition: "center",
-									WebkitMaskSize: social.icon.maskSize,
-									maskSize: social.icon.maskSize,
-								}}
-							/>
-						</Link>
-					</li>
-				))}
+				{socialLinks.map((social) => {
+					const iconNode = (
+						<span
+							aria-hidden="true"
+							className="block h-6 w-6 bg-current transition-colors"
+							style={{
+								WebkitMaskImage: `url(${social.icon.src})`,
+								maskImage: `url(${social.icon.src})`,
+								WebkitMaskRepeat: "no-repeat",
+								maskRepeat: "no-repeat",
+								WebkitMaskPosition: "center",
+								maskPosition: "center",
+								WebkitMaskSize: social.icon.maskSize,
+								maskSize: social.icon.maskSize,
+							}}
+						/>
+					);
+
+					return (
+						<li key={social.label} className="flex shrink-0 items-center text-xs">
+							{"tooltip" in social && social.tooltip ? (
+								<span className="group relative inline-flex">
+									<Link
+										href={social.href}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-foreground hover:text-primary block transition-colors"
+										aria-label={social.label}
+									>
+										{iconNode}
+									</Link>
+									<span className="pointer-events-none absolute bottom-full left-1/2 mb-3 -translate-x-1/2 opacity-0 transition-all group-hover:opacity-100">
+										<span className="bg-card text-card-foreground border-border block w-56 rounded border px-3 py-2 text-xs leading-relaxed shadow-xl">
+											{social.tooltip}
+										</span>
+									</span>
+								</span>
+							) : (
+								<Link
+									href={social.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-foreground hover:text-primary block transition-colors"
+									aria-label={`${social.label} (opens in a new tab)`}
+								>
+									{iconNode}
+								</Link>
+							)}
+						</li>
+					);
+				})}
 			</ul>
 		</header>
 	);
