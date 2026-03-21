@@ -1,10 +1,15 @@
 "use client";
 
-import { CertificateModal } from "@/components/modal/certificate-modal";
 import { TagList } from "@/components/ui/tag-list";
 import { achievements } from "@/data/achievements";
 import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const CertificateModal = dynamic(
+	() => import("@/components/modal/certificate-modal").then((m) => m.CertificateModal),
+	{ ssr: false }
+);
 
 export default function AchievementsPage() {
 	return (

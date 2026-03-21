@@ -61,7 +61,7 @@ export default function Sidebar() {
 											"group-hover:text-foreground group-focus-visible:text-foreground text-xs font-bold tracking-widest uppercase transition-colors",
 											activeSection === item.id
 												? "text-foreground"
-												: "text-foreground/50"
+												: "text-foreground/60"
 										)}
 									>
 										{item.label}

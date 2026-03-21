@@ -1,12 +1,17 @@
 "use client";
 
-import { CertificateModal } from "@/components/modal/certificate-modal";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
 import { Achievement, achievements } from "@/data/achievements";
 import { formatDate } from "@/lib/utils";
 import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const CertificateModal = dynamic(
+	() => import("@/components/modal/certificate-modal").then((m) => m.CertificateModal),
+	{ ssr: false }
+);
 
 export default function AchievementsSection() {
 	const featuredAchievements = achievements.filter((achievement) => achievement.featured);

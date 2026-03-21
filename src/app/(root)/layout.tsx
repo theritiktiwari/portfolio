@@ -4,19 +4,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../globals.css";
 
 const inter = Inter({
 	subsets: ["latin"],
 	display: "swap",
 	variable: "--font-inter",
-});
-
-const jetBrainsMono = JetBrains_Mono({
-	subsets: ["latin"],
-	display: "swap",
-	variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
@@ -76,11 +70,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html
-			lang="en"
-			suppressHydrationWarning
-			className={cn("antialiased", inter.variable, jetBrainsMono.variable)}
-		>
+		<html lang="en" suppressHydrationWarning className={cn("antialiased", inter.variable)}>
 			<body className="flex min-h-screen flex-col">
 				<ThemeProvider
 					attribute="class"
