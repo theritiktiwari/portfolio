@@ -16,7 +16,7 @@ export function CustomImage({ src, alt, className }: CustomImageProps) {
 	return (
 		<div
 			className={cn(
-				"border-muted/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded border-2 transition",
+				"border-muted/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded-lg border-3 transition sm:rounded",
 				{ "hidden sm:block": failed },
 				className
 			)}

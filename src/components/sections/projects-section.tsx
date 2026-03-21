@@ -1,4 +1,6 @@
 import { CustomImage } from "@/components/ui/custom-image";
+import { SectionHeader } from "@/components/ui/section-header";
+import { TagList } from "@/components/ui/tag-list";
 import { projects } from "@/data/projects";
 import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
 import Link from "next/link";
@@ -12,11 +14,7 @@ export default function ProjectsSection() {
 			className="scroll-mt-16 lg:scroll-mt-24"
 			aria-label="Selected projects"
 		>
-			<div className="bg-background/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-				<h2 className="text-foreground text-sm font-bold tracking-widest uppercase lg:sr-only">
-					Projects
-				</h2>
-			</div>
+			<SectionHeader title="Projects" />
 
 			<div>
 				<ul className="group/list space-y-12">
@@ -72,18 +70,12 @@ export default function ProjectsSection() {
 											) : null}
 										</div>
 
-										<ul
-											className="mt-2 flex flex-wrap"
-											aria-label="Technologies used"
-										>
-											{project.technologies.map((tech) => (
-												<li key={tech} className="mt-2 mr-1.5">
-													<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
-														{tech}
-													</div>
-												</li>
-											))}
-										</ul>
+										<TagList
+											items={project.technologies}
+											label="Technologies used"
+											className="mt-2"
+											itemClassName="mt-2 mr-1.5"
+										/>
 									</div>
 
 									<div className="z-10 sm:order-1 sm:col-span-2">

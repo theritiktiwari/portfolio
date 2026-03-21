@@ -1,58 +1,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { MaskedIcon } from "@/components/ui/masked-icon";
 import { navLinks, socialLinks } from "@/constants/links";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { smoothScrollTo } from "@/lib/smooth-scroll";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+const sectionIds = navLinks.map((link) => link.id);
 
 export default function Sidebar() {
-	const [activeSection, setActiveSection] = useState(navLinks[0].id);
-
-	useEffect(() => {
-		const sectionIds = navLinks.map((link) => link.id);
-
-		const handleScroll = () => {
-			const scrollPosition = window.scrollY + 150;
-
-			for (const id of sectionIds) {
-				const element = document.getElementById(id);
-				if (element) {
-					const { offsetTop, offsetHeight } = element;
-					if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-						setActiveSection(id);
-						break;
-					}
-				}
-			}
-		};
-
-		handleScroll();
-		window.addEventListener("scroll", handleScroll, { passive: true });
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
-
-	const scrollToSection = (sectionId: string) => {
-		const element = document.getElementById(sectionId);
-		if (!element) return;
-
-		const targetY = element.getBoundingClientRect().top + window.scrollY;
-		const startY = window.scrollY;
-		const distance = targetY - startY;
-		const duration = 800;
-		let startTime: number | null = null;
-
-		const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-		const step = (timestamp: number) => {
-			if (startTime === null) startTime = timestamp;
-			const progress = Math.min((timestamp - startTime) / duration, 1);
-			window.scrollTo(0, startY + distance * ease(progress));
-			if (progress < 1) requestAnimationFrame(step);
-		};
-
-		requestAnimationFrame(step);
-	};
+	const activeSection = useActiveSection(sectionIds);
 
 	return (
 		<header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
@@ -82,12 +41,10 @@ export default function Sidebar() {
 							<li key={item.id}>
 								<Button
 									variant="link"
-									onClick={() => scrollToSection(item.id)}
+									onClick={() => smoothScrollTo(item.id)}
 									className={cn(
 										"group my-1 flex items-center py-3 pl-0 no-underline! transition-all",
-										{
-											active: activeSection === item.id,
-										}
+										{ active: activeSection === item.id }
 									)}
 									aria-current={activeSection === item.id ? "true" : undefined}
 								>
@@ -120,19 +77,10 @@ export default function Sidebar() {
 			<ul className="mt-8 ml-1 flex items-center gap-5" aria-label="Social media">
 				{socialLinks.map((social) => {
 					const iconNode = (
-						<span
-							aria-hidden="true"
-							className="block h-6 w-6 bg-current transition-colors"
-							style={{
-								WebkitMaskImage: `url(${social.icon.src})`,
-								maskImage: `url(${social.icon.src})`,
-								WebkitMaskRepeat: "no-repeat",
-								maskRepeat: "no-repeat",
-								WebkitMaskPosition: "center",
-								maskPosition: "center",
-								WebkitMaskSize: social.icon.maskSize,
-								maskSize: social.icon.maskSize,
-							}}
+						<MaskedIcon
+							src={social.icon.src}
+							maskSize={social.icon.maskSize}
+							className="size-6"
 						/>
 					);
 

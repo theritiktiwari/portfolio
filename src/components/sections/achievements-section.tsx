@@ -1,6 +1,8 @@
 "use client";
 
 import { CertificateModal } from "@/components/modal/certificate-modal";
+import { SectionHeader } from "@/components/ui/section-header";
+import { TagList } from "@/components/ui/tag-list";
 import { Achievement, achievements } from "@/data/achievements";
 import { formatDate } from "@/lib/utils";
 import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
@@ -15,11 +17,7 @@ export default function AchievementsSection() {
 			className="scroll-mt-16 lg:scroll-mt-24"
 			aria-label="Achievements"
 		>
-			<div className="bg-background/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-				<h2 className="text-foreground text-sm font-bold tracking-widest uppercase lg:sr-only">
-					Achievements
-				</h2>
-			</div>
+			<SectionHeader title="Achievements" />
 
 			<ul className="group/list space-y-12">
 				{featuredAchievements.map((achievement) => (
@@ -87,17 +85,12 @@ function AchievementCard({ achievement }: { achievement: Achievement }) {
 					{achievement.description}
 				</p>
 
-				{achievement.tags.length > 0 ? (
-					<ul className="mt-2 flex flex-wrap" aria-label="Tags">
-						{achievement.tags.map((tag) => (
-							<li key={tag} className="mt-2 mr-1.5">
-								<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
-									{tag}
-								</div>
-							</li>
-						))}
-					</ul>
-				) : null}
+				<TagList
+					items={achievement.tags}
+					label="Tags"
+					className="mt-2"
+					itemClassName="mt-2 mr-1.5"
+				/>
 			</div>
 		</div>
 	);

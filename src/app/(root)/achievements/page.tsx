@@ -1,6 +1,7 @@
 "use client";
 
 import { CertificateModal } from "@/components/modal/certificate-modal";
+import { TagList } from "@/components/ui/tag-list";
 import { achievements } from "@/data/achievements";
 import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "lucide-react";
 import Link from "next/link";
@@ -86,15 +87,11 @@ export default function AchievementsPage() {
 								</td>
 
 								<td className="hidden py-4 pr-8 align-top lg:table-cell">
-									<ul className="flex flex-wrap gap-x-1.5 gap-y-1">
-										{achievement.tags.map((tag) => (
-											<li key={tag}>
-												<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
-													{tag}
-												</div>
-											</li>
-										))}
-									</ul>
+									<TagList
+										items={achievement.tags}
+										label="Tags"
+										className="gap-x-1.5 gap-y-1"
+									/>
 								</td>
 
 								<td className="align-center hidden py-4 sm:table-cell">

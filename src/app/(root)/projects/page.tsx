@@ -1,3 +1,5 @@
+import { MaskedIcon } from "@/components/ui/masked-icon";
+import { TagList } from "@/components/ui/tag-list";
 import { socialIcons } from "@/constants/images";
 import { projects } from "@/data/projects";
 import { getGitHubRepoPath } from "@/lib/utils";
@@ -70,15 +72,11 @@ export default function ProjectsPage() {
 									<div className="hidden sm:block">{project.title}</div>
 								</td>
 								<td className="hidden py-4 pr-8 align-top lg:table-cell">
-									<ul className="flex flex-wrap gap-x-1.5 gap-y-1">
-										{project.technologies.map((tech) => (
-											<li key={tech}>
-												<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
-													{tech}
-												</div>
-											</li>
-										))}
-									</ul>
+									<TagList
+										items={project.technologies}
+										label="Technologies used"
+										className="gap-x-1.5 gap-y-1"
+									/>
 								</td>
 								<td className="align-center hidden py-4 sm:table-cell">
 									<div className="flex flex-col gap-3">
@@ -102,19 +100,10 @@ export default function ProjectsPage() {
 												className="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
 												aria-label={`View ${project.title} on GitHub`}
 											>
-												<span
-													aria-hidden="true"
-													className="block size-3.5 shrink-0 bg-current transition-colors"
-													style={{
-														WebkitMaskImage: `url(${socialIcons.github.src})`,
-														maskImage: `url(${socialIcons.github.src})`,
-														WebkitMaskRepeat: "no-repeat",
-														maskRepeat: "no-repeat",
-														WebkitMaskPosition: "center",
-														maskPosition: "center",
-														WebkitMaskSize: socialIcons.github.maskSize,
-														maskSize: socialIcons.github.maskSize,
-													}}
+												<MaskedIcon
+													src={socialIcons.github.src}
+													maskSize={socialIcons.github.maskSize}
+													className="size-3.5 shrink-0"
 												/>
 												<span className="truncate lowercase">
 													{getGitHubRepoPath(project.repository)}
