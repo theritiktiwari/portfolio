@@ -1,47 +1,26 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { socialIcons } from "@/constants/images";
+import { navLinks, socialLinks } from "@/constants/links";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const navItems = [
-	{ id: "about", label: "About" },
-	{ id: "experience", label: "Experience" },
-	{ id: "projects", label: "Projects" },
-	{ id: "education", label: "Education" },
-];
-
-const socialLinks = [
-	{ icon: socialIcons.github, href: "https://github.com/theritiktiwari", label: "GitHub" },
-	{
-		icon: socialIcons.linkedin,
-		href: "https://linkedin.com/in/theritiktiwari",
-		label: "LinkedIn",
-	},
-	{ icon: socialIcons.twitter, href: "https://twitter.com/theritiktiwari", label: "Twitter" },
-	{
-		icon: socialIcons.instagram,
-		href: "https://instagram.com/theritiktiwari",
-		label: "Instagram",
-	},
-];
-
 export default function Sidebar() {
-	const [activeSection, setActiveSection] = useState("about");
+	const [activeSection, setActiveSection] = useState(navLinks[0].id);
 
 	useEffect(() => {
+		const sectionIds = navLinks.map((link) => link.id);
+
 		const handleScroll = () => {
-			const sections = ["about", "experience", "education", "projects"];
 			const scrollPosition = window.scrollY + 150;
 
-			for (const section of sections) {
-				const element = document.getElementById(section);
+			for (const id of sectionIds) {
+				const element = document.getElementById(id);
 				if (element) {
 					const { offsetTop, offsetHeight } = element;
 					if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-						setActiveSection(section);
+						setActiveSection(id);
 						break;
 					}
 				}
@@ -76,7 +55,7 @@ export default function Sidebar() {
 
 				<nav className="nav hidden lg:block" aria-label="In-page jump links">
 					<ul className="mt-16 w-max">
-						{navItems.map((item) => (
+						{navLinks.map((item) => (
 							<li key={item.id}>
 								<Button
 									variant="link"
