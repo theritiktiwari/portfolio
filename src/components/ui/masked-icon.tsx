@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-export function getMaskStyles(src: string, maskSize: string): React.CSSProperties {
+function getMaskStyles(src: string, maskSize: string): React.CSSProperties {
 	return {
 		WebkitMaskImage: `url(${src})`,
 		maskImage: `url(${src})`,
