@@ -83,11 +83,11 @@ export default function ArchivePage() {
 												href={project.url}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="text-muted-foreground hover:text-primary inline-flex gap-1 text-xs transition-colors"
+												className="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
 												aria-label={`Visit ${project.title}`}
 											>
-												<CircleArrowOutUpRight className="size-3.5" />
-												{project.url}
+												<CircleArrowOutUpRight className="size-3.5 shrink-0" />
+												<span className="truncate">{project.url}</span>
 											</Link>
 										)}
 										{project.repository && (
@@ -95,12 +95,12 @@ export default function ArchivePage() {
 												href={project.repository}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="text-muted-foreground hover:text-primary inline-flex gap-1 text-xs transition-colors"
+												className="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
 												aria-label={`View ${project.title} on GitHub`}
 											>
 												<span
 													aria-hidden="true"
-													className="block size-3.5 bg-current transition-colors"
+													className="block size-3.5 shrink-0 bg-current transition-colors"
 													style={{
 														WebkitMaskImage: `url(${socialIcons.github.src})`,
 														maskImage: `url(${socialIcons.github.src})`,
@@ -112,14 +112,16 @@ export default function ArchivePage() {
 														maskSize: socialIcons.github.maskSize,
 													}}
 												/>
-												{project.repository}
+												<span className="truncate">
+													{project.repository}
+												</span>
 											</Link>
 										)}
 									</div>
 								</td>
 							</tr>
 						);
-					})}{" "}
+					})}
 				</tbody>
 			</table>
 		</div>

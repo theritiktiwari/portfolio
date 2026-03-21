@@ -1,0 +1,140 @@
+import CertificateModal from "@/components/modal/certificate-modal";
+import { achievements } from "@/data/achievements";
+import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "All Achievements",
+	description:
+		"A full archive of achievements, certifications, and recognitions earned by Ritik Tiwari.",
+};
+
+export default function AchievementsArchivePage() {
+	return (
+		<div className="md:py-20 lg:py-24">
+			<Link
+				href="/"
+				className="group text-primary mb-2 inline-flex items-center leading-tight font-semibold"
+			>
+				<ArrowLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-2" />
+				Home
+			</Link>
+
+			<h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+				All Achievements
+			</h1>
+
+			<table id="content" className="mt-12 w-full border-collapse text-left">
+				<thead className="border-muted/40 bg-background/75 sticky top-0 z-10 border-b px-6 py-5 backdrop-blur">
+					<tr>
+						<th className="py-4 pr-8 text-sm font-semibold">Year</th>
+						<th className="py-4 pr-8 text-sm font-semibold">Achievement</th>
+						<th className="hidden py-4 pr-8 text-sm font-semibold lg:table-cell">
+							Tags
+						</th>
+						<th className="hidden py-4 text-sm font-semibold sm:table-cell">Link</th>
+					</tr>
+				</thead>
+				<tbody suppressHydrationWarning>
+					{achievements.map((achievement) => {
+						const { link } = achievement;
+						return (
+							<tr
+								key={`${achievement.issuer}-${achievement.title}`}
+								className="border-muted/20 border-b last:border-none"
+							>
+								<td className="text-muted-foreground py-4 pr-8 align-top text-sm">
+									{achievement.date.getFullYear()}
+								</td>
+
+								<td className="py-4 pr-4 align-top leading-snug font-semibold">
+									<div className="sm:hidden">
+										{link?.type === "external" ? (
+											<Link
+												href={link.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="hover:text-primary focus-visible:text-primary group/link inline-flex items-center"
+											>
+												<span>{achievement.title}</span>
+												<ArrowUpRight className="ml-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+											</Link>
+										) : link?.type === "certificate" ? (
+											<CertificateModal
+												title={achievement.title}
+												issuer={achievement.issuer}
+												date={achievement.date}
+												certificateImage={link.url}
+											>
+												<button
+													type="button"
+													className="hover:text-primary focus-visible:text-primary group/link inline-flex cursor-pointer items-center"
+												>
+													<span>{achievement.title}</span>
+													<Trophy className="ml-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover/link:scale-110" />
+												</button>
+											</CertificateModal>
+										) : (
+											achievement.title
+										)}
+									</div>
+									<div className="hidden sm:block">
+										<span>{achievement.title}</span>
+										<span className="text-muted-foreground ml-1 font-normal">
+											· {achievement.issuer}
+										</span>
+									</div>
+								</td>
+
+								<td className="hidden py-4 pr-8 align-top lg:table-cell">
+									<ul className="flex flex-wrap gap-x-1.5 gap-y-1">
+										{achievement.tags.map((tag) => (
+											<li key={tag}>
+												<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
+													{tag}
+												</div>
+											</li>
+										))}
+									</ul>
+								</td>
+
+								<td className="align-center hidden py-4 sm:table-cell">
+									<div className="flex flex-col gap-3">
+										{link?.type === "external" ? (
+											<Link
+												href={link.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
+												aria-label={`View ${achievement.title}`}
+											>
+												<CircleArrowOutUpRight className="size-3.5 shrink-0" />
+												<span className="truncate">{link.url}</span>
+											</Link>
+										) : link?.type === "certificate" ? (
+											<CertificateModal
+												title={achievement.title}
+												issuer={achievement.issuer}
+												date={achievement.date}
+												certificateImage={link.url}
+											>
+												<button
+													type="button"
+													className="text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-xs transition-colors"
+												>
+													<Award className="size-3.5 shrink-0" />
+													View Certificate
+												</button>
+											</CertificateModal>
+										) : null}
+									</div>
+								</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+		</div>
+	);
+}

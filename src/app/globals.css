@@ -76,6 +76,7 @@
 	--ring: oklch(0.6 0.18 255);
 
 	--mouse-glow: rgba(0, 115, 255, 0.15);
+	--radius: 0.625rem;
 }
 
 .light {
