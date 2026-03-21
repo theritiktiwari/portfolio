@@ -27,6 +27,7 @@ export default function Sidebar() {
 			}
 		};
 
+		handleScroll();
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);

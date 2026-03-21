@@ -15,7 +15,7 @@ export const education: Education[] = [
 		description:
 			"Specialized in full-stack development and distributed systems. Elected Programme Representative for Cyber Physical Systems. Active member of technical clubs, organizing flagship events and building internal tooling for the student community.",
 		courses: ["Data Structures", "OS", "DBMS", "Computer Networks"],
-		grade: { type: "cgpa", value: 8.7 },
+		grade: { type: "cgpa", value: 8.4 },
 	},
 	{
 		period: "2018 — 2020",

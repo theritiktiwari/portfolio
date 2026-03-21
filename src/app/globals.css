@@ -121,6 +121,19 @@
 		scroll-behavior: smooth;
 	}
 
+	html::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: 30;
+		pointer-events: none;
+		background: radial-gradient(
+			600px at var(--glow-x, -100%) var(--glow-y, -100%),
+			var(--mouse-glow),
+			transparent 80%
+		);
+	}
+
 	::selection {
 		background: var(--primary);
 		color: var(--primary-foreground);

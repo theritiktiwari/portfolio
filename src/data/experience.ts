@@ -70,6 +70,6 @@ export const experiences: Experience[] = [
 		companyUrl: "https://www.linkedin.com/school/vellore-institute-of-technology/",
 		description:
 			"Elected as the 2020-21 Programme Representative for Cyber Physical Systems. Managed official branch duties and represented student interests, ensuring effective communication with university administration.",
-		technologies: [],
+		technologies: ["Leadership", "Communication", "Management"],
 	},
 ];
