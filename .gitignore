@@ -2,9 +2,13 @@
 
 # dependencies
 /node_modules
-/admin/node_modules
 /.pnp
-.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
 # testing
 /coverage
@@ -26,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# env files
+.env*
+!.env.example
 
 # vercel
 .vercel

@@ -1,0 +1,26 @@
+import Footer from "@/components/footer";
+import AboutSection from "@/components/sections/about-section";
+import AchievementsSection from "@/components/sections/achievements-section";
+import EducationSection from "@/components/sections/education-section";
+import ExperienceSection from "@/components/sections/experience-section";
+import ProjectsSection from "@/components/sections/projects-section";
+import Sidebar from "@/components/sidebar";
+
+export default function Portfolio() {
+	return (
+		<div className="lg:flex lg:justify-between lg:gap-4">
+			<Sidebar />
+			<main
+				id="content"
+				className="space-y-16 pt-24 md:space-y-24 lg:w-[52%] lg:space-y-36 lg:py-24"
+			>
+				<AboutSection />
+				<ExperienceSection />
+				<ProjectsSection />
+				<EducationSection />
+				<AchievementsSection />
+				<Footer />
+			</main>
+		</div>
+	);
+}
