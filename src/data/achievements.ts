@@ -41,7 +41,7 @@ export const achievements: Achievement[] = [
 	{
 		title: "Advanced C++ Certification",
 		date: new Date("2023-06-21"),
-		issuer: "IIT Bombay (Spoken Tutorial)",
+		issuer: "IIT Bombay",
 		description:
 			"Verified proficiency in Advanced C++ concepts and high-performance programming.",
 		tags: ["C++", "IIT Bombay"],
@@ -51,7 +51,7 @@ export const achievements: Achievement[] = [
 	{
 		title: "Java Programming Certification",
 		date: new Date("2023-06-21"),
-		issuer: "IIT Bombay (Spoken Tutorial)",
+		issuer: "IIT Bombay",
 		description: "Certification in core Java development and object-oriented principles.",
 		tags: ["Java", "OOPs", "IIT Bombay"],
 		featured: true,
@@ -60,7 +60,7 @@ export const achievements: Achievement[] = [
 	{
 		title: "Backend Development: PHP & MySQL",
 		date: new Date("2023-06-21"),
-		issuer: "IIT Bombay (Spoken Tutorial)",
+		issuer: "IIT Bombay",
 		description: "Technical certification for server-side logic and database management.",
 		tags: ["PHP", "MySQL", "Database", "IIT Bombay"],
 		featured: true,

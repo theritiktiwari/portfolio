@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function MouseGlow() {
+export function MouseGlow() {
 	useEffect(() => {
 		const handleMouseMove = (e: MouseEvent) => {
 			document.documentElement.style.setProperty("--glow-x", `${e.clientX}px`);

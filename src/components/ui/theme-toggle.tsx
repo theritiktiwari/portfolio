@@ -9,7 +9,7 @@ import { flushSync } from "react-dom";
 
 const THEME_TRANSITION_DURATION = 500;
 
-export default function ThemeToggle({ className }: { className?: string }) {
+export function ThemeToggle({ className }: { className?: string }) {
 	const { resolvedTheme, setTheme } = useTheme();
 	const ref = useRef<HTMLButtonElement>(null);
 

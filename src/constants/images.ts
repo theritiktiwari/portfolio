@@ -17,9 +17,12 @@ export const socialIcons = {
 	},
 } as const;
 
-export const images = {
-	// TODO: add placeholder image
-	placeholder: "/images/placeholder.png",
+export const projectImages = {
+	blockchain_file_sharing: "/projects/blockchain-file-sharing.avif",
+	finlink: "/projects/finlink.avif",
+	invoice_generator: "/projects/invoice-generator.avif",
+	turbo_typing: "/projects/turbo-typing.avif",
+	web_auditor: "/projects/web-auditor.avif",
 } as const;
 
 export const certificates = {
@@ -33,8 +36,6 @@ export const certificates = {
 	iit_java: "/certificates/iit-java.avif",
 	iit_php_mysql: "/certificates/iit-php-mysql.avif",
 	microsoft_sc900: "/certificates/microsoft-sc900.avif",
-	nmims_workshop: "/certificates/nmims-workshop.avif",
-	rrc_webinar: "/certificates/rrc-webinar.avif",
 	skillzcafe_excel: "/certificates/skillzcafe-excel.avif",
 	sololearn_html: "/certificates/sololearn-html.avif",
 	twh_sociothon: "/certificates/twh-sociothon.avif",

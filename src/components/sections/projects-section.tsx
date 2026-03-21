@@ -1,14 +1,15 @@
-import { images } from "@/constants/images";
+import ProjectImage from "@/components/project-image";
 import { projects } from "@/data/projects";
-import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
 import Link from "next/link";
 
 export default function ProjectsSection() {
+	const featuredProjects = projects.filter((project) => project.featured);
+
 	return (
 		<section
 			id="projects"
-			className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
+			className="scroll-mt-16 lg:scroll-mt-24"
 			aria-label="Selected projects"
 		>
 			<div className="bg-background/75 sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
@@ -19,8 +20,9 @@ export default function ProjectsSection() {
 
 			<div>
 				<ul className="group/list space-y-12">
-					{projects.map((project) => {
+					{featuredProjects.map((project) => {
 						const projectLink = project.url || project.repository;
+
 						return (
 							<li key={project.title}>
 								<div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
@@ -28,7 +30,7 @@ export default function ProjectsSection() {
 
 									<div className="z-10 sm:order-2 sm:col-span-6">
 										<h3>
-											{projectLink && (
+											{projectLink ? (
 												<Link
 													href={projectLink}
 													target="_blank"
@@ -41,6 +43,10 @@ export default function ProjectsSection() {
 														<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
 													</span>
 												</Link>
+											) : (
+												<span className="text-foreground leading-tight font-medium">
+													{project.title}
+												</span>
 											)}
 										</h3>
 
@@ -48,17 +54,33 @@ export default function ProjectsSection() {
 											{project.description}
 										</p>
 
-										{project.stars ? (
-											<Link
-												href={project.repository ?? project.url ?? "#"}
-												target="_blank"
-												rel="noopener noreferrer"
-												className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
-											>
-												<Star className="mr-1 h-3 w-3" />
-												<span>{project.stars.toLocaleString()}</span>
-											</Link>
-										) : null}
+										<div className="flex gap-3">
+											{project.stars ? (
+												<Link
+													href={project.repository ?? project.url ?? "#"}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
+												>
+													<Star className="mr-1 size-4" />
+													<span>{project.stars.toLocaleString()}</span>
+												</Link>
+											) : null}
+
+											{project.downloads ? (
+												<Link
+													href={project.repository ?? project.url ?? "#"}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium"
+												>
+													<Download className="mr-1 size-4" />
+													<span>
+														{project.downloads.toLocaleString()}
+													</span>
+												</Link>
+											) : null}
+										</div>
 
 										<ul
 											className="mt-2 flex flex-wrap"
@@ -74,17 +96,10 @@ export default function ProjectsSection() {
 										</ul>
 									</div>
 
-									<div className="z-10 sm:order-1 sm:col-span-2">
-										<div className="border-muted/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded border-2 transition">
-											<Image
-												src={project.image || images.placeholder}
-												alt={`Screenshot of ${project.title}`}
-												width={200}
-												height={112}
-												className="size-full object-cover"
-											/>
-										</div>
-									</div>
+									<ProjectImage
+										src={project.image}
+										alt={`Screenshot of ${project.title}`}
+									/>
 								</div>
 							</li>
 						);

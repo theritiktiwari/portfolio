@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
 		companyUrl: "https://linkedin.com/company/digilabs-atpl/",
 		description:
 			"Engineered a RESTful API and integrated a robust administrative interface for a school management system. This streamlined operations and enhanced user management efficiency, providing a scalable architecture for handling core academic data and administrative workflows with high technical precision.",
-		technologies: ["Next.js", "JavaScript", "Express", "MySQL"],
+		technologies: ["React", "JavaScript", "Express", "MySQL", "Node.js"],
 	},
 	{
 		period: "2020 — 2023",

@@ -1,14 +1,9 @@
-import CertificateModal from "@/components/modal/certificate-modal";
+"use client";
+
+import { CertificateModal } from "@/components/modal/certificate-modal";
 import { achievements } from "@/data/achievements";
 import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "lucide-react";
-import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-	title: "All Achievements",
-	description:
-		"A full archive of achievements, certifications, and recognitions earned by Ritik Tiwari.",
-};
 
 export default function AchievementsArchivePage() {
 	return (
@@ -21,8 +16,11 @@ export default function AchievementsArchivePage() {
 				Home
 			</Link>
 
-			<h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+			<h1 className="text-foreground flex items-end gap-1.5 text-4xl font-bold tracking-tight sm:text-5xl">
 				All Achievements
+				<span className="text-muted-foreground text-base font-bold sm:text-lg">
+					({achievements.length})
+				</span>
 			</h1>
 
 			<table id="content" className="mt-12 w-full border-collapse text-left">
@@ -36,7 +34,7 @@ export default function AchievementsArchivePage() {
 						<th className="hidden py-4 text-sm font-semibold sm:table-cell">Link</th>
 					</tr>
 				</thead>
-				<tbody suppressHydrationWarning>
+				<tbody>
 					{achievements.map((achievement) => {
 						const { link } = achievement;
 						return (
@@ -45,7 +43,7 @@ export default function AchievementsArchivePage() {
 								className="border-muted/20 border-b last:border-none"
 							>
 								<td className="text-muted-foreground py-4 pr-8 align-top text-sm">
-									{achievement.date.getFullYear()}
+									{achievement.date.getUTCFullYear()}
 								</td>
 
 								<td className="py-4 pr-4 align-top leading-snug font-semibold">
@@ -55,10 +53,10 @@ export default function AchievementsArchivePage() {
 												href={link.url}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="hover:text-primary focus-visible:text-primary group/link inline-flex items-center"
+												className="hover:text-primary focus-visible:text-primary group/link"
 											>
 												<span>{achievement.title}</span>
-												<ArrowUpRight className="ml-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+												<ArrowUpRight className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
 											</Link>
 										) : link?.type === "certificate" ? (
 											<CertificateModal
@@ -69,10 +67,10 @@ export default function AchievementsArchivePage() {
 											>
 												<button
 													type="button"
-													className="hover:text-primary focus-visible:text-primary group/link inline-flex cursor-pointer items-center"
+													className="hover:text-primary focus-visible:text-primary group/link cursor-pointer text-left"
 												>
 													<span>{achievement.title}</span>
-													<Trophy className="ml-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover/link:scale-110" />
+													<Trophy className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:scale-110" />
 												</button>
 											</CertificateModal>
 										) : (
@@ -121,7 +119,7 @@ export default function AchievementsArchivePage() {
 											>
 												<button
 													type="button"
-													className="text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-xs transition-colors"
+													className="text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-left text-xs transition-colors"
 												>
 													<Award className="size-3.5 shrink-0" />
 													View Certificate

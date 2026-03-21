@@ -20,7 +20,7 @@ interface CertificateModalProps {
 	children: React.ReactNode;
 }
 
-export default function CertificateModal({
+export function CertificateModal({
 	title,
 	issuer,
 	date,
@@ -32,7 +32,7 @@ export default function CertificateModal({
 	return (
 		<Dialog onOpenChange={() => setLoaded(false)}>
 			<DialogTrigger asChild>{children}</DialogTrigger>
-			<DialogContent className="max-w-md gap-4 rounded-xl p-4 sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
+			<DialogContent className="gap-4 rounded-xl p-4 sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
 					<DialogDescription>

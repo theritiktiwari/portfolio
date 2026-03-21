@@ -1,5 +1,6 @@
 import { socialIcons } from "@/constants/images";
 import { projects } from "@/data/projects";
+import { getGitHubRepoPath } from "@/lib/utils";
 import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -21,8 +22,11 @@ export default function ArchivePage() {
 				Home
 			</Link>
 
-			<h1 className="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+			<h1 className="text-foreground flex items-end gap-1.5 text-4xl font-bold tracking-tight sm:text-5xl">
 				All Projects
+				<span className="text-muted-foreground text-base font-bold sm:text-lg">
+					({projects.length})
+				</span>
 			</h1>
 
 			<table id="content" className="mt-12 w-full border-collapse text-left">
@@ -54,10 +58,10 @@ export default function ArchivePage() {
 												href={projectLink}
 												target="_blank"
 												rel="noopener noreferrer"
-												className="hover:text-primary focus-visible:text-primary group/link inline-flex items-center"
+												className="hover:text-primary focus-visible:text-primary group/link"
 											>
 												<span>{project.title}</span>
-												<ArrowUpRight className="ml-1 h-3.5 w-3.5 shrink-0 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+												<ArrowUpRight className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
 											</Link>
 										) : (
 											project.title
@@ -112,8 +116,8 @@ export default function ArchivePage() {
 														maskSize: socialIcons.github.maskSize,
 													}}
 												/>
-												<span className="truncate">
-													{project.repository}
+												<span className="truncate lowercase">
+													{getGitHubRepoPath(project.repository)}
 												</span>
 											</Link>
 										)}

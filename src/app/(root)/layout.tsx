@@ -1,6 +1,7 @@
-import MouseGlow from "@/components/mouse-glow";
 import { ThemeProvider } from "@/components/theme-provider";
-import ThemeToggle from "@/components/theme-toggle";
+import { MouseGlow } from "@/components/ui/mouse-glow";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
@@ -90,6 +91,7 @@ export default function RootLayout({
 					<div className="relative min-h-screen">
 						<MouseGlow />
 						<ThemeToggle className="fixed top-3 right-3 z-100" />
+						<ScrollToTop className="fixed right-3 bottom-3 z-100" />
 						<div className="mx-auto min-h-screen max-w-7xl px-6 py-12 md:px-12 md:py-16 lg:py-0">
 							<a
 								href="#content"
