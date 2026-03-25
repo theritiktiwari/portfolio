@@ -108,6 +108,18 @@ export const projects: Project[] = [
 		url: "https://lets-fly.vercel.app/",
 	},
 	{
+		title: "Finance Club Website — VITFAM",
+		year: 2023,
+		technologies: ["Next.js", "Sanity"],
+		url: "https://vitfam.vercel.app/",
+	},
+	{
+		title: "Music Club Website — VIT",
+		year: 2023,
+		technologies: ["Next.js", "Sanity", "Express", "Node.js", "MongoDB"],
+		url: "https://musicclubvitc.vercel.app/",
+	},
+	{
 		title: "Weather Monitoring Dashboard",
 		year: 2023,
 		technologies: ["Next.js", "CSS", "JavaScript"],
@@ -160,6 +172,24 @@ export const projects: Project[] = [
 		technologies: ["Next.js", "CSS", "JavaScript", "Firebase"],
 		repository: "https://github.com/theritiktiwari/pulscope",
 		url: "https://pulscope.vercel.app/",
+	},
+	{
+		title: "Certificate Finder",
+		year: 2022,
+		technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+		repository: "https://github.com/vitfam/certificates-finder",
+	},
+	{
+		title: "Grand Thrift Auto: VITFAM Event",
+		year: 2022,
+		technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+		repository: "https://github.com/vitfam/Grand-Thrift-Auto",
+	},
+	{
+		title: "DeFrauder: VITFAM Event",
+		year: 2022,
+		technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+		repository: "https://github.com/vitfam/DeFrauder",
 	},
 	{
 		title: "Automatic Night Lamp",

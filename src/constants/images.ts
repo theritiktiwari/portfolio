@@ -31,6 +31,8 @@ export const projectImages = {
 
 export const certificates = {
 	awsome_day: "/certificates/awsome-day.avif",
+	bsng_rajya_puraskar: "/certificates/bs&g-rajya-puraskar.avif",
+	bsng_tritiya_sopan: "/certificates/bs&g-tritiya-sopan.avif",
 	codechef_snackdown: "/certificates/codechef-snackdown.avif",
 	hackerrank_css: "/certificates/hackerrank-css.avif",
 	hackerrank_sql: "/certificates/hackerrank-sql.avif",
@@ -42,9 +44,14 @@ export const certificates = {
 	microsoft_sc900: "/certificates/microsoft-sc900.avif",
 	skillzcafe_excel: "/certificates/skillzcafe-excel.avif",
 	sololearn_html: "/certificates/sololearn-html.avif",
+	sse_dance: "/certificates/sse-dance.avif",
+	sse_skit: "/certificates/sse-skit.avif",
 	twh_sociothon: "/certificates/twh-sociothon.avif",
 	udemy_js_php: "/certificates/udemy-js-php.avif",
 	udemy_wordpress: "/certificates/udemy-wordpress.avif",
 	vitfam_head: "/certificates/vitfam-head.avif",
 	vitfam_member: "/certificates/vitfam-member.avif",
+	volleyball_regional_2016: "/certificates/volleyball-regional-2016.avif",
+	volleyball_regional_2017: "/certificates/volleyball-regional-2017.avif",
+	volleyball_regional_2018: "/certificates/volleyball-regional-2018.avif",
 } as const;
