@@ -48,6 +48,7 @@ export const projects: Project[] = [
 		title: "E-commerce Store",
 		year: 2024,
 		technologies: ["Next.js", "TypeScript", "GraphQL", "Razorpay Subscription"],
+		repository: "https://github.com/theritiktiwari/sports-ecom",
 		url: "https://fitsportshub.vercel.app/",
 	},
 	{
