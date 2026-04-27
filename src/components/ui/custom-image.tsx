@@ -15,7 +15,7 @@ export function CustomImage({ src, alt, className }: CustomImageProps) {
 	return (
 		<div
 			className={cn(
-				"border-muted/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded-lg border-3 transition sm:rounded",
+				"border-popover-foreground/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded-lg border-3 shadow-lg transition sm:rounded",
 				{ "hidden sm:block": failed },
 				className
 			)}
@@ -24,9 +24,11 @@ export function CustomImage({ src, alt, className }: CustomImageProps) {
 				<img
 					src={src}
 					alt={alt}
-					width={200}
-					height={112}
-					className="size-full object-cover"
+					width={900}
+					height={485}
+					className="size-full rounded-xs object-cover"
+					loading="lazy"
+					decoding="async"
 					onError={() => setFailed(true)}
 				/>
 			)}

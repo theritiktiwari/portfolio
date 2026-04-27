@@ -73,7 +73,7 @@
 
 	--border: oklch(0.25 0.02 240);
 	--input: oklch(0.25 0.02 240);
-	--ring: oklch(0.6 0.18 255);
+	--ring: oklch(0.72 0.18 255);
 
 	--mouse-glow: rgba(0, 115, 255, 0.15);
 	--radius: 0.625rem;

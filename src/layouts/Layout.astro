@@ -26,17 +26,13 @@ const fullOgImageUrl = new URL(ogImage, Astro.site).href;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
 		<script is:inline>
-            const getTheme = () => {
-                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-                    return localStorage.getItem('theme');
-                }
-                return 'dark';
-            };
-            const theme = getTheme();
-            document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
+            const theme = typeof localStorage !== 'undefined'
+                ? (localStorage.getItem('theme') || 'dark')
+                : 'dark';
+            const root = document.documentElement;
+            root.classList.remove('dark', 'light');
+            root.classList.add(theme);
         </script>
 
 		<title>{title}</title>
@@ -79,7 +75,7 @@ const fullOgImageUrl = new URL(ogImage, Astro.site).href;
 	</head>
 	<body class="flex min-h-screen flex-col">
 		<div class="relative min-h-screen">
-			<MouseGlow client:load />
+			<MouseGlow client:idle />
 			<ThemeToggle className="fixed top-3 right-3 z-100" client:load />
 			<ScrollToTop className="fixed right-3 bottom-3 z-100" client:load />
 
@@ -96,10 +92,12 @@ const fullOgImageUrl = new URL(ogImage, Astro.site).href;
 		</div>
 
 		<script>
-			import { inject } from "@vercel/analytics";
-import { injectSpeedInsights } from "@vercel/speed-insights";
-            inject();
-            injectSpeedInsights();
+			if (import.meta.env.PROD) {
+				const { inject } = await import("@vercel/analytics");
+				const { injectSpeedInsights } = await import("@vercel/speed-insights");
+				inject();
+				injectSpeedInsights({ framework: "astro" });
+			}
 		</script>
 	</body>
 </html>

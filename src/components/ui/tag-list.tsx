@@ -15,7 +15,7 @@ export function TagList({ items, label, className, itemClassName }: TagListProps
 		<ul className={cn("flex flex-wrap", className)} aria-label={label}>
 			{items.map((item) => (
 				<li key={item} className={cn(itemClassName)}>
-					<div className="bg-primary/10 text-primary flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
+					<div className="bg-primary/20 text-ring flex items-center rounded-full px-3 py-1 text-xs leading-5 font-medium">
 						{item}
 					</div>
 				</li>

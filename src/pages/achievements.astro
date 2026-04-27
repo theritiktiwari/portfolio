@@ -3,7 +3,7 @@ import { CertificateModal } from "@/components/modal/certificate-modal";
 import { TagList } from "@/components/ui/tag-list";
 import { achievements } from "@/data/achievements";
 import Layout from "@/layouts/Layout.astro";
-import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
 ---
 
 <Layout
@@ -67,15 +67,9 @@ import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "l
 												issuer={achievement.issuer}
 												date={achievement.date}
 												certificateImage={link.url}
-											>
-												<button
-													type="button"
-													class="hover:text-primary focus-visible:text-primary group/link cursor-pointer text-left"
-												>
-													<span>{achievement.title}</span>
-													<Trophy className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:scale-110" />
-												</button>
-											</CertificateModal>
+												variant="title"
+												client:load
+											/>
 										) : (
 											achievement.title
 										)}
@@ -115,16 +109,9 @@ import { ArrowLeft, ArrowUpRight, Award, CircleArrowOutUpRight, Trophy } from "l
 												issuer={achievement.issuer}
 												date={achievement.date}
 												certificateImage={link.url}
+												variant="link"
 												client:load
-											>
-												<button
-													type="button"
-													class="text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-left text-xs transition-colors"
-												>
-													<Award className="size-3.5 shrink-0" />
-													View Certificate
-												</button>
-											</CertificateModal>
+											/>
 										) : null}
 									</div>
 								</td>

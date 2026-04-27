@@ -9,6 +9,8 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn, formatDate } from "@/lib/utils";
+import { Award, Trophy } from "lucide-react";
+import type { ReactElement } from "react";
 import { useState } from "react";
 
 interface CertificateModalProps {
@@ -16,7 +18,9 @@ interface CertificateModalProps {
 	issuer: string;
 	date: Date;
 	certificateImage: string;
-	children: React.ReactNode;
+	/** Pass a single React element as trigger, or use variant for a built-in trigger */
+	children?: ReactElement;
+	variant?: "title" | "link";
 }
 
 export function CertificateModal({
@@ -25,8 +29,29 @@ export function CertificateModal({
 	date,
 	certificateImage,
 	children,
+	variant,
 }: CertificateModalProps) {
 	const [loaded, setLoaded] = useState(false);
+
+	const trigger =
+		children ??
+		(variant === "title" ? (
+			<button
+				type="button"
+				className="hover:text-primary focus-visible:text-primary group/link cursor-pointer text-left"
+			>
+				<span>{title}</span>
+				<Trophy className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:scale-110" />
+			</button>
+		) : (
+			<button
+				type="button"
+				className="text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-left text-xs transition-colors"
+			>
+				<Award className="size-3.5 shrink-0" />
+				View Certificate
+			</button>
+		));
 
 	return (
 		<Dialog
@@ -34,7 +59,7 @@ export function CertificateModal({
 				if (!open) setLoaded(false);
 			}}
 		>
-			<DialogTrigger asChild>{children}</DialogTrigger>
+			<DialogTrigger asChild>{trigger}</DialogTrigger>
 			<DialogContent className="gap-4 rounded-xl p-4 sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
 				<DialogHeader>
 					<DialogTitle className="text-left">{title}</DialogTitle>
