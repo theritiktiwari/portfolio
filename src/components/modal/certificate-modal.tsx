@@ -9,7 +9,6 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn, formatDate } from "@/lib/utils";
-import Image from "next/image";
 import { useState } from "react";
 
 interface CertificateModalProps {
@@ -30,12 +29,16 @@ export function CertificateModal({
 	const [loaded, setLoaded] = useState(false);
 
 	return (
-		<Dialog onOpenChange={() => setLoaded(false)}>
+		<Dialog
+			onOpenChange={(open) => {
+				if (!open) setLoaded(false);
+			}}
+		>
 			<DialogTrigger asChild>{children}</DialogTrigger>
 			<DialogContent className="gap-4 rounded-xl p-4 sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
 				<DialogHeader>
-					<DialogTitle>{title}</DialogTitle>
-					<DialogDescription>
+					<DialogTitle className="text-left">{title}</DialogTitle>
+					<DialogDescription className="text-left">
 						{issuer} · {formatDate({ date, options: { day: "numeric" } })}
 					</DialogDescription>
 				</DialogHeader>
@@ -45,15 +48,14 @@ export function CertificateModal({
 						!loaded && "bg-muted aspect-4/3 animate-pulse"
 					)}
 				>
-					<Image
+					<img
 						src={certificateImage}
 						alt={`${title} certificate`}
-						width={0}
-						height={0}
-						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+						loading="lazy"
+						decoding="async"
 						onLoad={() => setLoaded(true)}
 						className={cn(
-							"h-auto w-full transition-opacity duration-300",
+							"h-auto w-full transition-opacity duration-500",
 							loaded ? "opacity-100" : "opacity-0"
 						)}
 					/>

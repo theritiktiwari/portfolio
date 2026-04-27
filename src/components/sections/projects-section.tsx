@@ -4,7 +4,6 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
 import { projects } from "@/data/projects";
 import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
-import Link from "next/link";
 
 export default function ProjectsSection() {
 	const featuredProjects = projects.filter((project) => project.featured);
@@ -30,7 +29,7 @@ export default function ProjectsSection() {
 									<div className="z-10 sm:order-2 sm:col-span-6">
 										<h3>
 											{projectLink ? (
-												<Link
+												<a
 													href={projectLink}
 													target="_blank"
 													rel="noopener noreferrer"
@@ -41,7 +40,7 @@ export default function ProjectsSection() {
 														{project.title}
 														<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
 													</span>
-												</Link>
+												</a>
 											) : (
 												<span className="text-foreground leading-tight font-medium">
 													{project.title}
@@ -92,13 +91,13 @@ export default function ProjectsSection() {
 				</ul>
 
 				<div className="mt-12">
-					<Link
+					<a
 						href="/projects"
 						className="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-center leading-tight font-bold"
 					>
 						<span>View All Projects</span>
 						<ArrowRight className="ml-1 inline-block size-4 shrink-0 -translate-y-px transition-transform group-hover/link:translate-x-2 group-focus-visible/link:translate-x-2 motion-reduce:transition-none" />
-					</Link>
+					</a>
 				</div>
 			</div>
 		</section>

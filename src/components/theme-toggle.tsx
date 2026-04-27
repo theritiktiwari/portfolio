@@ -1,9 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 import { cn } from "@/lib/utils";
 import { MoonStar, SunMedium } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useRef } from "react";
 import { flushSync } from "react-dom";
 

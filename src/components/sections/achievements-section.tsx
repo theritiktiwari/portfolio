@@ -1,18 +1,13 @@
 "use client";
 
+import { CertificateModal } from "@/components/modal/certificate-modal";
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
-import { Achievement, achievements } from "@/data/achievements";
+import type { Achievement } from "@/data/achievements";
+import { achievements } from "@/data/achievements";
 import { formatDate } from "@/lib/utils";
 import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-
-const CertificateModal = dynamic(
-	() => import("@/components/modal/certificate-modal").then((m) => m.CertificateModal),
-	{ ssr: false }
-);
 
 export default function AchievementsSection() {
 	const featuredAchievements = achievements.filter((achievement) => achievement.featured);
@@ -33,14 +28,14 @@ export default function AchievementsSection() {
 				))}
 			</ul>
 
-			<div className="mt-12">
-				<Link
+			<div className="mt-12 mb-16 md:mb-24 lg:mb-36">
+				<a
 					href="/achievements"
 					className="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-center leading-tight font-bold"
 				>
 					<span>View All Achievements</span>
 					<ArrowRight className="ml-1 inline-block size-4 shrink-0 -translate-y-px transition-transform group-hover/link:translate-x-2 group-focus-visible/link:translate-x-2 motion-reduce:transition-none" />
-				</Link>
+				</a>
 			</div>
 		</section>
 	);
@@ -62,7 +57,7 @@ function AchievementCard({ achievement }: { achievement: Achievement }) {
 					{link?.type === "certificate" ? (
 						<ShowCertificate achievement={achievement} certificateUrl={link.url} />
 					) : link?.type === "external" ? (
-						<Link
+						<a
 							href={link.url}
 							target="_blank"
 							rel="noopener noreferrer"
@@ -76,7 +71,7 @@ function AchievementCard({ achievement }: { achievement: Achievement }) {
 									<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
 								</span>
 							</span>
-						</Link>
+						</a>
 					) : (
 						<span className="text-foreground leading-tight font-medium">
 							{achievement.title}{" "}

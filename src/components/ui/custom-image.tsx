@@ -1,7 +1,6 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { useState } from "react";
 
 interface CustomImageProps {
@@ -22,8 +21,8 @@ export function CustomImage({ src, alt, className }: CustomImageProps) {
 			)}
 		>
 			{!failed && (
-				<Image
-					src={src!}
+				<img
+					src={src}
 					alt={alt}
 					width={200}
 					height={112}

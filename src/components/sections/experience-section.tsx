@@ -3,7 +3,6 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
 import { experiences } from "@/data/experience";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 export default function ExperienceSection() {
 	return (
@@ -27,7 +26,7 @@ export default function ExperienceSection() {
 
 								<div className="z-10 sm:col-span-6">
 									<h3>
-										<Link
+										<a
 											href={exp.companyUrl}
 											target="_blank"
 											rel="noopener noreferrer"
@@ -41,7 +40,7 @@ export default function ExperienceSection() {
 													<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
 												</span>
 											</span>
-										</Link>
+										</a>
 									</h3>
 
 									<p className="text-muted-foreground mt-2 text-sm leading-6">
@@ -61,7 +60,7 @@ export default function ExperienceSection() {
 				</ol>
 
 				<div className="mt-12">
-					<Link
+					<a
 						href="/resume.pdf"
 						target="_blank"
 						rel="noopener noreferrer"
@@ -71,7 +70,7 @@ export default function ExperienceSection() {
 							View Full Resume
 							<ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 group-focus-visible/link:translate-x-1 group-focus-visible/link:-translate-y-1 motion-reduce:transition-none" />
 						</span>
-					</Link>
+					</a>
 				</div>
 			</div>
 		</section>
