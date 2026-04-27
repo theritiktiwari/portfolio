@@ -1,0 +1,103 @@
+---
+import { MouseGlow } from "@/components/mouse-glow";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { ThemeToggle } from "@/components/theme-toggle";
+import "@/styles/globals.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: string;
+}
+
+const {
+    title = "Ritik Tiwari | Software Engineer",
+    description = "Software Engineer dedicated to crafting seamless digital experiences. I bridge the gap between complex backend architecture and intuitive user interfaces.",
+    ogImage = "/og-image.png",
+} = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const fullOgImageUrl = new URL(ogImage, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en" class="dark antialiased">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<script is:inline>
+            const theme = typeof localStorage !== 'undefined'
+                ? (localStorage.getItem('theme') || 'dark')
+                : 'dark';
+            const root = document.documentElement;
+            root.classList.remove('dark', 'light');
+            root.classList.add(theme);
+        </script>
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta
+			name="keywords"
+			content="Ritik Tiwari, Software Engineer, Full-stack Developer, React, Astro, TypeScript, Node.js, Portfolio"
+		/>
+		<meta name="author" content="Ritik Tiwari" />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content="Ritik Tiwari" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullOgImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Ritik Tiwari — Software Engineer" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullOgImageUrl} />
+		<meta name="twitter:creator" content="@theritiktiwari" />
+
+		<!-- Icons -->
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-icon.png" />
+		<link rel="manifest" href="/manifest.json" />
+
+		<!-- Robots -->
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow, max-image-preview:large" />
+	</head>
+	<body class="flex min-h-screen flex-col">
+		<div class="relative min-h-screen">
+			<MouseGlow client:idle />
+			<ThemeToggle className="fixed top-3 right-3 z-100" client:load />
+			<ScrollToTop className="fixed right-3 bottom-3 z-100" client:load />
+
+			<div class="mx-auto min-h-screen max-w-7xl px-6 py-12 md:px-12 md:py-16 lg:py-0">
+                <a
+                    href="#content"
+                    class="bg-accent text-accent-foreground absolute top-0 left-0 block -translate-x-full rounded px-4 py-3 text-sm font-bold tracking-widest uppercase focus-visible:translate-x-0 z-101"
+                >
+                    Skip to Content
+                </a>
+
+				<slot />
+            </div>
+		</div>
+
+		<script>
+			if (import.meta.env.PROD) {
+				const { inject } = await import("@vercel/analytics");
+				const { injectSpeedInsights } = await import("@vercel/speed-insights");
+				inject();
+				injectSpeedInsights({ framework: "astro" });
+			}
+		</script>
+	</body>
+</html>

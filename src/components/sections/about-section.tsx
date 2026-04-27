@@ -1,5 +1,4 @@
 import { SectionHeader } from "@/components/ui/section-header";
-import Link from "next/link";
 
 export default function AboutSection() {
 	return (
@@ -16,23 +15,23 @@ export default function AboutSection() {
 				</p>
 				<p>
 					I&apos;m a software engineer at{" "}
-					<Link
+					<a
 						href="https://rtcamp.com/"
 						rel="noopener noreferrer"
 						target="_blank"
 						className="text-foreground hover:text-primary focus-visible:text-primary font-semibold transition-colors"
 					>
 						rtCamp
-					</Link>
+					</a>
 					, where I work on{" "}
-					<Link
+					<a
 						href="https://webauditor.io/"
 						rel="noopener noreferrer"
 						target="_blank"
 						className="text-foreground hover:text-primary focus-visible:text-primary font-semibold transition-colors"
 					>
 						Web Auditor
-					</Link>{" "}
+					</a>{" "}
 					a platform designed to monitor and audit website performance. In this project, I
 					architected multi-tenant structures, modular APIs and built the{" "}
 					<span className="text-foreground font-semibold">entire frontend</span>. Beyond

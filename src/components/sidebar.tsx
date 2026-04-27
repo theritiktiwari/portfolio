@@ -4,9 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MaskedIcon } from "@/components/ui/masked-icon";
 import { navLinks, socialLinks } from "@/constants/links";
 import { useActiveSection } from "@/hooks/use-active-section";
-import { smoothScrollTo } from "@/lib/smooth-scroll";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { cn, smoothScrollTo } from "@/lib/utils";
 
 const sectionIds = navLinks.map((link) => link.id);
 
@@ -17,9 +15,9 @@ export default function Sidebar() {
 		<header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
 			<div>
 				<h1 className="text-foreground text-4xl font-bold tracking-wide sm:text-5xl">
-					<Link href="/" className="text-primary transition-colors">
+					<a href="/" className="text-primary transition-colors">
 						Ritik Tiwari
-					</Link>
+					</a>
 				</h1>
 				<h2 className="text-foreground mt-3 text-lg font-medium tracking-tight sm:text-xl">
 					Software Engineer
@@ -88,7 +86,7 @@ export default function Sidebar() {
 						<li key={social.label} className="flex shrink-0 items-center text-xs">
 							{"tooltip" in social && social.tooltip ? (
 								<span className="group relative inline-flex">
-									<Link
+									<a
 										href={social.href}
 										target="_blank"
 										rel="noopener noreferrer"
@@ -96,7 +94,7 @@ export default function Sidebar() {
 										aria-label={social.label}
 									>
 										{iconNode}
-									</Link>
+									</a>
 									<span className="pointer-events-none absolute bottom-full left-0 mb-3 opacity-0 transition-all group-hover:opacity-100">
 										<span className="bg-card text-card-foreground border-border block w-56 rounded border px-3 py-2 text-xs leading-relaxed shadow-xl">
 											{social.tooltip}
@@ -104,7 +102,7 @@ export default function Sidebar() {
 									</span>
 								</span>
 							) : (
-								<Link
+								<a
 									href={social.href}
 									target="_blank"
 									rel="noopener noreferrer"
@@ -112,7 +110,7 @@ export default function Sidebar() {
 									aria-label={`${social.label} (opens in a new tab)`}
 								>
 									{iconNode}
-								</Link>
+								</a>
 							)}
 						</li>
 					);

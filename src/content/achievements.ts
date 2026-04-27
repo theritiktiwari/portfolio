@@ -1,8 +1,6 @@
 import { certificates } from "@/constants/images";
 
-export type AchievementLink =
-	| { type: "certificate"; url: string }
-	| { type: "external"; url: string };
+type AchievementLink = { type: "certificate"; url: string } | { type: "external"; url: string };
 
 export interface Achievement {
 	title: string;

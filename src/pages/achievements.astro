@@ -1,0 +1,125 @@
+---
+import { CertificateModal } from "@/components/modal/certificate-modal";
+import { TagList } from "@/components/ui/tag-list";
+import { achievements } from "@/content/achievements";
+import Layout from "@/layouts/Layout.astro";
+import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
+---
+
+<Layout
+	title="Achievements | Ritik Tiwari"
+	description="A full archive of achievements, certifications, and recognitions earned by Ritik Tiwari."
+>
+	<main class="md:py-20 lg:py-24">
+		<a
+			href="/"
+			class="group text-primary mb-2 inline-flex items-center leading-tight font-semibold"
+		>
+			<ArrowLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-2" />
+			Home
+		</a>
+
+		<h1
+			class="text-foreground flex items-end gap-1.5 text-4xl font-bold tracking-tight sm:text-5xl"
+		>
+			Achievements
+			<span class="text-muted-foreground text-base font-bold sm:text-lg">
+				({achievements.length})
+			</span>
+		</h1>
+
+		<table id="content" class="mt-12 w-full border-collapse text-left">
+			<thead
+				class="border-muted/40 bg-background/75 sticky top-0 z-10 border-b px-6 py-5 backdrop-blur"
+			>
+				<tr>
+					<th class="py-4 pr-8 text-sm font-semibold">Year</th>
+					<th class="py-4 pr-8 text-sm font-semibold">Achievement</th>
+					<th class="hidden py-4 pr-8 text-sm font-semibold lg:table-cell"> Tags </th>
+					<th class="hidden py-4 text-sm font-semibold sm:table-cell">Link</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					achievements.map((achievement) => {
+						const { link } = achievement;
+						return (
+							<tr class="border-muted/20 border-b last:border-none">
+								<td class="text-muted-foreground py-4 pr-8 align-top text-sm">
+									{achievement.date.getUTCFullYear()}
+								</td>
+
+								<td class="py-4 pr-4 align-top leading-snug font-semibold">
+									<div class="sm:hidden">
+										{link?.type === "external" ? (
+											<a
+												href={link.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="hover:text-primary focus-visible:text-primary group/link"
+											>
+												<span>{achievement.title}</span>
+												<ArrowUpRight className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+											</a>
+										) : link?.type === "certificate" ? (
+											<CertificateModal
+												title={achievement.title}
+												issuer={achievement.issuer}
+												date={achievement.date}
+												certificateImage={link.url}
+												variant="title"
+												client:load
+											/>
+										) : (
+											achievement.title
+										)}
+									</div>
+									<div class="hidden sm:block">
+										<span>{achievement.title}</span>
+										<span class="text-muted-foreground ml-1 font-normal">
+											· {achievement.issuer}
+										</span>
+									</div>
+								</td>
+
+								<td class="hidden py-4 pr-8 align-top lg:table-cell">
+									<TagList
+										items={achievement.tags}
+										label="Tags"
+										className="gap-x-1.5 gap-y-1"
+									/>
+								</td>
+
+								<td class="align-center hidden py-4 sm:table-cell">
+									<div class="flex flex-col gap-3">
+										{link?.type === "external" ? (
+											<a
+												href={link.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
+												aria-label={`View ${achievement.title}`}
+											>
+												<CircleArrowOutUpRight className="size-3.5 shrink-0" />
+												<span class="truncate">{link.url}</span>
+											</a>
+										) : link?.type === "certificate" ? (
+											<CertificateModal
+												title={achievement.title}
+												issuer={achievement.issuer}
+												date={achievement.date}
+												certificateImage={link.url}
+												variant="link"
+												client:load
+											/>
+										) : null}
+									</div>
+								</td>
+							</tr>
+						);
+					})
+				}
+			</tbody>
+		</table>
+	</main>
+</Layout>

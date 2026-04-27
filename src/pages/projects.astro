@@ -1,0 +1,119 @@
+---
+import { MaskedIcon } from "@/components/ui/masked-icon";
+import { TagList } from "@/components/ui/tag-list";
+import { socialIcons } from "@/constants/images";
+import { projects } from "@/content/projects";
+import Layout from "@/layouts/Layout.astro";
+import { getGitHubRepoPath } from "@/lib/utils";
+import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
+---
+
+<Layout
+	title="Projects | Ritik Tiwari"
+	description="A full archive of projects built by Ritik Tiwari — spanning full-stack web apps, APIs, and open-source contributions."
+>
+	<main class="md:py-20 lg:py-24">
+		<a
+			href="/"
+			class="group text-primary mb-2 inline-flex items-center leading-tight font-semibold"
+		>
+			<ArrowLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-2" />
+			Home
+		</a>
+
+		<h1
+			class="text-foreground flex items-end gap-1.5 text-4xl font-bold tracking-tight sm:text-5xl"
+		>
+			Projects
+			<span class="text-muted-foreground text-base font-bold sm:text-lg">
+				({projects.length})
+			</span>
+		</h1>
+
+		<table id="content" class="mt-12 w-full border-collapse text-left">
+			<thead
+				class="border-muted/40 bg-background/75 sticky top-0 z-10 border-b px-6 py-5 backdrop-blur"
+			>
+				<tr>
+					<th class="py-4 pr-8 text-sm font-semibold">Year</th>
+					<th class="py-4 pr-8 text-sm font-semibold">Project</th>
+					<th class="hidden py-4 pr-8 text-sm font-semibold lg:table-cell">Built with</th>
+					<th class="hidden py-4 text-sm font-semibold sm:table-cell">Link</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					projects.map((project) => {
+						const projectLink = project.url || project.repository;
+						return (
+							<tr class="border-muted/20 border-b last:border-none">
+								<td class="text-muted-foreground py-4 pr-8 align-top text-sm">
+									{project.year}
+								</td>
+								<td class="py-4 pr-4 align-top leading-snug font-semibold">
+									<div class="sm:hidden">
+										{projectLink ? (
+											<a
+												href={projectLink}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="hover:text-primary focus-visible:text-primary group/link"
+											>
+												<span>{project.title}</span>
+												<ArrowUpRight className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+											</a>
+										) : (
+											project.title
+										)}
+									</div>
+									<div class="hidden sm:block">{project.title}</div>
+								</td>
+								<td class="hidden py-4 pr-8 align-top lg:table-cell">
+									<TagList
+										items={project.technologies}
+										label="Technologies used"
+										className="gap-x-1.5 gap-y-1"
+									/>
+								</td>
+								<td class="align-center hidden py-4 sm:table-cell">
+									<div class="flex flex-col gap-3">
+										{project.url && (
+											<a
+												href={project.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
+												aria-label={`Visit ${project.title}`}
+											>
+												<CircleArrowOutUpRight className="size-3.5 shrink-0" />
+												<span class="truncate">{project.url}</span>
+											</a>
+										)}
+										{project.repository && (
+											<a
+												href={project.repository}
+												target="_blank"
+												rel="noopener noreferrer"
+												class="text-muted-foreground hover:text-primary inline-flex max-w-50 gap-1 text-xs transition-colors"
+												aria-label={`View ${project.title} on GitHub`}
+											>
+												<MaskedIcon
+													src={socialIcons.github.src}
+													maskSize={socialIcons.github.maskSize}
+													className="size-3.5 shrink-0"
+												/>
+												<span class="truncate lowercase">
+													{getGitHubRepoPath(project.repository)}
+												</span>
+											</a>
+										)}
+									</div>
+								</td>
+							</tr>
+						);
+					})
+				}
+			</tbody>
+		</table>
+	</main>
+</Layout>
