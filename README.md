@@ -42,53 +42,26 @@ After two iterations with Next.js, the portfolio was still shipping a full React
 
 ```
 portfolio/
-├── .agents/
-│   └── skills/			   # Skills for AI agents
-│
-├── .github/
-│   └── workflows/         # GitHub Actions workflows
-│
-├── .husky/
-│   ├── commit-msg         # Commit message hook (enforces conventional commits)
-│   └── pre-commit         # Pre-commit hook (runs lint-staged)
-│
-├── .vscode/
-│   ├── extensions.json    # Recommended VS Code extensions
-│   └── settings.json      # VS Code workspace settings
-│
-├── public/                # Static assets (favicon, resume, OG image)
+├── public/                    # Static assets (favicon, resume, OG image)
 ├── src/
-│   ├── components/        # React islands & Astro components
-│   │   ├── modal/         # Certificate viewer dialog
-│   │   ├── sections/      # Home page sections (About, Experience, Projects…)
-│   │   └── ui/            # shadcn/ui primitives
+│   ├── components/            # React islands & Astro components
+│   │   ├── modal/             # Certificate viewer dialog
+│   │   ├── sections/          # Home page sections (About, Experience, Projects…)
+│   │   └── ui/                # shadcn/ui primitives
 │   │
-│   ├── content/           # Achievements, blog, education, experience, projects
-│   ├── constants/         # Images, nav links, social links
-│   ├── hooks/             # custom react hooks
-│   ├── layouts/           # Base HTML shell with SEO meta + analytics
-│   ├── lib/               # Utilities
-│   ├── pages/             # File-based routing
-│   └── styles/            # Global CSS + Tailwind imports
+│   ├── content/               # Achievements, blog, education, experience, projects
+│   ├── constants/             # Images, nav links, social links
+│   ├── hooks/                 # custom react hooks
+│   ├── layouts/               # Base HTML shell with SEO meta + analytics
+│   ├── lib/                   # Utilities
+│   ├── pages/                 # File-based routing
+│   ├── styles/                # Global CSS + Tailwind imports
+│   └── content.config.ts      # Blog content configuration
 │
-├── .editorconfig          # Editor settings
-├── .gitignore             # Git ignore rules
-├── .lintstagedrc.js       # Lint-staged configuration
-├── .npmrc                 # Enforces pnpm
-├── .nvmrc                 # Enforces Node version
-├── .prettierignore        # Prettier ignore rules
-├── .prettierrc.js         # Prettier configuration
-├── astro.config.ts        # Astro configuration
-├── commitlint.config.js   # Commitlint configuration
-├── components.json        # Components configuration
-├── eslint.config.mjs      # ESLint configuration
-├── LICENSE                # License file
-├── package.json           # Package configuration
-├── pnpm-lock.yaml         # Package lockfile
-├── pnpm-workspace.yaml    # pnpm workspace configuration
-├── README.md              # Project documentation
-├── skills-lock.json       # AI agent skills lockfile
-└── tsconfig.json          # TypeScript configuration
+├── astro.config.ts            # Astro configuration
+├── components.json            # Components configuration
+├── LICENSE                    # License file
+└── package.json               # Package configuration
 ```
 
 ---
