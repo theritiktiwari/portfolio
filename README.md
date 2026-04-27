@@ -81,7 +81,7 @@ portfolio/
 ├── eslint.config.mjs      # ESLint configuration
 ├── LICENSE                # License file
 ├── package.json           # Package configuration
-├── pnpm-lock.json         # Package lockfile
+├── pnpm-lock.yaml         # Package lockfile
 ├── pnpm-workspace.yaml    # pnpm workspace configuration
 ├── README.md              # Project documentation
 ├── skills-lock.json       # AI agent skills lockfile
