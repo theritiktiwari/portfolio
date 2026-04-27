@@ -1,0 +1,110 @@
+---
+import { CardHoverEffect } from "@/components/ui/card-hover-effect";
+import { SectionHeader } from "@/components/ui/section-header";
+import { TagList } from "@/components/ui/tag-list";
+import { formatDate, isPublished, readingTime } from "@/lib/utils";
+import { getCollection } from "astro:content";
+import { ArrowRight, ArrowUpRight, BookOpen, Calendar, Layers as LayersIcon } from "lucide-react";
+
+const allPosts = await getCollection("blog");
+const featuredPosts = allPosts
+	.filter((p) => isPublished(p.data.draft) && p.data.featured)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+
+if (featuredPosts.length === 0) return;
+---
+
+<section id="blog" class="scroll-mt-16 lg:scroll-mt-24" aria-label="Featured posts">
+	<SectionHeader title="Writing" />
+
+	<ul class="group/list space-y-12">
+		{
+			featuredPosts.map((post) => {
+				const rt = readingTime(post.body ?? "");
+				return (
+					<li>
+						<div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
+							<CardHoverEffect />
+
+							<div class="z-10 sm:order-2 sm:col-span-6">
+								<h3>
+									<a
+										href={`/blog/${post.id}`}
+										class="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-baseline leading-tight font-medium"
+									>
+										<span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
+										<span>
+											{post.data.title}
+											<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 motion-reduce:transition-none" />
+										</span>
+									</a>
+								</h3>
+
+								<p class="text-muted-foreground mt-2 text-sm leading-6">
+									{post.data.description}
+								</p>
+
+								<div class="text-muted-foreground mt-2 flex items-center gap-4 text-xs">
+									<span class="flex items-center gap-1">
+										<Calendar className="size-3.5" />
+										{formatDate({ date: post.data.pubDate })}
+									</span>
+									<span class="flex items-center gap-1">
+										<BookOpen className="size-3.5" />
+										{rt} min read
+									</span>
+									{post.data.series && (
+										<span class="flex items-center gap-1">
+											<LayersIcon className="size-3.5" />
+											{post.data.series.name} · Part {post.data.series.part}
+										</span>
+									)}
+								</div>
+
+								<TagList
+									items={post.data.tags}
+									label="Topics"
+									className="mt-2"
+									itemClassName="mt-2 mr-1.5"
+								/>
+							</div>
+
+							<div class="z-10 sm:order-1 sm:col-span-2">
+								{post.data.heroImage ? (
+									<div class="border-popover-foreground/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded-lg border-3 shadow-lg transition sm:rounded">
+										<img
+											src={post.data.heroImage.src}
+											alt={post.data.title}
+											width={post.data.heroImage.width}
+											height={post.data.heroImage.height}
+											class="size-full rounded-xs object-cover"
+											loading="lazy"
+											decoding="async"
+										/>
+									</div>
+								) : (
+									<div class="border-popover-foreground/20 bg-primary/5 aspect-video flex items-center justify-center rounded-lg border-3 shadow-lg sm:rounded">
+										<BookOpen className="text-primary/30 size-8" />
+									</div>
+								)}
+							</div>
+						</div>
+					</li>
+				);
+			})
+		}
+	</ul>
+
+	<div class="mt-12">
+		<a
+			href="/blog"
+			class="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-center leading-tight font-bold"
+		>
+			<span>View All Posts</span>
+			<ArrowRight
+				className="ml-1 inline-block size-4 shrink-0 -translate-y-px transition-transform group-hover/link:translate-x-2 motion-reduce:transition-none"
+			/>
+		</a>
+	</div>
+</section>

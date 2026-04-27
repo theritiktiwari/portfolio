@@ -1,0 +1,51 @@
+---
+import { CardHoverEffect } from "@/components/ui/card-hover-effect";
+import { SectionHeader } from "@/components/ui/section-header";
+import { TagList } from "@/components/ui/tag-list";
+import { education } from "@/content/education";
+---
+
+<section id="education" class="scroll-mt-16 lg:scroll-mt-24" aria-label="Education">
+	<SectionHeader title="Education" />
+
+	<ol class="group/list space-y-12">
+		{
+			education.map((edu) => (
+				<li>
+					<div class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
+						<CardHoverEffect />
+
+						<header class="text-muted-foreground z-10 mt-1 mb-2 text-xs font-semibold tracking-wide uppercase sm:col-span-2">
+							{edu.period}
+						</header>
+
+						<div class="z-10 sm:col-span-6">
+							<h3 class="text-foreground leading-tight font-medium">
+								{edu.degree} <span class="inline-block">· {edu.institution}</span>
+							</h3>
+
+							{edu.grade && (
+								<p class="text-primary mt-1 text-xs font-bold tracking-wide">
+									{edu.grade.type === "cgpa"
+										? `CGPA: ${edu.grade.value} / 10`
+										: `Score: ${edu.grade.value}%`}
+								</p>
+							)}
+
+							<p class="text-muted-foreground mt-2 text-sm leading-6">
+								{edu.description}
+							</p>
+
+							<TagList
+								items={edu.courses}
+								label="Courses"
+								className="mt-2"
+								itemClassName="mt-2 mr-1.5"
+							/>
+						</div>
+					</div>
+				</li>
+			))
+		}
+	</ol>
+</section>
