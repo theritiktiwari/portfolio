@@ -4,7 +4,7 @@
 	"private": true,
 	"license": "SEE LICENSE IN LICENSE",
 	"engines": {
-		"node": ">=22.0.0",
+		"node": ">=24.0.0",
 		"pnpm": ">=10.27.0"
 	},
 	"packageManager": "pnpm@10.27.0",
@@ -53,7 +53,7 @@
 		"prettier": "^3.8.3",
 		"prettier-plugin-tailwindcss": "^0.7.3",
 		"tailwindcss": "^4.2.4",
-		"typescript": "^5.9.3",
+		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.59.0"
 	}
 }
