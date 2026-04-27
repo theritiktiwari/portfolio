@@ -1,7 +1,7 @@
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
-import { experiences } from "@/data/experience";
+import { experiences } from "@/content/experience";
 import { ArrowUpRight } from "lucide-react";
 
 export default function ExperienceSection() {

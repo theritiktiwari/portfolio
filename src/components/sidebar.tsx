@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MaskedIcon } from "@/components/ui/masked-icon";
 import { navLinks, socialLinks } from "@/constants/links";
 import { useActiveSection } from "@/hooks/use-active-section";
-import { smoothScrollTo } from "@/lib/smooth-scroll";
-import { cn } from "@/lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 
 const sectionIds = navLinks.map((link) => link.id);
 

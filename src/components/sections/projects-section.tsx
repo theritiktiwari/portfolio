@@ -2,7 +2,7 @@ import { CardHoverEffect } from "@/components/ui/card-hover-effect";
 import { CustomImage } from "@/components/ui/custom-image";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
-import { projects } from "@/data/projects";
+import { projects } from "@/content/projects";
 import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
 
 export default function ProjectsSection() {

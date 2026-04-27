@@ -4,8 +4,7 @@ import { CertificateModal } from "@/components/modal/certificate-modal";
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
-import type { Achievement } from "@/data/achievements";
-import { achievements } from "@/data/achievements";
+import { achievements, type Achievement } from "@/content/achievements";
 import { formatDate } from "@/lib/utils";
 import { ArrowRight, ArrowUpRight, Trophy } from "lucide-react";
 

@@ -1,7 +1,7 @@
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TagList } from "@/components/ui/tag-list";
-import { education } from "@/data/education";
+import { education } from "@/content/education";
 
 export default function EducationSection() {
 	return (
