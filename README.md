@@ -45,6 +45,9 @@ portfolio/
 ├── .agents/
 │   └── skills/			   # Skills for AI agents
 │
+├── .github/
+│   └── workflows/         # GitHub Actions workflows
+│
 ├── .husky/
 │   ├── commit-msg         # Commit message hook (enforces conventional commits)
 │   └── pre-commit         # Pre-commit hook (runs lint-staged)
