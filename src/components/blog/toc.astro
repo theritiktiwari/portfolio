@@ -1,0 +1,106 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+	headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+const filtered = headings.filter((h) => h.depth <= 3);
+---
+
+{
+	filtered.length > 0 && (
+		<nav aria-label="Table of contents" class="space-y-1">
+			<p class="text-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
+				On this page
+			</p>
+			<ul class="space-y-1 pl-5">
+				{filtered.map((h) => (
+					<li>
+						<a
+							href={`#${h.slug}`}
+							class:list={[
+								"text-muted-foreground hover:text-foreground block py-0.5 text-sm leading-snug transition-colors toc-link",
+								h.depth === 3 && "pl-4",
+							]}
+						>
+							{h.text}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	)
+}
+
+<script>
+	const links = document.querySelectorAll<HTMLAnchorElement>(".toc-link");
+	const headingEls = Array.from(links)
+		.map((a) => document.getElementById(a.href.split("#")[1]))
+		.filter(Boolean) as HTMLElement[];
+
+	const SCROLL_OFFSET = 96;
+
+	function setActive(id: string) {
+		links.forEach((a) => {
+			const active = a.href.endsWith(`#${id}`);
+			a.classList.toggle("text-primary!", active);
+			a.classList.toggle("text-muted-foreground", !active);
+		});
+	}
+
+	function getActiveId(): string {
+		if (headingEls.length === 0) return "";
+		if (window.scrollY < 50) return headingEls[0].id;
+		let active = "";
+		for (const el of headingEls) {
+			if (el.getBoundingClientRect().top <= SCROLL_OFFSET) active = el.id;
+		}
+		return active || headingEls[0].id;
+	}
+
+	const initialId = window.location.hash.slice(1);
+	setActive(initialId || getActiveId());
+
+	let lockedId: string | null = null;
+	let lockTimer: ReturnType<typeof setTimeout>;
+
+	links.forEach((link) => {
+		link.addEventListener("click", (e) => {
+			e.preventDefault();
+			const href = link.getAttribute("href");
+			const id = href?.slice(1);
+			const el = id ? document.getElementById(id) : null;
+			if (!el) return;
+
+			clearTimeout(lockTimer);
+			lockedId = id ?? null;
+			setActive(id!);
+			history.replaceState(null, "", href ?? "");
+			el.scrollIntoView({ behavior: "smooth" });
+
+			lockTimer = setTimeout(() => {
+				lockedId = null;
+			}, 1000);
+		});
+	});
+
+	let ticking = false;
+	window.addEventListener(
+		"scroll",
+		() => {
+			if (lockedId !== null || ticking) return;
+			ticking = true;
+			requestAnimationFrame(() => {
+				const id = getActiveId();
+				if (id) {
+					setActive(id);
+					history.replaceState(null, "", `#${id}`);
+				}
+				ticking = false;
+			});
+		},
+		{ passive: true }
+	);
+</script>

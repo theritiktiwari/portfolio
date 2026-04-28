@@ -70,3 +70,60 @@ export function smoothScrollTo(sectionId: string, duration = 800) {
 
 	requestAnimationFrame(step);
 }
+
+/**
+ * Estimates reading time for blog post content.
+ * Strips MDX/HTML tags and frontmatter before counting words.
+ *
+ * @param rawContent - Raw markdown/MDX string content
+ * @returns Reading time in minutes (minimum 1)
+ */
+export function readingTime(rawContent: string): number {
+	const stripped = rawContent
+		.replace(/---[\s\S]*?---/, "") // frontmatter
+		.replace(/import\s+.*?from\s+['"].*?['"]/g, "") // MDX imports
+		.replace(/<[^>]+>/g, " ") // HTML/JSX tags
+		.replace(/```[\s\S]*?```/g, " ") // code blocks
+		.replace(/`[^`]+`/g, " ") // inline code
+		.replace(/[#*_~[\]()>|!]/g, " ") // markdown syntax
+		.replace(/\s+/g, " ")
+		.trim();
+
+	const wordCount = stripped.split(" ").filter(Boolean).length;
+	return Math.max(1, Math.ceil(wordCount / 200));
+}
+
+/**
+ * Checks if a blog post should be publicly visible.
+ * In dev mode, drafts are shown; in production they are hidden.
+ *
+ * @param draft - Whether the post is marked as a draft
+ * @returns True if the post should be shown, false otherwise
+ */
+export function isPublished(draft: boolean): boolean {
+	return !draft || import.meta.env.DEV;
+}
+
+/**
+ * Returns the value of a URL search parameter.
+ * Returns null when called server-side (no window).
+ */
+export function getURLParam(key: string): string | null {
+	if (typeof window === "undefined") return null;
+	return new URLSearchParams(window.location.search).get(key);
+}
+
+/**
+ * Updates URL search parameters in-place using history.replaceState.
+ * Pass `null` as a value to delete that parameter from the URL.
+ */
+export function setURLParams(updates: Record<string, string | null>): void {
+	if (typeof window === "undefined") return;
+	const params = new URLSearchParams(window.location.search);
+	for (const [key, value] of Object.entries(updates)) {
+		if (value === null) params.delete(key);
+		else params.set(key, value);
+	}
+	const qs = params.toString();
+	history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+}

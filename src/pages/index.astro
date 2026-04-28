@@ -1,10 +1,11 @@
 ---
 import Footer from "@/components/footer";
-import AboutSection from "@/components/sections/about-section";
-import AchievementsSection from "@/components/sections/achievements-section";
-import EducationSection from "@/components/sections/education-section";
-import ExperienceSection from "@/components/sections/experience-section";
-import ProjectsSection from "@/components/sections/projects-section";
+import AboutSection from "@/components/sections/about-section.astro";
+import AchievementsSection from "@/components/sections/achievements-section.astro";
+import BlogSection from "@/components/sections/blog-section.astro";
+import EducationSection from "@/components/sections/education-section.astro";
+import ExperienceSection from "@/components/sections/experience-section.astro";
+import ProjectsSection from "@/components/sections/projects-section.astro";
 import Sidebar from "@/components/sidebar";
 import Layout from "@/layouts/Layout.astro";
 ---
@@ -17,7 +18,8 @@ import Layout from "@/layouts/Layout.astro";
 			<ExperienceSection />
 			<ProjectsSection />
 			<EducationSection />
-			<AchievementsSection client:visible />
+			<AchievementsSection />
+			<BlogSection />
 			<Footer />
 		</main>
 	</div>
