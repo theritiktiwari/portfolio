@@ -6,8 +6,8 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
 	return posts
-		.filter((p) => isPublished(p.data.draft))
-		.map((post) => ({ params: { slug: post.id }, props: { post } }));
+		.filter((p: CollectionEntry<"blog">) => isPublished(p.data.draft))
+		.map((post: CollectionEntry<"blog">) => ({ params: { slug: post.id }, props: { post } }));
 }
 
 interface Props {
@@ -23,17 +23,17 @@ if (post.data.series) {
 	const allPosts = await getCollection("blog");
 	seriesPosts = allPosts
 		.filter(
-			(p) =>
+			(p: CollectionEntry<"blog">) =>
 				isPublished(p.data.draft) &&
 				p.data.series?.name === post.data.series!.name
 		)
-		.map((p) => ({
+		.map((p: CollectionEntry<"blog">) => ({
 			id: p.id,
 			title: p.data.title,
 			part: p.data.series!.part,
 			pubDate: p.data.pubDate,
 		}))
-		.sort((a, b) => a.part - b.part);
+		.sort((a: { part: number }, b: { part: number }) => a.part - b.part);
 }
 
 const rt = readingTime(post.body ?? "");

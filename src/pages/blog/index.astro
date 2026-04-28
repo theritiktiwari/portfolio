@@ -3,15 +3,18 @@ import { BlogPosts } from "@/components/blog/blog-posts";
 import { BlogSearchNav } from "@/components/blog/blog-search-nav";
 import Layout from "@/layouts/Layout.astro";
 import { isPublished, readingTime } from "@/lib/utils";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { Home, Rss } from "lucide-react";
 
 const allPosts = await getCollection("blog");
 
 const posts = allPosts
-	.filter((post) => isPublished(post.data.draft))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.map((post) => ({
+	.filter((post: CollectionEntry<"blog">) => isPublished(post.data.draft))
+	.sort(
+		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	)
+	.map((post: CollectionEntry<"blog">) => ({
 		id: post.id,
 		title: post.data.title,
 		description: post.data.description,
@@ -24,7 +27,7 @@ const posts = allPosts
 	}));
 
 const postCountText = `${posts.length} ${posts.length === 1 ? "entry" : "entries"}`;
-const featuredPosts = posts.filter((p) => p.featured).slice(0, 2);
+const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured).slice(0, 1);
 ---
 
 <Layout

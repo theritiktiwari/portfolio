@@ -1,8 +1,9 @@
 ---
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
-import { SectionHeader } from "@/components/ui/section-header";
+import SectionHeader from "@/components/ui/section-header.astro";
 import { TagList } from "@/components/ui/tag-list";
 import { projects } from "@/content/projects";
+import { Image } from "astro:assets";
 import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
 
 const featuredProjects = projects.filter((p) => p.featured);
@@ -72,14 +73,11 @@ const featuredProjects = projects.filter((p) => p.featured);
 							<div class="z-10 sm:order-1 sm:col-span-2">
 								{project.image ? (
 									<div class="border-popover-foreground/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded-lg border-3 shadow-lg transition sm:rounded">
-										<img
+										<Image
 											src={project.image}
 											alt={`Screenshot of ${project.title}`}
-											width={900}
-											height={485}
 											class="size-full rounded-xs object-cover"
 											loading="lazy"
-											decoding="async"
 										/>
 									</div>
 								) : (

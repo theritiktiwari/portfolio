@@ -9,6 +9,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn, formatDate } from "@/lib/utils";
+import type { ImageMetadata } from "astro";
 import { Award, Trophy } from "lucide-react";
 import { useState } from "react";
 
@@ -16,7 +17,7 @@ interface CertificateModalProps {
 	title: string;
 	issuer: string;
 	date: Date;
-	certificateImage: string;
+	certificateImage: ImageMetadata;
 	variant?: "title" | "link" | "heading";
 }
 
@@ -83,8 +84,10 @@ export function CertificateModal({
 					)}
 				>
 					<img
-						src={certificateImage}
+						src={certificateImage.src}
 						alt={`${title} certificate`}
+						width={certificateImage.width}
+						height={certificateImage.height}
 						loading="lazy"
 						decoding="async"
 						onLoad={() => setLoaded(true)}

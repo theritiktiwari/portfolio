@@ -1,3 +1,5 @@
+import type { Achievement } from "@/content/achievements";
+import type { ImageMetadata } from "astro";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -19,23 +21,6 @@ export const formatDate = ({
 		month: "short",
 		...options,
 	});
-};
-
-/**
- * Extracts the GitHub repository name from a given URL.
- *
- * @param url - The URL of the GitHub repository.
- * @returns The repository name in the format "/repo-name" or full-url if the URL is invalid or not a GitHub URL.
- */
-export const getGitHubRepoPath = (url: string): string | null => {
-	try {
-		const { hostname, pathname } = new URL(url);
-		if (hostname !== "github.com") return url;
-		const repo = pathname.split("/")[2];
-		return repo ? repo : url;
-	} catch {
-		return url;
-	}
 };
 
 /**
@@ -71,6 +56,69 @@ export function smoothScrollTo(sectionId: string, duration = 800) {
 	requestAnimationFrame(step);
 }
 
+type ResolvedLink = { type: "certificate"; url: ImageMetadata } | { type: "external"; url: string };
+
+export type ResolvedAchievement = Omit<Achievement, "link"> & { link?: ResolvedLink };
+
+/**
+ * Resolves all dynamic certificate image imports at build time. Call in .astro frontmatter.
+ *
+ * @param list List of achievements to resolve.
+ * @returns List of achievements with resolved certificate links.
+ */
+export async function resolveAchievements(list: Achievement[]): Promise<ResolvedAchievement[]> {
+	return Promise.all(
+		list.map(async (achievement): Promise<ResolvedAchievement> => {
+			if (achievement.link?.type !== "certificate") {
+				return achievement as ResolvedAchievement;
+			}
+			const { default: url }: { default: ImageMetadata } = await achievement.link.url;
+			return { ...achievement, link: { type: "certificate", url } };
+		})
+	);
+}
+
+/**
+ * Extracts the GitHub repository name from a given URL.
+ *
+ * @param url - The URL of the GitHub repository.
+ * @returns The repository name in the format "/repo-name" or full-url if the URL is invalid or not a GitHub URL.
+ */
+export const getGitHubRepoPath = (url: string): string | null => {
+	try {
+		const { hostname, pathname } = new URL(url);
+		if (hostname !== "github.com") return url;
+		const repo = pathname.split("/")[2];
+		return repo ? repo : url;
+	} catch {
+		return url;
+	}
+};
+
+/**
+ * Returns the value of a URL search parameter.
+ * Returns null when called server-side (no window).
+ */
+export function getURLParam(key: string): string | null {
+	if (typeof window === "undefined") return null;
+	return new URLSearchParams(window.location.search).get(key);
+}
+
+/**
+ * Updates URL search parameters in-place using history.replaceState.
+ * Pass `null` as a value to delete that parameter from the URL.
+ */
+export function setURLParams(updates: Record<string, string | null>): void {
+	if (typeof window === "undefined") return;
+	const params = new URLSearchParams(window.location.search);
+	for (const [key, value] of Object.entries(updates)) {
+		if (value === null) params.delete(key);
+		else params.set(key, value);
+	}
+	const qs = params.toString();
+	history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+}
+
 /**
  * Estimates reading time for blog post content.
  * Strips MDX/HTML tags and frontmatter before counting words.
@@ -102,28 +150,4 @@ export function readingTime(rawContent: string): number {
  */
 export function isPublished(draft: boolean): boolean {
 	return !draft || import.meta.env.DEV;
-}
-
-/**
- * Returns the value of a URL search parameter.
- * Returns null when called server-side (no window).
- */
-export function getURLParam(key: string): string | null {
-	if (typeof window === "undefined") return null;
-	return new URLSearchParams(window.location.search).get(key);
-}
-
-/**
- * Updates URL search parameters in-place using history.replaceState.
- * Pass `null` as a value to delete that parameter from the URL.
- */
-export function setURLParams(updates: Record<string, string | null>): void {
-	if (typeof window === "undefined") return;
-	const params = new URLSearchParams(window.location.search);
-	for (const [key, value] of Object.entries(updates)) {
-		if (value === null) params.delete(key);
-		else params.set(key, value);
-	}
-	const qs = params.toString();
-	history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
 }

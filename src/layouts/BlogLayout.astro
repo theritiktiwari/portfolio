@@ -6,6 +6,7 @@ import { TagList } from "@/components/ui/tag-list";
 import Layout from "@/layouts/Layout.astro";
 import { formatDate } from "@/lib/utils";
 import type { MarkdownHeading } from "astro";
+import { Image } from "astro:assets";
 import { ArrowLeft, Calendar, Clock, Layers, User } from "lucide-react";
 
 interface Props {
@@ -70,14 +71,11 @@ const publishedIso = pubDate.toISOString();
 				{
 					heroImage && (
 						<div class="mb-8 overflow-hidden rounded-2xl">
-							<img
-								src={heroImage.src}
-								width={heroImage.width}
-								height={heroImage.height}
+							<Image
+								src={heroImage}
 								alt={title}
 								class="h-auto w-full object-cover"
 								loading="eager"
-								decoding="async"
 							/>
 						</div>
 					)
@@ -133,7 +131,6 @@ const publishedIso = pubDate.toISOString();
 								seriesName={series.name}
 								currentPart={series.part}
 								posts={seriesPosts}
-								client:load
 							/>
 						</div>
 					)

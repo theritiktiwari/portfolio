@@ -41,11 +41,18 @@ export function BlogSearchNav() {
 	};
 
 	const close = () => {
+		const hadQuery = value.length > 0;
 		setOpen(false);
 		setValue("");
 		clearTimeout(timerRef.current);
 		emit("");
-		setURLParams({ q: null, page: null });
+		if (hadQuery) {
+			// Search was active — reset page since results changed
+			setURLParams({ q: null, page: null });
+		} else {
+			// No query was typed — just close, preserve page
+			setURLParams({ q: null });
+		}
 	};
 
 	if (open) {

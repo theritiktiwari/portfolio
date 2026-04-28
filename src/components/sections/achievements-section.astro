@@ -1,13 +1,14 @@
 ---
 import { CertificateModal } from "@/components/modal/certificate-modal";
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
-import { SectionHeader } from "@/components/ui/section-header";
+import SectionHeader from "@/components/ui/section-header.astro";
 import { TagList } from "@/components/ui/tag-list";
-import { achievements } from "@/content/achievements";
+import { achievements as rawAchievements } from "@/content/achievements";
+import { resolveAchievements } from "@/lib/achievements";
 import { formatDate } from "@/lib/utils";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-const featuredAchievements = achievements.filter((a) => a.featured);
+const achievements = await resolveAchievements(rawAchievements.filter((a) => a.featured));
 ---
 
 <section id="achievements" class="scroll-mt-16 lg:scroll-mt-24" aria-label="Achievements">
@@ -15,7 +16,7 @@ const featuredAchievements = achievements.filter((a) => a.featured);
 
 	<ul class="group/list space-y-12">
 		{
-			featuredAchievements.map((achievement) => {
+			achievements.map((achievement) => {
 				const { link } = achievement;
 				return (
 					<li>
