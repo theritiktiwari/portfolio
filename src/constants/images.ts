@@ -1,9 +1,9 @@
 export const socialIcons = {
-	email: { src: "/social-icons/email.svg", maskSize: "108%" },
-	github: { src: "/social-icons/github.svg", maskSize: "100%" },
-	linkedin: { src: "/social-icons/linkedin.svg", maskSize: "118%" },
-	instagram: { src: "/social-icons/instagram.svg", maskSize: "100%" },
-	twitter: { src: "/social-icons/twitter.svg", maskSize: "108%" },
+	email: { src: "/icons/email.svg", maskSize: "108%" },
+	github: { src: "/icons/github.svg", maskSize: "100%" },
+	linkedin: { src: "/icons/linkedin.svg", maskSize: "118%" },
+	instagram: { src: "/icons/instagram.svg", maskSize: "100%" },
+	twitter: { src: "/icons/twitter.svg", maskSize: "108%" },
 } as const;
 
 export const projectImages = {
