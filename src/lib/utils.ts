@@ -1,4 +1,4 @@
-import type { BlogCardProps } from "@/components/blog/blog-card";
+import type { BlogCardProps } from "@/components/blog-card";
 import type { Achievement } from "@/content/achievements";
 import type { ImageMetadata } from "astro";
 import type { CollectionEntry } from "astro:content";

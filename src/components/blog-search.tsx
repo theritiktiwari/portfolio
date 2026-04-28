@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 
 const DEBOUNCE_MS = 300;
 
-export function BlogSearchNav() {
+export function BlogSearch() {
 	const [open, setOpen] = useState(() => (getURLParam("q") ?? "").length > 0);
 	const [value, setValue] = useState(() => getURLParam("q") ?? "");
 	const inputRef = useRef<HTMLInputElement>(null);

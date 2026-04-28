@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogCard, type BlogCardProps } from "@/components/blog/blog-card";
+import { BlogCard, type BlogCardProps } from "@/components/blog-card";
 import {
 	Pagination,
 	PaginationContent,

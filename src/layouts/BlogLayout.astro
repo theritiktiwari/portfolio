@@ -1,9 +1,9 @@
 ---
-import type { BlogCardProps } from "@/components/blog/blog-card";
-import CodeCopy from "@/components/blog/code-copy.astro";
-import RelatedPosts from "@/components/blog/related-posts.astro";
-import { SeriesNav, type SeriesPost } from "@/components/blog/series-nav";
-import TOC from "@/components/blog/toc.astro";
+import type { BlogCardProps } from "@/components/blog-card";
+import RelatedPosts from "@/components/related-posts.astro";
+import { SeriesNav, type SeriesPost } from "@/components/series-nav";
+import TOC from "@/components/toc.astro";
+import CopyCode from "@/components/ui/copy-code.astro";
 import { TagList } from "@/components/ui/tag-list";
 import Layout from "@/layouts/Layout.astro";
 import { formatDate } from "@/lib/utils";
@@ -126,7 +126,7 @@ const publishedIso = pubDate.toISOString();
 				<div class="prose light:prose-neutral prose-invert max-w-none">
 					<slot />
 				</div>
-				<CodeCopy />
+				<CopyCode />
 
 				{
 					series && seriesPosts.length > 0 && (

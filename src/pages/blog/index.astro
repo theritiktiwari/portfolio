@@ -1,6 +1,6 @@
 ---
-import { BlogPosts } from "@/components/blog/blog-posts";
-import { BlogSearchNav } from "@/components/blog/blog-search-nav";
+import { BlogPosts } from "@/components/blog-posts";
+import { BlogSearch } from "@/components/blog-search";
 import Layout from "@/layouts/Layout.astro";
 import { isPublished, readingTime } from "@/lib/utils";
 import { getCollection, type CollectionEntry } from "astro:content";
@@ -54,7 +54,7 @@ const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured).sl
 				<Rss className="size-3.5" />
 				RSS
 			</a>
-			<BlogSearchNav client:load />
+			<BlogSearch client:load />
 		</nav>
 
 		<!-- Header -->
