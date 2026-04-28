@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
 
@@ -32,10 +32,33 @@ function PaginationItem({ ...props }: React.ComponentProps<"li">) {
 
 type PaginationLinkProps = {
 	isActive?: boolean;
+	disabled?: boolean;
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
 	React.ComponentProps<"a">;
 
-function PaginationLink({ className, isActive, size = "icon", ...props }: PaginationLinkProps) {
+function PaginationLink({
+	className,
+	isActive,
+	disabled,
+	size = "icon",
+	children,
+	...props
+}: PaginationLinkProps) {
+	if (disabled) {
+		return (
+			<span
+				data-slot="pagination-link"
+				aria-disabled="true"
+				className={cn(
+					buttonVariants({ variant: "ghost", size }),
+					"pointer-events-none cursor-not-allowed opacity-50",
+					className
+				)}
+			>
+				{children}
+			</span>
+		);
+	}
 	return (
 		<Button
 			asChild
@@ -48,7 +71,9 @@ function PaginationLink({ className, isActive, size = "icon", ...props }: Pagina
 				data-slot="pagination-link"
 				data-active={isActive}
 				{...props}
-			/>
+			>
+				{children}
+			</a>
 		</Button>
 	);
 }

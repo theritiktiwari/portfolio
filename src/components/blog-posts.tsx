@@ -10,7 +10,7 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from "@/components/ui/pagination";
-import { cn, getURLParam, setURLParams } from "@/lib/utils";
+import { getURLParam, setURLParams } from "@/lib/utils";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 const POSTS_PER_PAGE = 6;
@@ -133,16 +133,17 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 									<PaginationContent>
 										<PaginationItem>
 											<PaginationPrevious
+												href={
+													safePage > 1
+														? `?page=${safePage - 1}`
+														: undefined
+												}
 												onClick={(e) => {
 													e.preventDefault();
 													if (safePage > 1)
 														handlePageChange(safePage - 1);
 												}}
-												aria-disabled={safePage === 1}
-												className={cn({
-													"pointer-events-none opacity-50":
-														safePage === 1,
-												})}
+												disabled={safePage === 1}
 											/>
 										</PaginationItem>
 
@@ -155,6 +156,7 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 												<PaginationItem key={page}>
 													<PaginationLink
 														isActive={page === safePage}
+														href={page === 1 ? "." : `?page=${page}`}
 														onClick={(e) => {
 															e.preventDefault();
 															handlePageChange(page);
@@ -168,16 +170,17 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 
 										<PaginationItem>
 											<PaginationNext
+												href={
+													safePage < totalPages
+														? `?page=${safePage + 1}`
+														: undefined
+												}
 												onClick={(e) => {
 													e.preventDefault();
 													if (safePage < totalPages)
 														handlePageChange(safePage + 1);
 												}}
-												aria-disabled={safePage === totalPages}
-												className={cn({
-													"pointer-events-none opacity-50":
-														safePage === totalPages,
-												})}
+												disabled={safePage === totalPages}
 											/>
 										</PaginationItem>
 									</PaginationContent>

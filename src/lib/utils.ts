@@ -169,11 +169,11 @@ export function getRelatedPosts(
 				isPublished(p.data.draft) &&
 				p.id !== currentPost.id &&
 				!p.data.series &&
-				p.data.tags.some((t) => currentTags.has(t))
+				p.data.tags.some((t: string) => currentTags.has(t))
 		)
 		.map((p) => ({
 			post: p,
-			sharedTags: p.data.tags.filter((t) => currentTags.has(t)).length,
+			sharedTags: p.data.tags.filter((t: string) => currentTags.has(t)).length,
 		}))
 		.sort(
 			(a, b) =>
