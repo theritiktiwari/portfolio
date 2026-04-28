@@ -1,5 +1,7 @@
 ---
+import type { BlogCardProps } from "@/components/blog/blog-card";
 import CodeCopy from "@/components/blog/code-copy.astro";
+import RelatedPosts from "@/components/blog/related-posts.astro";
 import { SeriesNav, type SeriesPost } from "@/components/blog/series-nav";
 import TOC from "@/components/blog/toc.astro";
 import { TagList } from "@/components/ui/tag-list";
@@ -20,6 +22,7 @@ interface Props {
 	headings?: MarkdownHeading[];
 	series?: { name: string; part: number };
 	seriesPosts?: SeriesPost[];
+	relatedPosts?: BlogCardProps[];
 }
 
 const {
@@ -33,6 +36,7 @@ const {
 	headings = [],
 	series,
 	seriesPosts = [],
+	relatedPosts = [],
 } = Astro.props;
 
 const ogImageUrl = heroImage?.src ?? "/og-image.png";
@@ -135,6 +139,8 @@ const publishedIso = pubDate.toISOString();
 						</div>
 					)
 				}
+
+				<RelatedPosts posts={relatedPosts} />
 			</article>
 
 			<aside class="hidden lg:block">

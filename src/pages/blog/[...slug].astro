@@ -1,6 +1,6 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
-import { isPublished, readingTime } from "@/lib/utils";
+import { getRelatedPosts, isPublished, readingTime } from "@/lib/utils";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -17,10 +17,11 @@ interface Props {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 
+const allPosts = await getCollection("blog");
+
 // Build series posts list if this post belongs to a series
 let seriesPosts: { id: string; title: string; part: number; pubDate: Date }[] = [];
 if (post.data.series) {
-	const allPosts = await getCollection("blog");
 	seriesPosts = allPosts
 		.filter(
 			(p: CollectionEntry<"blog">) =>
@@ -37,6 +38,7 @@ if (post.data.series) {
 }
 
 const rt = readingTime(post.body ?? "");
+const relatedPosts = getRelatedPosts(post, allPosts);
 ---
 
 <BlogLayout
@@ -50,6 +52,7 @@ const rt = readingTime(post.body ?? "");
 	headings={headings}
 	series={post.data.series}
 	seriesPosts={seriesPosts}
+	relatedPosts={relatedPosts}
 >
 	<Content />
 </BlogLayout>

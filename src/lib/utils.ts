@@ -1,5 +1,7 @@
+import type { BlogCardProps } from "@/components/blog/blog-card";
 import type { Achievement } from "@/content/achievements";
 import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -150,4 +152,43 @@ export function readingTime(rawContent: string): number {
  */
 export function isPublished(draft: boolean): boolean {
 	return !draft || import.meta.env.DEV;
+}
+
+export function getRelatedPosts(
+	currentPost: CollectionEntry<"blog">,
+	allPosts: CollectionEntry<"blog">[],
+	limit = 3
+): BlogCardProps[] {
+	if (currentPost.data.series) return [];
+
+	const currentTags = new Set(currentPost.data.tags);
+
+	return allPosts
+		.filter(
+			(p) =>
+				isPublished(p.data.draft) &&
+				p.id !== currentPost.id &&
+				!p.data.series &&
+				p.data.tags.some((t) => currentTags.has(t))
+		)
+		.map((p) => ({
+			post: p,
+			sharedTags: p.data.tags.filter((t) => currentTags.has(t)).length,
+		}))
+		.sort(
+			(a, b) =>
+				b.sharedTags - a.sharedTags ||
+				b.post.data.pubDate.getTime() - a.post.data.pubDate.getTime()
+		)
+		.slice(0, limit)
+		.map(({ post }) => ({
+			id: post.id,
+			title: post.data.title,
+			description: post.data.description,
+			pubDate: post.data.pubDate,
+			tags: post.data.tags,
+			readingTime: readingTime(post.body ?? ""),
+			heroImage: post.data.heroImage?.src,
+			series: post.data.series,
+		}));
 }

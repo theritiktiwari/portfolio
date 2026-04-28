@@ -12,7 +12,7 @@ const filtered = headings.filter((h) => h.depth <= 3);
 {
 	filtered.length > 0 && (
 		<nav aria-label="Table of contents" class="space-y-1">
-			<p class="text-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
+			<p class="text-muted-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
 				On this page
 			</p>
 			<ul class="space-y-1 pl-5">
@@ -21,7 +21,7 @@ const filtered = headings.filter((h) => h.depth <= 3);
 						<a
 							href={`#${h.slug}`}
 							class:list={[
-								"text-muted-foreground hover:text-foreground block py-0.5 text-sm leading-snug transition-colors toc-link",
+								"text-foreground hover:text-foreground block py-0.5 text-sm leading-snug transition-colors toc-link",
 								h.depth === 3 && "pl-4",
 							]}
 						>
