@@ -1,0 +1,83 @@
+---
+import { BlogPosts } from "@/components/blog-posts";
+import { BlogSearch } from "@/components/blog-search";
+import Layout from "@/layouts/Layout.astro";
+import { isPublished, readingTime } from "@/lib/utils";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Home, Rss } from "lucide-react";
+
+const allPosts = await getCollection("blog");
+
+const posts = allPosts
+	.filter((post: CollectionEntry<"blog">) => isPublished(post.data.draft))
+	.sort(
+		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	)
+	.map((post: CollectionEntry<"blog">) => ({
+		id: post.id,
+		title: post.data.title,
+		description: post.data.description,
+		pubDate: post.data.pubDate,
+		tags: post.data.tags,
+		readingTime: readingTime(post.body ?? ""),
+		series: post.data.series,
+		heroImage: post.data.heroImage?.src,
+		featured: post.data.featured,
+		draft: post.data.draft,
+	}));
+
+const postCountText = `${posts.length} ${posts.length === 1 ? "entry" : "entries"}`;
+const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured && !p.draft).slice(0, 1);
+---
+
+<Layout
+	title="Blog | Ritik Tiwari"
+	description="Thoughts on software engineering, system design, and the craft of building things."
+>
+	<div class="-mt-12 md:-mt-16 lg:mt-0 mx-auto lg:mb-24">
+		<nav
+			class="flex items-center gap-5 bg-background/75 sticky top-0 z-20 mx-auto mb-4 w-full py-5 backdrop-blur"
+		>
+			<a
+				href="/"
+				class="text-muted-foreground hover:text-primary text-sm flex items-center gap-1.5 transition-colors"
+			>
+				<Home className="size-3.5" />
+				Home
+			</a>
+			<a
+				href="/rss.xml"
+				class="text-muted-foreground hover:text-primary text-sm flex items-center gap-1.5 transition-colors"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<Rss className="size-3.5" />
+				RSS
+			</a>
+			<BlogSearch client:load />
+		</nav>
+
+		<!-- Header -->
+		<header class="mb-12">
+			<h1 class="text-foreground text-4xl font-bold tracking-tight sm:text-5xl">
+				Technical Log
+			</h1>
+			<p class="text-muted-foreground mt-3 text-lg">
+				{postCountText} on full-stack architecture, distributed systems, and the engineering craft.
+			</p>
+		</header>
+
+		<main id="content">
+			{
+				posts.length === 0 ? (
+					<p class="text-muted-foreground py-16 text-center text-lg">
+						No posts yet. Check back soon.
+					</p>
+				) : (
+					<BlogPosts posts={posts} featuredPosts={featuredPosts} client:load />
+				)
+			}
+		</main>
+	</div>
+</Layout>

@@ -1,6 +1,9 @@
 import { certificates } from "@/constants/images";
+import type { ImageMetadata } from "astro";
 
-type AchievementLink = { type: "certificate"; url: string } | { type: "external"; url: string };
+type AchievementLink =
+	| { type: "certificate"; url: Promise<{ default: ImageMetadata }> }
+	| { type: "external"; url: string };
 
 export interface Achievement {
 	title: string;

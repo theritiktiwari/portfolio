@@ -1,4 +1,5 @@
 import { projectImages } from "@/constants/images";
+import type { ImageMetadata } from "astro";
 
 interface Project {
 	title: string;
@@ -7,7 +8,7 @@ interface Project {
 	description?: string;
 	url?: string;
 	repository?: string;
-	image?: string;
+	image?: ImageMetadata | Promise<{ default: ImageMetadata }>;
 	featured?: boolean;
 	stars?: number;
 	downloads?: number;

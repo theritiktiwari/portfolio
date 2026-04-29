@@ -1,0 +1,33 @@
+---
+import { BlogCard, type BlogCardProps } from "@/components/blog-card";
+
+interface Props {
+	posts: BlogCardProps[];
+}
+
+const { posts } = Astro.props;
+---
+
+{
+	posts.length > 0 && (
+		<section>
+			<h2 class="text-muted-foreground mb-6 text-xs font-semibold tracking-widest uppercase">
+				Related Posts
+			</h2>
+			<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				{posts.map((post) => (
+					<BlogCard
+						id={post.id}
+						title={post.title}
+						description={post.description}
+						pubDate={post.pubDate}
+						tags={post.tags}
+						readingTime={post.readingTime}
+						heroImage={post.heroImage}
+						series={post.series}
+					/>
+				))}
+			</div>
+		</section>
+	)
+}

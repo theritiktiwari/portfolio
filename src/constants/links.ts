@@ -6,6 +6,7 @@ export const navLinks = [
 	{ id: "projects", label: "Projects" },
 	{ id: "education", label: "Education" },
 	{ id: "achievements", label: "Achievements" },
+	{ id: "blog", label: "Blog" },
 ];
 
 export const socialLinks = [

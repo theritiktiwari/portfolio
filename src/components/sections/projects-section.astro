@@ -1,0 +1,105 @@
+---
+import { CardHoverEffect } from "@/components/ui/card-hover-effect";
+import SectionHeader from "@/components/ui/section-header.astro";
+import { TagList } from "@/components/ui/tag-list";
+import { projects } from "@/content/projects";
+import { Image } from "astro:assets";
+import { ArrowRight, ArrowUpRight, Download, Star } from "lucide-react";
+
+const featuredProjects = projects.filter((p) => p.featured);
+---
+
+<section id="projects" class="scroll-mt-16 lg:scroll-mt-24" aria-label="Selected projects">
+	<SectionHeader title="Projects" />
+
+	<ul class="group/list space-y-12">
+		{
+			featuredProjects.map((project) => {
+				const projectLink = project.url || project.repository;
+				return (
+					<li>
+						<div class="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover/list:opacity-50 lg:hover:opacity-100!">
+							<CardHoverEffect />
+
+							<div class="z-10 sm:order-2 sm:col-span-6">
+								<h3>
+									{projectLink ? (
+										<a
+											href={projectLink}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-baseline leading-tight font-medium"
+										>
+											<span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
+											<span>
+												{project.title}
+												<ArrowUpRight className="ml-1 inline-block size-4 shrink-0 translate-y-px transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1 motion-reduce:transition-none" />
+											</span>
+										</a>
+									) : (
+										<span class="text-foreground leading-tight font-medium">
+											{project.title}
+										</span>
+									)}
+								</h3>
+
+								<p class="text-muted-foreground mt-2 text-sm leading-6">
+									{project.description}
+								</p>
+
+								<div class="flex gap-3">
+									{project.stars && (
+										<div class="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium">
+											<Star className="mr-1 size-4" />
+											<span>{project.stars.toLocaleString()}</span>
+										</div>
+									)}
+									{project.downloads && (
+										<div class="text-muted-foreground hover:text-primary relative mt-2 inline-flex items-center text-sm font-medium">
+											<Download className="mr-1 size-4" />
+											<span>{project.downloads.toLocaleString()}</span>
+										</div>
+									)}
+								</div>
+
+								<TagList
+									items={project.technologies}
+									label="Technologies used"
+									className="mt-2"
+									itemClassName="mt-2 mr-1.5"
+								/>
+							</div>
+
+							<div class="z-10 sm:order-1 sm:col-span-2">
+								{project.image ? (
+									<div class="border-popover-foreground/20 bg-card group-hover:border-muted/40 aspect-video overflow-hidden rounded-lg border-3 shadow-lg transition sm:rounded">
+										<Image
+											src={project.image}
+											alt={`Screenshot of ${project.title}`}
+											class="size-full rounded-xs object-cover"
+											loading="lazy"
+										/>
+									</div>
+								) : (
+									<div class="border-popover-foreground/20 bg-card aspect-video hidden rounded-lg border-3 shadow-lg sm:block sm:rounded" />
+								)}
+							</div>
+						</div>
+					</li>
+				);
+			})
+		}
+	</ul>
+
+	<div class="mt-12">
+		<a
+			href="/projects"
+			class="text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex items-center leading-tight font-bold"
+		>
+			<span>View All Projects</span>
+			<ArrowRight
+				className="ml-1 inline-block size-4 shrink-0 -translate-y-px transition-transform group-hover/link:translate-x-2 motion-reduce:transition-none"
+			/>
+		</a>
+	</div>
+</section>

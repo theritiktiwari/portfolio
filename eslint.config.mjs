@@ -5,7 +5,7 @@ import tseslint from "typescript-eslint";
 const eslintConfig = defineConfig(
 	tseslint.configs.recommended,
 	{
-		ignores: ["dist/**", "out/**", ".astro/**", "**/*.config.*"],
+		ignores: ["dist/**", "out/**", ".astro/**", "*.config.*"],
 	},
 	{
 		rules: {

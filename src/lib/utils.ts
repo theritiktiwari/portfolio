@@ -1,3 +1,7 @@
+import type { BlogCardProps } from "@/components/blog-card";
+import type { Achievement } from "@/content/achievements";
+import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -19,23 +23,6 @@ export const formatDate = ({
 		month: "short",
 		...options,
 	});
-};
-
-/**
- * Extracts the GitHub repository name from a given URL.
- *
- * @param url - The URL of the GitHub repository.
- * @returns The repository name in the format "/repo-name" or full-url if the URL is invalid or not a GitHub URL.
- */
-export const getGitHubRepoPath = (url: string): string | null => {
-	try {
-		const { hostname, pathname } = new URL(url);
-		if (hostname !== "github.com") return url;
-		const repo = pathname.split("/")[2];
-		return repo ? repo : url;
-	} catch {
-		return url;
-	}
 };
 
 /**
@@ -69,4 +56,177 @@ export function smoothScrollTo(sectionId: string, duration = 800) {
 	};
 
 	requestAnimationFrame(step);
+}
+
+type ResolvedLink = { type: "certificate"; url: ImageMetadata } | { type: "external"; url: string };
+
+export type ResolvedAchievement = Omit<Achievement, "link"> & { link?: ResolvedLink };
+
+/**
+ * Resolves all dynamic certificate image imports at build time. Call in .astro frontmatter.
+ *
+ * @param list List of achievements to resolve.
+ * @returns List of achievements with resolved certificate links.
+ */
+export async function resolveAchievements(list: Achievement[]): Promise<ResolvedAchievement[]> {
+	return Promise.all(
+		list.map(async (achievement): Promise<ResolvedAchievement> => {
+			if (achievement.link?.type !== "certificate") {
+				return achievement as ResolvedAchievement;
+			}
+			const { default: url }: { default: ImageMetadata } = await achievement.link.url;
+			return { ...achievement, link: { type: "certificate", url } };
+		})
+	);
+}
+
+/**
+ * Extracts the GitHub repository name from a given URL.
+ *
+ * @param url - The URL of the GitHub repository.
+ * @returns The repository name in the format "/repo-name" or full-url if the URL is invalid or not a GitHub URL.
+ */
+export const getGitHubRepoPath = (url: string): string | null => {
+	try {
+		const { hostname, pathname } = new URL(url);
+		if (hostname !== "github.com") return url;
+		const repo = pathname.split("/")[2];
+		return repo ? repo : url;
+	} catch {
+		return url;
+	}
+};
+
+/**
+ * Returns the value of a URL search parameter.
+ * Returns null when called server-side (no window).
+ */
+export function getURLParam(key: string): string | null {
+	if (typeof window === "undefined") return null;
+	return new URLSearchParams(window.location.search).get(key);
+}
+
+/**
+ * Updates URL search parameters in-place using history.replaceState.
+ * Pass `null` as a value to delete that parameter from the URL.
+ */
+export function setURLParams(updates: Record<string, string | null>): void {
+	if (typeof window === "undefined") return;
+	const params = new URLSearchParams(window.location.search);
+	for (const [key, value] of Object.entries(updates)) {
+		if (value === null) params.delete(key);
+		else params.set(key, value);
+	}
+	const qs = params.toString();
+	history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+}
+
+/**
+ * Estimates reading time for blog post content.
+ * Strips MDX/HTML tags and frontmatter before counting words.
+ *
+ * @param rawContent - Raw markdown/MDX string content
+ * @returns Reading time in minutes (minimum 1)
+ */
+export function readingTime(rawContent: string): number {
+	const stripped = rawContent
+		.replace(/---[\s\S]*?---/, "") // frontmatter
+		.replace(/import\s+.*?from\s+['"].*?['"]/g, "") // MDX imports
+		.replace(/<[^>]+>/g, " ") // HTML/JSX tags
+		.replace(/```[\s\S]*?```/g, " ") // code blocks
+		.replace(/`[^`]+`/g, " ") // inline code
+		.replace(/[#*_~[\]()>|!]/g, " ") // markdown syntax
+		.replace(/\s+/g, " ")
+		.trim();
+
+	const wordCount = stripped.split(" ").filter(Boolean).length;
+	return Math.max(1, Math.ceil(wordCount / 200));
+}
+
+/**
+ * Checks if a blog post should be publicly visible.
+ * In dev mode, drafts are shown; in production they are hidden.
+ *
+ * @param draft - Whether the post is marked as a draft
+ * @returns True if the post should be shown, false otherwise
+ */
+export function isPublished(draft: boolean): boolean {
+	return !draft || import.meta.env.DEV;
+}
+
+/**
+ * Finds related blog posts based on shared tags, excluding drafts and series posts.
+ *
+ * @param currentPost - The current blog post for which to find related posts
+ * @param allPosts - All available blog posts to search through
+ * @param limit - Maximum number of related posts to return (default is 3)
+ * @returns An array of related blog post props for display in a BlogCard
+ */
+export function getRelatedPosts(
+	currentPost: CollectionEntry<"blog">,
+	allPosts: CollectionEntry<"blog">[],
+	limit = 3
+): BlogCardProps[] {
+	if (currentPost.data.series) return [];
+
+	const currentTags = new Set(currentPost.data.tags);
+
+	return allPosts
+		.filter(
+			(p) =>
+				isPublished(p.data.draft) &&
+				p.id !== currentPost.id &&
+				!p.data.series &&
+				p.data.tags.some((t: string) => currentTags.has(t))
+		)
+		.map((p) => ({
+			post: p,
+			sharedTags: p.data.tags.filter((t: string) => currentTags.has(t)).length,
+		}))
+		.sort(
+			(a, b) =>
+				b.sharedTags - a.sharedTags ||
+				b.post.data.pubDate.getTime() - a.post.data.pubDate.getTime()
+		)
+		.slice(0, limit)
+		.map(({ post }) => ({
+			id: post.id,
+			title: post.data.title,
+			description: post.data.description,
+			pubDate: post.data.pubDate,
+			tags: post.data.tags,
+			readingTime: readingTime(post.body ?? ""),
+			heroImage: post.data.heroImage?.src,
+			series: post.data.series,
+		}));
+}
+
+const REPO = "theritiktiwari/portfolio";
+const BLOG_CONTENT_PATH = "src/content/blog";
+
+/**
+ * Generates GitHub edit and issue URLs for a given blog post ID.
+ *
+ * @param id - The ID of the blog post (without file extension)
+ * @param blogFiles - An object mapping file paths to their content, used to find the correct file extension
+ * @returns An object containing the edit URL and issue URL for the blog post
+ */
+export function getBlogPostUrls(
+	id: string,
+	title: string,
+	blogFiles: Record<string, unknown>
+): { editUrl: string; issueUrl: string } {
+	const matchedPath = Object.keys(blogFiles).find((f) => {
+		const name = f
+			.split("/")
+			.pop()
+			?.replace(/\.(mdx?)$/, "");
+		return name === id;
+	});
+	const ext = matchedPath?.split(".").pop() ?? "md";
+
+	return {
+		editUrl: `https://github.com/${REPO}/edit/main/${BLOG_CONTENT_PATH}/${id}.${ext}`,
+		issueUrl: `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(`Blog correction: ${title}`)}&labels=bug,blog`,
+	};
 }

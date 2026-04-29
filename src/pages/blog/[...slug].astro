@@ -1,0 +1,63 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { getBlogPostUrls, getRelatedPosts, isPublished, readingTime } from "@/lib/utils";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts
+		.filter((p: CollectionEntry<"blog">) => isPublished(p.data.draft))
+		.map((post: CollectionEntry<"blog">) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props {
+	post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+const allPosts = await getCollection("blog");
+
+// Build series posts list if this post belongs to a series
+let seriesPosts: { id: string; title: string; part: number; pubDate: Date }[] = [];
+if (post.data.series) {
+	seriesPosts = allPosts
+		.filter(
+			(p: CollectionEntry<"blog">) =>
+				isPublished(p.data.draft) &&
+				p.data.series?.name === post.data.series!.name
+		)
+		.map((p: CollectionEntry<"blog">) => ({
+			id: p.id,
+			title: p.data.title,
+			part: p.data.series!.part,
+			pubDate: p.data.pubDate,
+		}))
+		.sort((a: { part: number }, b: { part: number }) => a.part - b.part);
+}
+
+const rt = readingTime(post.body ?? "");
+const relatedPosts = getRelatedPosts(post, allPosts);
+
+const blogFiles = import.meta.glob("../../content/blog/**/*.{md,mdx}");
+const { editUrl, issueUrl } = getBlogPostUrls(post.id, post.data.title, blogFiles);
+---
+
+<BlogLayout
+	title={post.data.title}
+	description={post.data.description}
+	pubDate={post.data.pubDate}
+	author={post.data.author}
+	heroImage={post.data.heroImage}
+	tags={post.data.tags}
+	readingTime={rt}
+	headings={headings}
+	series={post.data.series}
+	seriesPosts={seriesPosts}
+	relatedPosts={relatedPosts}
+	editUrl={editUrl}
+	issueUrl={issueUrl}
+>
+	<Content />
+</BlogLayout>

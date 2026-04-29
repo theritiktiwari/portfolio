@@ -1,5 +1,5 @@
 ---
-import { MouseGlow } from "@/components/mouse-glow";
+import { MouseGlow } from "@/components/ui/mouse-glow";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "@/styles/globals.css";
@@ -72,6 +72,8 @@ const fullOgImageUrl = new URL(ogImage, Astro.site).href;
 		<!-- Robots -->
 		<meta name="robots" content="index, follow" />
 		<meta name="googlebot" content="index, follow, max-image-preview:large" />
+
+		<slot name="head" />
 	</head>
 	<body class="flex min-h-screen flex-col">
 		<div class="relative min-h-screen">

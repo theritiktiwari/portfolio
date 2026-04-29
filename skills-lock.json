@@ -1,6 +1,16 @@
 {
 	"version": 1,
 	"skills": {
+		"astro": {
+			"source": "astrolicious/agent-skills",
+			"sourceType": "github",
+			"computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
+		},
+		"core-web-vitals": {
+			"source": "addyosmani/web-quality-skills",
+			"sourceType": "github",
+			"computedHash": "fa437acc2249cea2cb28f190ba7faf8fdfac829d1c1aafa9ce938c6dd9338721"
+		},
 		"vercel-react-best-practices": {
 			"source": "vercel-labs/agent-skills",
 			"sourceType": "github",

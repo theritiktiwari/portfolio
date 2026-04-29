@@ -3,9 +3,7 @@ import { cn } from "@/lib/utils";
 interface TagListProps {
 	items: string[];
 	label?: string;
-	/** Extra classes on the `<ul>`. Defaults to `mt-2 flex flex-wrap` */
 	className?: string;
-	/** Extra classes on each `<li>`. Defaults to `mt-2 mr-1.5` */
 	itemClassName?: string;
 }
 

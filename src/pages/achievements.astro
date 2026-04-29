@@ -1,9 +1,12 @@
 ---
 import { CertificateModal } from "@/components/modal/certificate-modal";
 import { TagList } from "@/components/ui/tag-list";
-import { achievements } from "@/content/achievements";
+import { achievements as rawAchievements } from "@/content/achievements";
 import Layout from "@/layouts/Layout.astro";
+import { resolveAchievements } from "@/lib/utils";
 import { ArrowLeft, ArrowUpRight, CircleArrowOutUpRight } from "lucide-react";
+
+const achievements = await resolveAchievements(rawAchievements);
 ---
 
 <Layout

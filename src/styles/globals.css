@@ -3,6 +3,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 @custom-variant light (&:is(.light *));
 
@@ -118,6 +120,26 @@
 	}
 	html {
 		@apply font-sans;
+	}
+
+	/* Offset anchored headings below the sticky nav */
+	.prose h2,
+	.prose h3 {
+		scroll-margin-top: 5rem;
+	}
+
+	/* Inline code inside prose: styled background, no backtick pseudo-elements */
+	.prose :where(code):not(:where(pre *)) {
+		background-color: color-mix(in oklch, var(--muted) 60%, transparent);
+		color: var(--foreground);
+		border-radius: 0.25rem;
+		padding: 0.1em 0.4em;
+		font-size: 0.85em;
+		font-family: ui-monospace, monospace;
+	}
+	.prose :where(code):not(:where(pre *))::before,
+	.prose :where(code):not(:where(pre *))::after {
+		content: none !important;
 	}
 
 	html::before {

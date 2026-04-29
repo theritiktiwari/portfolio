@@ -9,18 +9,57 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn, formatDate } from "@/lib/utils";
+import type { ImageMetadata } from "astro";
 import { Award, Trophy } from "lucide-react";
-import type { ReactElement } from "react";
 import { useState } from "react";
 
 interface CertificateModalProps {
 	title: string;
 	issuer: string;
 	date: Date;
-	certificateImage: string;
-	/** Pass a single React element as trigger, or use variant for a built-in trigger */
-	children?: ReactElement;
-	variant?: "title" | "link";
+	certificateImage: ImageMetadata;
+	variant?: "title" | "link" | "heading";
+}
+
+const VARIANT_STYLES = {
+	heading:
+		"text-foreground hover:text-primary focus-visible:text-primary group/link inline-flex cursor-pointer items-baseline text-left leading-tight font-medium transition-colors",
+	title: "hover:text-primary focus-visible:text-primary group/link cursor-pointer text-left",
+	link: "text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-left text-xs transition-colors",
+};
+
+function CertificateTrigger({
+	title,
+	issuer,
+	variant,
+}: Pick<CertificateModalProps, "title" | "issuer" | "variant">) {
+	if (variant === "heading") {
+		return (
+			<button type="button" className={VARIANT_STYLES.heading}>
+				<span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
+				<span>
+					{title} · {issuer}
+					<Trophy className="ml-1 inline-block size-4 translate-y-px transition-transform group-hover/link:scale-110" />
+				</span>
+			</button>
+		);
+	}
+
+	if (variant === "title") {
+		return (
+			<button type="button" className={VARIANT_STYLES.title}>
+				<span>{title}</span>
+				<Trophy className="ml-1 inline-block size-3.5 align-middle transition-transform group-hover/link:scale-110" />
+			</button>
+		);
+	}
+
+	return (
+		<button type="button" className={VARIANT_STYLES.link}>
+			<Award className="size-3.5" />
+			View Certificate
+		</button>
+	);
 }
 
 export function CertificateModal({
@@ -28,38 +67,15 @@ export function CertificateModal({
 	issuer,
 	date,
 	certificateImage,
-	children,
-	variant,
+	variant = "link",
 }: CertificateModalProps) {
-	const [loaded, setLoaded] = useState(false);
-
-	const trigger =
-		children ??
-		(variant === "title" ? (
-			<button
-				type="button"
-				className="hover:text-primary focus-visible:text-primary group/link cursor-pointer text-left"
-			>
-				<span>{title}</span>
-				<Trophy className="ml-1 inline-block h-3.5 w-3.5 shrink-0 align-middle transition-transform group-hover/link:scale-110" />
-			</button>
-		) : (
-			<button
-				type="button"
-				className="text-muted-foreground hover:text-primary inline-flex cursor-pointer gap-1 text-left text-xs transition-colors"
-			>
-				<Award className="size-3.5 shrink-0" />
-				View Certificate
-			</button>
-		));
+	const [loaded, setLoaded] = useState<boolean>(false);
 
 	return (
-		<Dialog
-			onOpenChange={(open) => {
-				if (!open) setLoaded(false);
-			}}
-		>
-			<DialogTrigger asChild>{trigger}</DialogTrigger>
+		<Dialog onOpenChange={(open) => !open && setLoaded(false)}>
+			<DialogTrigger asChild>
+				<CertificateTrigger title={title} issuer={issuer} variant={variant} />
+			</DialogTrigger>
 			<DialogContent className="gap-4 rounded-xl p-4 sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
 				<DialogHeader>
 					<DialogTitle className="text-left">{title}</DialogTitle>
@@ -74,8 +90,10 @@ export function CertificateModal({
 					)}
 				>
 					<img
-						src={certificateImage}
+						src={certificateImage.src}
 						alt={`${title} certificate`}
+						width={certificateImage.width}
+						height={certificateImage.height}
 						loading="lazy"
 						decoding="async"
 						onLoad={() => setLoaded(true)}

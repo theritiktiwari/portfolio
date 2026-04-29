@@ -3,8 +3,8 @@ import React from "react";
 
 function getMaskStyles(src: string, maskSize: string): React.CSSProperties {
 	return {
-		WebkitMaskImage: `url(${src})`,
-		maskImage: `url(${src})`,
+		WebkitMaskImage: `url("${src}")`,
+		maskImage: `url("${src}")`,
 		WebkitMaskRepeat: "no-repeat",
 		maskRepeat: "no-repeat",
 		WebkitMaskPosition: "center",
