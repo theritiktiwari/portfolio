@@ -2,7 +2,7 @@
 
 [![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![React Doctor](https://www.react.doctor/share/badge?p=portfolio&s=99&w=4&f=1)](https://www.react.doctor/share?p=portfolio&s=99&w=4&f=1)
+[![React Doctor](https://www.react.doctor/share/badge?p=portfolio&s=100)](https://www.react.doctor/share?p=portfolio&s=100)
 [![Lighthouse Performance](https://img.shields.io/badge/Lighthouse-95%2B-success?style=flat-square&logo=lighthouse)](https://ritiktiwari.com)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro%205-BC52EE?logo=astro)](https://astro.build)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript)](https://www.typescriptlang.org)
@@ -42,15 +42,14 @@ After two iterations with Next.js, the portfolio was still shipping a full React
 
 ```
 portfolio/
-├── public/                    # Static assets (favicon, resume, OG image)
 ├── src/
+│   ├── assets/                # Static assets
 │   ├── components/            # React islands & Astro components
 │   │   ├── modal/             # Certificate viewer dialog
 │   │   ├── sections/          # Home page sections (About, Experience, Projects…)
 │   │   └── ui/                # shadcn/ui primitives
-│   │
-│   ├── content/               # Achievements, blog, education, experience, projects
 │   ├── constants/             # Images, nav links, social links
+│   ├── content/               # Achievements, blog, education, experience, projects
 │   ├── hooks/                 # custom react hooks
 │   ├── layouts/               # Base HTML shell with SEO meta + analytics
 │   ├── lib/                   # Utilities

@@ -15,10 +15,6 @@ export function BlogSearch() {
 	const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
 	useEffect(() => {
-		if (open) inputRef.current?.focus();
-	}, [open]);
-
-	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => {
 			if (e.key === "Escape" && open) close();
 		};

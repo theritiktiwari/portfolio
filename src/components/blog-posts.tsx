@@ -26,7 +26,7 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 	const [query, setQuery] = useState(() => getURLParam("q") ?? "");
 	const [currentPage, setCurrentPage] = useState(() => {
 		const p = parseInt(getURLParam("page") ?? "1", 10);
-		return isNaN(p) || p < 1 ? 1 : p;
+		return isNaN(p) ? 0 : p;
 	});
 
 	useEffect(() => {
@@ -82,12 +82,21 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
 
-	const getVisiblePages = () => {
+	const getVisiblePages = (): (number | string)[] => {
 		const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 		if (totalPages <= 5) return pages;
-		if (safePage <= 3) return [...pages.slice(0, 4), -1, totalPages];
-		if (safePage >= totalPages - 2) return [1, -1, ...pages.slice(totalPages - 4)];
-		return [1, -1, safePage - 1, safePage, safePage + 1, -1, totalPages];
+		if (safePage <= 3) return [...pages.slice(0, 4), "ellipsis-end", totalPages];
+		if (safePage >= totalPages - 2)
+			return [1, "ellipsis-start", ...pages.slice(totalPages - 4)];
+		return [
+			1,
+			"ellipsis-start",
+			safePage - 1,
+			safePage,
+			safePage + 1,
+			"ellipsis-end",
+			totalPages,
+		];
 	};
 
 	return (
@@ -147,9 +156,9 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 											/>
 										</PaginationItem>
 
-										{getVisiblePages().map((page, idx) =>
-											page === -1 ? (
-												<PaginationItem key={`e-${idx}`}>
+										{getVisiblePages().map((page) =>
+											typeof page === "string" ? (
+												<PaginationItem key={page}>
 													<PaginationEllipsis />
 												</PaginationItem>
 											) : (
