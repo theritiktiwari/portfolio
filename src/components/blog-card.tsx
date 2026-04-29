@@ -12,6 +12,7 @@ export interface BlogCardProps {
 	series?: { name: string; part: number };
 	heroImage?: string;
 	featuredPost?: boolean;
+	draft?: boolean;
 }
 
 function PostImage({ src, alt }: { src?: string; alt: string }) {
@@ -30,6 +31,16 @@ function PostImage({ src, alt }: { src?: string; alt: string }) {
 	return (
 		<div className="bg-primary/5 flex size-full items-center justify-center">
 			<BookOpen className="text-primary/30 size-10" />
+		</div>
+	);
+}
+
+function DraftRibbon() {
+	return (
+		<div className="pointer-events-none absolute inset-0 overflow-hidden">
+			<div className="bg-primary text-primary-foreground absolute top-5 -right-8 z-10 w-32 rotate-45 py-1 text-center text-[10px] font-bold tracking-widest uppercase shadow-md">
+				Draft
+			</div>
 		</div>
 	);
 }
@@ -69,6 +80,7 @@ export function BlogCard({
 	series,
 	heroImage,
 	featuredPost = false,
+	draft = false,
 }: BlogCardProps) {
 	if (featuredPost) {
 		return (
@@ -76,8 +88,9 @@ export function BlogCard({
 				href={`/blog/${id}`}
 				className="group/card border-border bg-card hover:border-primary/50 flex flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-lg sm:only:flex-row"
 			>
-				<div className="aspect-video shrink-0 overflow-hidden sm:group-only/card:aspect-auto sm:group-only/card:w-2/5">
+				<div className="relative aspect-video shrink-0 overflow-hidden sm:group-only/card:aspect-auto sm:group-only/card:w-2/5">
 					<PostImage src={heroImage} alt={title} />
+					{draft && <DraftRibbon />}
 				</div>
 
 				<div className="flex flex-1 flex-col gap-3 p-6 sm:group-only/card:justify-center sm:group-only/card:p-8">
@@ -104,8 +117,9 @@ export function BlogCard({
 			href={`/blog/${id}`}
 			className="group border-border bg-card hover:border-primary/40 flex h-full flex-col overflow-hidden rounded-xl border transition-all duration-200 hover:shadow-md"
 		>
-			<div className="aspect-video overflow-hidden">
+			<div className="relative aspect-video overflow-hidden">
 				<PostImage src={heroImage} alt={title} />
+				{draft && <DraftRibbon />}
 			</div>
 			<div className="flex flex-1 flex-col gap-2 p-5">
 				<div className="flex-1 space-y-2">

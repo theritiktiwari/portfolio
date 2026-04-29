@@ -98,7 +98,7 @@ const publishedIso = pubDate.toISOString();
 						<span class="flex items-center gap-1.5">
 							<Calendar className="size-3.5" />
 							<time datetime={publishedIso}>
-								{formatDate({ date: pubDate })}
+								{formatDate({ date: pubDate, options: { day: "numeric" } })}
 							</time>
 						</span>
 

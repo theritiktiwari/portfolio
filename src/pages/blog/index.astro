@@ -24,10 +24,11 @@ const posts = allPosts
 		series: post.data.series,
 		heroImage: post.data.heroImage?.src,
 		featured: post.data.featured,
+		draft: post.data.draft,
 	}));
 
 const postCountText = `${posts.length} ${posts.length === 1 ? "entry" : "entries"}`;
-const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured).slice(0, 1);
+const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured && !p.draft).slice(0, 1);
 ---
 
 <Layout
