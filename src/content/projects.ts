@@ -25,6 +25,13 @@ export const projects: Project[] = [
 		featured: true,
 	},
 	{
+		title: "Personal Portfolio (v3)",
+		year: 2026,
+		technologies: ["Astro", "React", "Tailwind CSS"],
+		repository: "https://github.com/theritiktiwari/portfolio",
+		url: "https://theritiktiwari.vercel.app/",
+	},
+	{
 		title: "Web Auditor (rtCamp)",
 		year: 2024,
 		technologies: ["Next.js", "Node.js", "MongoDB", "Redis", "Auth0", "Stripe"],
