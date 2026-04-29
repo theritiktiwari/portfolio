@@ -1,5 +1,5 @@
 ---
-title: "Major Student Programs & Hackathons: A Complete Guide"
+title: "Major Student Programs & Hackathons"
 description: "A curated list of elite student engagement programs, hackathons, and internship opportunities at top-tier tech companies like Google, Microsoft, and Flipkart."
 pubDate: 2023-03-19T12:00:00+05:30
 author: "Ritik Tiwari"

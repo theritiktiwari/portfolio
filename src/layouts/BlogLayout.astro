@@ -4,12 +4,14 @@ import RelatedPosts from "@/components/related-posts.astro";
 import { SeriesNav, type SeriesPost } from "@/components/series-nav";
 import TOC from "@/components/toc.astro";
 import CopyCode from "@/components/ui/copy-code.astro";
+import { MaskedIcon } from "@/components/ui/masked-icon";
 import { TagList } from "@/components/ui/tag-list";
+import { socialIcons } from "@/constants/images";
 import Layout from "@/layouts/Layout.astro";
 import { formatDate } from "@/lib/utils";
 import type { MarkdownHeading } from "astro";
 import { Image } from "astro:assets";
-import { ArrowLeft, Calendar, Clock, Layers, User } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Layers, MessageSquareWarning, User } from "lucide-react";
 
 interface Props {
 	title: string;
@@ -23,6 +25,8 @@ interface Props {
 	series?: { name: string; part: number };
 	seriesPosts?: SeriesPost[];
 	relatedPosts?: BlogCardProps[];
+	editUrl?: string;
+	issueUrl?: string;
 }
 
 const {
@@ -37,6 +41,8 @@ const {
 	series,
 	seriesPosts = [],
 	relatedPosts = [],
+	editUrl,
+	issueUrl,
 } = Astro.props;
 
 const ogImageUrl = heroImage?.src ?? "/og-image.png";
@@ -71,10 +77,10 @@ const publishedIso = pubDate.toISOString();
 		</nav>
 
 		<main class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-12">
-			<article>
+			<article class="space-y-8">
 				{
 					heroImage && (
-						<div class="mb-8 overflow-hidden rounded-2xl">
+						<div class="overflow-hidden rounded-2xl">
 							<Image
 								src={heroImage}
 								alt={title}
@@ -85,7 +91,7 @@ const publishedIso = pubDate.toISOString();
 					)
 				}
 
-				<header id="content" class="mb-8">
+				<header id="content" class="">
 					<h1
 						class="text-foreground mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl"
 					>
@@ -125,12 +131,48 @@ const publishedIso = pubDate.toISOString();
 
 				<div class="prose light:prose-neutral prose-invert max-w-none">
 					<slot />
+					<CopyCode />
 				</div>
-				<CopyCode />
+
+				<hr>
+
+				{
+					(editUrl || issueUrl) && (
+						<div class="border-border flex flex-wrap items-center gap-4 border-b pb-8 text-sm">
+							{editUrl && (
+								<a
+									href={editUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-muted-foreground hover:text-primary font-semibold flex items-center gap-1.5 transition-colors"
+								>
+									<MaskedIcon
+										src={socialIcons.github.src}
+										maskSize={socialIcons.github.maskSize}
+										className="size-3.5 shrink-0"
+									/>
+									Edit on GitHub
+								</a>
+							)}
+
+							{issueUrl && (
+								<a
+									href={issueUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-muted-foreground hover:text-primary font-semibold flex items-center gap-1.5 transition-colors"
+								>
+									<MessageSquareWarning className="size-3.5 shrink-0" />
+									Report a mistake
+								</a>
+							)}
+						</div>
+					)
+				}
 
 				{
 					series && seriesPosts.length > 0 && (
-						<div class="mt-8">
+						<div class="">
 							<SeriesNav
 								seriesName={series.name}
 								currentPart={series.part}

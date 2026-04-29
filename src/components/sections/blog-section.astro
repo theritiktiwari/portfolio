@@ -2,13 +2,13 @@
 import { CardHoverEffect } from "@/components/ui/card-hover-effect";
 import SectionHeader from "@/components/ui/section-header.astro";
 import { TagList } from "@/components/ui/tag-list";
-import { formatDate, isPublished, readingTime } from "@/lib/utils";
+import { formatDate, readingTime } from "@/lib/utils";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { ArrowRight, ArrowUpRight, BookOpen, Calendar, Layers as LayersIcon } from "lucide-react";
 
 const allPosts = await getCollection("blog");
 const featuredPosts: CollectionEntry<"blog">[] = allPosts
-	.filter((p: CollectionEntry<"blog">) => isPublished(p.data.draft) && p.data.featured)
+	.filter((p: CollectionEntry<"blog">) =>p.data.featured && !p.data.draft)
 	.sort(
 		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
 			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

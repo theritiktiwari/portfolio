@@ -1,7 +1,7 @@
 ---
 title: "10 Must-Have JavaScript Libraries Every Front-End Developer Should Know"
 description: "A practical guide to essential JavaScript libraries for UI development, animation, data visualization, state management, testing and more."
-pubDate: 2023-06-12T12:00:00+05:30
+pubDate: 2023-12-23T12:00:00+05:30
 author: "Ritik Tiwari"
 heroImage: ../../assets/blog/javascript-libraries.avif
 tags: ["javascript", "react", "frontend", "libraries", "web-development"]

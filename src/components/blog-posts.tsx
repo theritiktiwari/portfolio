@@ -13,7 +13,7 @@ import {
 import { getURLParam, setURLParams } from "@/lib/utils";
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
-const POSTS_PER_PAGE = 6;
+const POSTS_PER_PAGE = 9;
 
 interface BlogPostsProps {
 	posts: BlogCardProps[];

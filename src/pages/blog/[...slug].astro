@@ -1,6 +1,6 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
-import { getRelatedPosts, isPublished, readingTime } from "@/lib/utils";
+import { getBlogPostUrls, getRelatedPosts, isPublished, readingTime } from "@/lib/utils";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
@@ -39,6 +39,9 @@ if (post.data.series) {
 
 const rt = readingTime(post.body ?? "");
 const relatedPosts = getRelatedPosts(post, allPosts);
+
+const blogFiles = import.meta.glob("../../content/blog/**/*.{md,mdx}");
+const { editUrl, issueUrl } = getBlogPostUrls(post.id, post.data.title, blogFiles);
 ---
 
 <BlogLayout
@@ -53,6 +56,8 @@ const relatedPosts = getRelatedPosts(post, allPosts);
 	series={post.data.series}
 	seriesPosts={seriesPosts}
 	relatedPosts={relatedPosts}
+	editUrl={editUrl}
+	issueUrl={issueUrl}
 >
 	<Content />
 </BlogLayout>

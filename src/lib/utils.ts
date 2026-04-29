@@ -154,6 +154,14 @@ export function isPublished(draft: boolean): boolean {
 	return !draft || import.meta.env.DEV;
 }
 
+/**
+ * Finds related blog posts based on shared tags, excluding drafts and series posts.
+ *
+ * @param currentPost - The current blog post for which to find related posts
+ * @param allPosts - All available blog posts to search through
+ * @param limit - Maximum number of related posts to return (default is 3)
+ * @returns An array of related blog post props for display in a BlogCard
+ */
 export function getRelatedPosts(
 	currentPost: CollectionEntry<"blog">,
 	allPosts: CollectionEntry<"blog">[],
@@ -191,4 +199,34 @@ export function getRelatedPosts(
 			heroImage: post.data.heroImage?.src,
 			series: post.data.series,
 		}));
+}
+
+const REPO = "theritiktiwari/portfolio";
+const BLOG_CONTENT_PATH = "src/content/blog";
+
+/**
+ * Generates GitHub edit and issue URLs for a given blog post ID.
+ *
+ * @param id - The ID of the blog post (without file extension)
+ * @param blogFiles - An object mapping file paths to their content, used to find the correct file extension
+ * @returns An object containing the edit URL and issue URL for the blog post
+ */
+export function getBlogPostUrls(
+	id: string,
+	title: string,
+	blogFiles: Record<string, unknown>
+): { editUrl: string; issueUrl: string } {
+	const matchedPath = Object.keys(blogFiles).find((f) => {
+		const name = f
+			.split("/")
+			.pop()
+			?.replace(/\.(mdx?)$/, "");
+		return name === id;
+	});
+	const ext = matchedPath?.split(".").pop() ?? "md";
+
+	return {
+		editUrl: `https://github.com/${REPO}/edit/main/${BLOG_CONTENT_PATH}/${id}.${ext}`,
+		issueUrl: `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(`Blog correction: ${title}`)}&labels=bug,blog`,
+	};
 }
