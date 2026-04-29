@@ -60,7 +60,7 @@ export function smoothScrollTo(sectionId: string, duration = 800) {
 
 type ResolvedLink = { type: "certificate"; url: ImageMetadata } | { type: "external"; url: string };
 
-export type ResolvedAchievement = Omit<Achievement, "link"> & { link?: ResolvedLink };
+type ResolvedAchievement = Omit<Achievement, "link"> & { link?: ResolvedLink };
 
 /**
  * Resolves all dynamic certificate image imports at build time. Call in .astro frontmatter.

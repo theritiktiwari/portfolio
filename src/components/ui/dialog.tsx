@@ -19,6 +19,7 @@ function DialogPortal({ ...props }: React.ComponentProps<typeof DialogPrimitive.
 	return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function DialogClose({ ...props }: React.ComponentProps<typeof DialogPrimitive.Close>) {
 	return <DialogPrimitive.Close data-slot="dialog-close" {...props} />;
 }
@@ -82,6 +83,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function DialogFooter({
 	className,
 	showCloseButton = false,
@@ -132,15 +134,4 @@ function DialogDescription({
 	);
 }
 
-export {
-	Dialog,
-	DialogClose,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogOverlay,
-	DialogPortal,
-	DialogTitle,
-	DialogTrigger,
-};
+export { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger };
