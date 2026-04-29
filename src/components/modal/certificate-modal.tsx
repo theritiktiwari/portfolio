@@ -11,7 +11,7 @@ import {
 import { cn, formatDate } from "@/lib/utils";
 import type { ImageMetadata } from "astro";
 import { Award, Trophy } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 interface CertificateModalProps {
 	title: string;
@@ -32,10 +32,12 @@ function CertificateTrigger({
 	title,
 	issuer,
 	variant,
-}: Pick<CertificateModalProps, "title" | "issuer" | "variant">) {
+	...props
+}: Pick<CertificateModalProps, "title" | "issuer" | "variant"> &
+	React.ButtonHTMLAttributes<HTMLButtonElement>) {
 	if (variant === "heading") {
 		return (
-			<button type="button" className={VARIANT_STYLES.heading}>
+			<button type="button" className={VARIANT_STYLES.heading} {...props}>
 				<span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded-[10px] md:-inset-x-6 md:-inset-y-4 lg:block" />
 				<span>
 					{title} · {issuer}
@@ -47,7 +49,7 @@ function CertificateTrigger({
 
 	if (variant === "title") {
 		return (
-			<button type="button" className={VARIANT_STYLES.title}>
+			<button type="button" className={VARIANT_STYLES.title} {...props}>
 				<span>{title}</span>
 				<Trophy className="ml-1 inline-block size-3.5 align-middle transition-transform group-hover/link:scale-110" />
 			</button>
@@ -55,7 +57,7 @@ function CertificateTrigger({
 	}
 
 	return (
-		<button type="button" className={VARIANT_STYLES.link}>
+		<button type="button" className={VARIANT_STYLES.link} {...props}>
 			<Award className="size-3.5" />
 			View Certificate
 		</button>
