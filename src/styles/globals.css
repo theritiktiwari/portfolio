@@ -111,6 +111,13 @@
 	--mouse-glow: rgba(0, 96, 255, 0.06);
 }
 
+@utility scrollbar-hide {
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50;

@@ -12,7 +12,7 @@ module.exports = {
 	plugins: ["prettier-plugin-tailwindcss"],
 	overrides: [
 		{
-			files: ["*.yml", "*.yaml"],
+			files: ["*.yml", "*.yaml", "*.md", "*.mdx"],
 			options: {
 				useTabs: false,
 				tabWidth: 2,

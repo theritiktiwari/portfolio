@@ -15,7 +15,7 @@ const filtered = headings.filter((h) => h.depth <= 3);
 			<p class="text-muted-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
 				On this page
 			</p>
-			<ul class="space-y-1 pl-5">
+			<ul class="space-y-1 pl-5 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide">
 				{filtered.map((h) => (
 					<li>
 						<a
@@ -35,6 +35,8 @@ const filtered = headings.filter((h) => h.depth <= 3);
 }
 
 <script>
+	const nav = document.querySelector<HTMLElement>('[aria-label="Table of contents"]');
+	const list = nav?.querySelector<HTMLElement>("ul");
 	const links = document.querySelectorAll<HTMLAnchorElement>(".toc-link");
 	const headingEls = Array.from(links)
 		.map((a) => document.getElementById(a.href.split("#")[1]))
@@ -47,6 +49,11 @@ const filtered = headings.filter((h) => h.depth <= 3);
 			const active = a.href.endsWith(`#${id}`);
 			a.classList.toggle("text-primary!", active);
 			a.classList.toggle("text-muted-foreground", !active);
+			if (active && list) {
+				const linkTop = a.offsetTop;
+				const listCenter = list.clientHeight / 2;
+				list.scrollTo({ top: linkTop - listCenter, behavior: "smooth" });
+			}
 		});
 	}
 

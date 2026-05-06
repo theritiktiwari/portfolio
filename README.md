@@ -70,3 +70,9 @@ portfolio/
 Source code is available under the [MIT License](./LICENSE) for reference and learning.  
 **Design, written content, and all media assets are not licensed for reuse.**  
 See [`LICENSE`](./LICENSE) for the full terms.
+
+---
+
+## Repo Activity
+
+![Activity](https://repobeats.axiom.co/api/embed/47d5aca41b6fc1f8365425a2e57f8cb8657dfb90.svg "Analytics image")
