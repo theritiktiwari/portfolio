@@ -4,7 +4,7 @@ description: "A beginner-friendly introduction to system design — covering cor
 pubDate: 2026-03-02T12:00:00+05:30
 author: "Ritik Tiwari"
 heroImage: ../../../assets/blog/system-design.avif
-tags: ["system-design", "backend", "architecture", "interview-prep"]
+tags: ["system-design", "backend", "architecture"]
 featured: true
 draft: false
 series:

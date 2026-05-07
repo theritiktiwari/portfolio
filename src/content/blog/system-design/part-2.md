@@ -4,7 +4,7 @@ description: "A complete guide to databases in system design — SQL vs NoSQL, i
 pubDate: 2026-03-19T12:00:00+05:30
 author: "Ritik Tiwari"
 heroImage: ../../../assets/blog/system-design.avif
-tags: ["system-design", "database", "backend", "architecture", "interview-prep"]
+tags: ["system-design", "database", "backend", "architecture"]
 featured: false
 draft: false
 series:
