@@ -14,16 +14,22 @@ export interface BlogCardProps {
 	featuredPost?: boolean;
 	draft?: boolean;
 }
+export interface PostImageProps {
+	src?: string;
+	alt: string;
+	priority?: boolean;
+}
 
-function PostImage({ src, alt }: { src?: string; alt: string }) {
+function PostImage({ src, alt, priority = false }: PostImageProps) {
 	if (src) {
 		return (
 			<img
 				src={src}
 				alt={alt}
 				className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
-				loading="lazy"
-				decoding="async"
+				loading={priority ? "eager" : "lazy"}
+				fetchPriority={priority ? "high" : "auto"}
+				decoding={priority ? "sync" : "async"}
 			/>
 		);
 	}
@@ -89,7 +95,7 @@ export function BlogCard({
 				className="group/card border-border bg-card hover:border-primary/50 flex flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-lg sm:only:flex-row"
 			>
 				<div className="relative aspect-video shrink-0 overflow-hidden sm:group-only/card:aspect-auto sm:group-only/card:w-2/5">
-					<PostImage src={heroImage} alt={title} />
+					<PostImage src={heroImage} alt={title} priority />
 					{draft && <DraftRibbon />}
 				</div>
 

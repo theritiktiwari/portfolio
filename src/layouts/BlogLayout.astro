@@ -84,8 +84,11 @@ const publishedIso = pubDate.toISOString();
 							<Image
 								src={heroImage}
 								alt={title}
+								width={1200}
+								height={630}
 								class="h-auto w-full object-cover"
 								loading="eager"
+								fetchpriority="high"
 							/>
 						</div>
 					)

@@ -3,18 +3,21 @@ import { BlogPosts } from "@/components/blog-posts";
 import { BlogSearch } from "@/components/blog-search";
 import Layout from "@/layouts/Layout.astro";
 import { isPublished, readingTime } from "@/lib/utils";
+import { getImage } from "astro:assets";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { Home, Rss } from "lucide-react";
 
 const allPosts = await getCollection("blog");
 
-const posts = allPosts
+const sorted = allPosts
 	.filter((post: CollectionEntry<"blog">) => isPublished(post.data.draft))
 	.sort(
 		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
 			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-	)
-	.map((post: CollectionEntry<"blog">) => ({
+	);
+
+const posts = await Promise.all(
+	sorted.map(async (post: CollectionEntry<"blog">) => ({
 		id: post.id,
 		title: post.data.title,
 		description: post.data.description,
@@ -22,10 +25,13 @@ const posts = allPosts
 		tags: post.data.tags,
 		readingTime: readingTime(post.body ?? ""),
 		series: post.data.series,
-		heroImage: post.data.heroImage?.src,
+		heroImage: post.data.heroImage
+			? (await getImage({ src: post.data.heroImage, width: 800, height: 450, format: "avif", quality: 80 })).src
+			: undefined,
 		featured: post.data.featured,
 		draft: post.data.draft,
-	}));
+	}))
+);
 
 const postCountText = `${posts.length} ${posts.length === 1 ? "entry" : "entries"}`;
 const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured && !p.draft).slice(0, 1);
