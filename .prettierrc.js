@@ -9,10 +9,16 @@ module.exports = {
 	bracketSpacing: true,
 	arrowParens: "always",
 	endOfLine: "auto",
-	plugins: ["prettier-plugin-tailwindcss"],
+	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
 	overrides: [
 		{
-			files: ["*.yml", "*.yaml"],
+			files: ["*.astro"],
+			options: {
+				parser: "astro",
+			},
+		},
+		{
+			files: ["*.yml", "*.yaml", "*.md", "*.mdx"],
 			options: {
 				useTabs: false,
 				tabWidth: 2,

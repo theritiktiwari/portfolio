@@ -30,6 +30,7 @@
 	--color-input: var(--input);
 	--color-border: var(--border);
 	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
 	--color-accent-foreground: var(--accent-foreground);
 	--color-accent: var(--accent);
 	--color-muted-foreground: var(--muted-foreground);
@@ -79,6 +80,9 @@
 
 	--mouse-glow: rgba(0, 115, 255, 0.15);
 	--radius: 0.625rem;
+
+	--destructive: oklch(0.65 0.22 15);
+	--destructive-foreground: oklch(0.98 0.01 0);
 }
 
 .light {
@@ -107,6 +111,9 @@
 	--input: oklch(0.82 0.02 240);
 	--ring: oklch(0.52 0.22 255.4);
 	--radius: 0.625rem;
+
+	--destructive: oklch(0.55 0.22 15);
+	--destructive-foreground: oklch(0.98 0.01 0);
 
 	--mouse-glow: rgba(0, 96, 255, 0.06);
 }
