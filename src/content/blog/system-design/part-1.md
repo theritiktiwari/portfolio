@@ -3,12 +3,13 @@ title: "The Big Picture of System Design"
 description: "A beginner-friendly introduction to system design — covering core concepts, scaling, architecture, and the mental models you need to think like a system designer."
 pubDate: 2026-03-02T12:00:00+05:30
 author: "Ritik Tiwari"
+heroImage: ../../../assets/blog/system-design.avif
 tags: ["system-design", "backend", "architecture", "interview-prep"]
-featured: false
+featured: true
 draft: false
 series:
-  name: "System Design"
-  part: 1
+    name: "System Design"
+    part: 1
 ---
 
 System design is one of those skills that separates good engineers from great ones. You can write clean code — but can your system handle **10 users? 10,000 users? 10 million users?** This series is about building that intuition from scratch.

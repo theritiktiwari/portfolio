@@ -3,12 +3,13 @@ title: "Caching Strategies"
 description: "A deep dive into caching in system design — strategies, invalidation, Redis, and real-world patterns to scale systems efficiently."
 pubDate: 2026-04-14T12:00:00+05:30
 author: "Ritik Tiwari"
+heroImage: ../../../assets/blog/system-design.avif
 tags: ["system-design", "backend", "caching", "architecture", "interview-prep"]
 featured: false
 draft: false
 series:
-  name: "System Design"
-  part: 3
+    name: "System Design"
+    part: 3
 ---
 
 Caching is one of the **highest impact optimizations** you can make in any system. Cache is the **short-term memory that makes everything fast**.

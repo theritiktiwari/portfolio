@@ -3,12 +3,13 @@ title: "Deep Dive into Databases"
 description: "A complete guide to databases in system design — SQL vs NoSQL, indexing, replication, sharding, and how to choose the right database at scale."
 pubDate: 2026-03-19T12:00:00+05:30
 author: "Ritik Tiwari"
+heroImage: ../../../assets/blog/system-design.avif
 tags: ["system-design", "database", "backend", "architecture", "interview-prep"]
 featured: false
 draft: false
 series:
-  name: "System Design"
-  part: 2
+    name: "System Design"
+    part: 2
 ---
 
 Databases are the **heart of any system**. If your application is a city, your database is the **vault** — where truth lives. In this chapter, we’ll learn how data is stored, scaled, and accessed in real-world systems.
@@ -84,14 +85,14 @@ Stores JSON-like documents. Each document can have different fields.
 
 ```json
 {
-  "_id": "64a7f9e2b1c4d",
-  "name": "Ritik Tiwari",
-  "email": "ritik@example.com",
-  "preferences": { "theme": "dark", "language": "en" },
-  "addresses": [
-    { "type": "home", "city": "Auraiya" },
-    { "type": "work", "city": "Bangalore" }
-  ]
+	"_id": "64a7f9e2b1c4d",
+	"name": "Ritik Tiwari",
+	"email": "ritik@example.com",
+	"preferences": { "theme": "dark", "language": "en" },
+	"addresses": [
+		{ "type": "home", "city": "Auraiya" },
+		{ "type": "work", "city": "Bangalore" }
+	]
 }
 ```
 
@@ -416,7 +417,7 @@ Designing a good schema is one of the most important decisions in system design.
 
 - **Use foreign keys (when possible):** They enforce data integrity at the database level.
 
-  Example: You should never have an order without a valid user.
+    Example: You should never have an order without a valid user.
 
 - **Add timestamps everywhere:** These help with debugging, analytics, and auditing.
 
@@ -433,9 +434,9 @@ Designing a good schema is one of the most important decisions in system design.
 - **Index your foreign keys:** Joins become significantly faster.
 
 - **Use appropriate data types**
-  - `VARCHAR(255)` for emails
-  - Avoid `TEXT` unless necessary
-  - Use `DECIMAL` for money to avoid floating-point issues
+    - `VARCHAR(255)` for emails
+    - Avoid `TEXT` unless necessary
+    - Use `DECIMAL` for money to avoid floating-point issues
 
 ---
 
