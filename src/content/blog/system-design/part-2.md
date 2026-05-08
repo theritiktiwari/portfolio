@@ -3,7 +3,7 @@ title: "Deep Dive into Databases"
 description: "A complete guide to databases in system design — SQL vs NoSQL, indexing, replication, sharding, and how to choose the right database at scale."
 pubDate: 2026-03-19T12:00:00+05:30
 author: "Ritik Tiwari"
-heroImage: ../../../assets/blog/system-design.avif
+heroImage: ../../../assets/blog/system-design-database.avif
 tags: ["system-design", "database", "backend", "architecture"]
 featured: false
 draft: false

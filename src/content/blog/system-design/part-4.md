@@ -3,7 +3,7 @@ title: "Designing for Failure"
 description: "Learn how resilient systems survive failures using redundancy, retries, circuit breakers, rate limiting, graceful degradation, and monitoring."
 pubDate: 2026-05-01T12:00:00+05:30
 author: "Ritik Tiwari"
-heroImage: ../../../assets/blog/system-design.avif
+heroImage: ../../../assets/blog/system-design-failure.avif
 tags: ["system-design", "backend", "distributed-systems", "reliability", "architecture"]
 featured: false
 draft: false

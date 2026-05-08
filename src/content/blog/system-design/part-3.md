@@ -3,7 +3,7 @@ title: "Caching Strategies"
 description: "A deep dive into caching in system design — strategies, invalidation, Redis, and real-world patterns to scale systems efficiently."
 pubDate: 2026-04-14T12:00:00+05:30
 author: "Ritik Tiwari"
-heroImage: ../../../assets/blog/system-design.avif
+heroImage: ../../../assets/blog/system-design-caching.avif
 tags: ["system-design", "backend", "caching", "architecture"]
 featured: false
 draft: false
