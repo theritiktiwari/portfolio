@@ -8,8 +8,8 @@ tags: ["system-design", "backend", "distributed-systems", "reliability", "archit
 featured: false
 draft: false
 series:
-  name: "System Design"
-  part: 4
+    name: "System Design"
+    part: 4
 ---
 
 ## The Story: The City That Never Sleeps

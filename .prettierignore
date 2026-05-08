@@ -4,6 +4,7 @@ build
 .next
 .expo
 coverage
+.agents
 
 # Lock files
 pnpm-lock.yaml

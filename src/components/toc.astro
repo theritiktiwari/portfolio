@@ -15,13 +15,13 @@ const filtered = headings.filter((h) => h.depth <= 3);
 			<p class="text-muted-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
 				On this page
 			</p>
-			<ul class="space-y-1 pl-5 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide">
+			<ul class="scrollbar-hide max-h-[calc(100vh-8rem)] space-y-1 overflow-y-auto pl-5">
 				{filtered.map((h) => (
 					<li>
 						<a
 							href={`#${h.slug}`}
 							class:list={[
-								"text-foreground hover:text-foreground block py-0.5 text-sm leading-snug transition-colors toc-link",
+								"text-foreground hover:text-foreground toc-link block py-0.5 text-sm leading-snug transition-colors",
 								h.depth === 3 && "pl-4",
 							]}
 						>

@@ -63,13 +63,13 @@ const publishedIso = pubDate.toISOString();
 		/>
 	</Fragment>
 
-	<div class="-mt-12 md:-mt-16 lg:mt-0 mx-auto">
+	<div class="mx-auto -mt-12 md:-mt-16 lg:mt-0">
 		<nav
-			class="flex items-center gap-5 bg-background/75 sticky top-0 z-20 mx-auto mb-4 w-full py-5 backdrop-blur"
+			class="bg-background/75 sticky top-0 z-20 mx-auto mb-4 flex w-full items-center gap-5 py-5 backdrop-blur"
 		>
 			<a
 				href="/blog"
-				class="text-primary font-semibold text-sm flex items-center gap-1.5 transition-colors"
+				class="text-primary flex items-center gap-1.5 text-sm font-semibold transition-colors"
 			>
 				<ArrowLeft className="size-3.5" />
 				All posts
@@ -96,12 +96,16 @@ const publishedIso = pubDate.toISOString();
 
 				<header id="content" class="">
 					<h1
-						class="text-foreground mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl"
+						class="text-foreground mb-4 text-3xl leading-tight font-bold tracking-tight sm:text-4xl"
 					>
 						{title}
 					</h1>
 
-					{tags.length > 0 && <TagList items={tags} label="Tags" className="mb-3 gap-2" />}
+					{
+						tags.length > 0 && (
+							<TagList items={tags} label="Tags" className="mb-3 gap-2" />
+						)
+					}
 
 					<div class="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
 						<span class="flex items-center gap-1.5">
@@ -116,19 +120,24 @@ const publishedIso = pubDate.toISOString();
 							{readingTime} min read
 						</span>
 
-						{series && (
-							<span class="flex items-center gap-1.5">
-								<Layers className="size-3.5" />
-								{series.name} · Part {series.part}{seriesPosts.length > 0 && ` of ${seriesPosts.length}`}
-							</span>
-						)}
+						{
+							series && (
+								<span class="flex items-center gap-1.5">
+									<Layers className="size-3.5" />
+									{series.name} · Part {series.part}
+									{seriesPosts.length > 0 && ` of ${seriesPosts.length}`}
+								</span>
+							)
+						}
 
-						{author && (
-							<span class="flex items-center gap-1.5">
-								<User className="size-3.5" />
-								{author}
-							</span>
-						)}
+						{
+							author && (
+								<span class="flex items-center gap-1.5">
+									<User className="size-3.5" />
+									{author}
+								</span>
+							)
+						}
 					</div>
 				</header>
 
@@ -137,7 +146,7 @@ const publishedIso = pubDate.toISOString();
 					<CopyCode />
 				</div>
 
-				<hr>
+				<hr />
 
 				{
 					(editUrl || issueUrl) && (
@@ -147,7 +156,7 @@ const publishedIso = pubDate.toISOString();
 									href={editUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="text-muted-foreground hover:text-primary font-semibold flex items-center gap-1.5 transition-colors"
+									class="text-muted-foreground hover:text-primary flex items-center gap-1.5 font-semibold transition-colors"
 								>
 									<MaskedIcon
 										src={socialIcons.github.src}
@@ -163,7 +172,7 @@ const publishedIso = pubDate.toISOString();
 									href={issueUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="text-muted-foreground hover:text-primary font-semibold flex items-center gap-1.5 transition-colors"
+									class="text-muted-foreground hover:text-primary flex items-center gap-1.5 font-semibold transition-colors"
 								>
 									<MessageSquareWarning className="size-3.5 shrink-0" />
 									Report a mistake
@@ -189,7 +198,7 @@ const publishedIso = pubDate.toISOString();
 			</article>
 
 			<aside class="hidden lg:block">
-				<div class="sticky top-18">
+				<div class="sticky top-18 space-y-6">
 					<TOC headings={headings} />
 				</div>
 			</aside>

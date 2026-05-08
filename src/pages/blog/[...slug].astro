@@ -25,8 +25,7 @@ if (post.data.series) {
 	seriesPosts = allPosts
 		.filter(
 			(p: CollectionEntry<"blog">) =>
-				isPublished(p.data.draft) &&
-				p.data.series?.name === post.data.series!.name
+				isPublished(p.data.draft) && p.data.series?.name === post.data.series!.name
 		)
 		.map((p: CollectionEntry<"blog">) => ({
 			id: p.id,

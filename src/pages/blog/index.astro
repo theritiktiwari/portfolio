@@ -26,7 +26,15 @@ const posts = await Promise.all(
 		readingTime: readingTime(post.body ?? ""),
 		series: post.data.series,
 		heroImage: post.data.heroImage
-			? (await getImage({ src: post.data.heroImage, width: 800, height: 450, format: "avif", quality: 80 })).src
+			? (
+					await getImage({
+						src: post.data.heroImage,
+						width: 800,
+						height: 450,
+						format: "avif",
+						quality: 80,
+					})
+				).src
 			: undefined,
 		featured: post.data.featured,
 		draft: post.data.draft,
@@ -34,27 +42,29 @@ const posts = await Promise.all(
 );
 
 const postCountText = `${posts.length} ${posts.length === 1 ? "entry" : "entries"}`;
-const featuredPosts = posts.filter((p: (typeof posts)[number]) => p.featured && !p.draft).slice(0, 1);
+const featuredPosts = posts
+	.filter((p: (typeof posts)[number]) => p.featured && !p.draft)
+	.slice(0, 1);
 ---
 
 <Layout
 	title="Blog | Ritik Tiwari"
 	description="Thoughts on software engineering, system design, and the craft of building things."
 >
-	<div class="-mt-12 md:-mt-16 lg:mt-0 mx-auto lg:mb-24">
+	<div class="mx-auto -mt-12 md:-mt-16 lg:mt-0 lg:mb-24">
 		<nav
-			class="flex items-center gap-5 bg-background/75 sticky top-0 z-20 mx-auto mb-4 w-full py-5 backdrop-blur"
+			class="bg-background/75 sticky top-0 z-20 mx-auto mb-4 flex w-full items-center gap-5 py-5 backdrop-blur"
 		>
 			<a
 				href="/"
-				class="text-muted-foreground hover:text-primary text-sm flex items-center gap-1.5 transition-colors"
+				class="text-muted-foreground hover:text-primary flex items-center gap-1.5 text-sm transition-colors"
 			>
 				<Home className="size-3.5" />
 				Home
 			</a>
 			<a
 				href="/rss.xml"
-				class="text-muted-foreground hover:text-primary text-sm flex items-center gap-1.5 transition-colors"
+				class="text-muted-foreground hover:text-primary flex items-center gap-1.5 text-sm transition-colors"
 				target="_blank"
 				rel="noopener noreferrer"
 			>

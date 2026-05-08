@@ -8,7 +8,7 @@ import { ArrowRight, ArrowUpRight, BookOpen, Calendar, Layers as LayersIcon } fr
 
 const allPosts = await getCollection("blog");
 const featuredPosts: CollectionEntry<"blog">[] = allPosts
-	.filter((p: CollectionEntry<"blog">) =>p.data.featured && !p.data.draft)
+	.filter((p: CollectionEntry<"blog">) => p.data.featured && !p.data.draft)
 	.sort(
 		(a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
 			b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -87,7 +87,7 @@ if (featuredPosts.length === 0) return;
 										/>
 									</div>
 								) : (
-									<div class="border-popover-foreground/20 bg-primary/5 aspect-video flex items-center justify-center rounded-lg border-3 shadow-lg sm:rounded">
+									<div class="border-popover-foreground/20 bg-primary/5 flex aspect-video items-center justify-center rounded-lg border-3 shadow-lg sm:rounded">
 										<BookOpen className="text-primary/30 size-8" />
 									</div>
 								)}

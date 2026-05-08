@@ -3,6 +3,7 @@ import { MouseGlow } from "@/components/ui/mouse-glow";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { ThemeToggle } from "@/components/theme-toggle";
 import "@/styles/globals.css";
+import { config } from "@/lib/config";
 
 interface Props {
 	title?: string;
@@ -11,14 +12,14 @@ interface Props {
 }
 
 const {
-    title = "Ritik Tiwari | Software Engineer",
-    description = "Software Engineer dedicated to crafting seamless digital experiences. I bridge the gap between complex backend architecture and intuitive user interfaces.",
-    ogImage = "/og-image.png",
+	title = "Ritik Tiwari | Software Engineer",
+	description = "Software Engineer dedicated to crafting seamless digital experiences. I bridge the gap between complex backend architecture and intuitive user interfaces.",
+	ogImage = "/og-image.png",
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const fullOgImageUrl = new URL(ogImage, Astro.site).href;
-const gtmId = "GTM-PHJC4WX5";
+const gtmId = config.gtmId;
 ---
 
 <!doctype html>
@@ -28,13 +29,14 @@ const gtmId = "GTM-PHJC4WX5";
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<script is:inline>
-            const theme = typeof localStorage !== 'undefined'
-                ? (localStorage.getItem('theme') || 'dark')
-                : 'dark';
-            const root = document.documentElement;
-            root.classList.remove('dark', 'light');
-            root.classList.add(theme);
-        </script>
+			const theme =
+				typeof localStorage !== "undefined"
+					? localStorage.getItem("theme") || "dark"
+					: "dark";
+			const root = document.documentElement;
+			root.classList.remove("dark", "light");
+			root.classList.add(theme);
+		</script>
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
@@ -77,43 +79,44 @@ const gtmId = "GTM-PHJC4WX5";
 		<slot name="head" />
 
 		<!-- Google Tag Manager -->
-		{gtmId && (
-			<script is:inline define:vars={{ gtmId }}>
-				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-				})(window,document,'script','dataLayer',gtmId);
-			</script>
-		)}
+		{
+			gtmId && (
+				<script
+					is:inline
+					set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","${gtmId}");`}
+				/>
+			)
+		}
 	</head>
 	<body class="flex min-h-screen flex-col">
 		<!-- Google Tag Manager (noscript) -->
-		{gtmId && (
-			<noscript>
-				<iframe
-					src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-					height="0"
-					width="0"
-					style="display:none;visibility:hidden"
-				></iframe>
-			</noscript>
-		)}
+		{
+			gtmId && (
+				<noscript>
+					<iframe
+						src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+						height="0"
+						width="0"
+						style="display:none;visibility:hidden"
+					/>
+				</noscript>
+			)
+		}
 		<div class="relative min-h-screen">
 			<MouseGlow client:idle />
 			<ThemeToggle className="fixed top-3 right-3 z-100" client:load />
 			<ScrollToTop className="fixed right-3 bottom-3 z-100" client:load />
 
 			<div class="mx-auto min-h-screen max-w-7xl px-6 py-12 md:px-12 md:py-16 lg:py-0">
-                <a
-                    href="#content"
-                    class="bg-accent text-accent-foreground absolute top-0 left-0 block -translate-x-full rounded px-4 py-3 text-sm font-bold tracking-widest uppercase focus-visible:translate-x-0 z-101"
-                >
-                    Skip to Content
-                </a>
+				<a
+					href="#content"
+					class="bg-accent text-accent-foreground absolute top-0 left-0 z-101 block -translate-x-full rounded px-4 py-3 text-sm font-bold tracking-widest uppercase focus-visible:translate-x-0"
+				>
+					Skip to Content
+				</a>
 
 				<slot />
-            </div>
+			</div>
 		</div>
 
 		<script>
