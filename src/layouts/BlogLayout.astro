@@ -141,6 +141,17 @@ const publishedIso = pubDate.toISOString();
 					</div>
 				</header>
 
+				{
+					series && seriesPosts.length > 0 && (
+						<SeriesNav
+							seriesName={series.name}
+							currentPart={series.part}
+							posts={seriesPosts}
+							variant="compact"
+						/>
+					)
+				}
+
 				<div class="prose light:prose-neutral prose-invert max-w-none">
 					<slot />
 					<CopyCode />
@@ -184,13 +195,11 @@ const publishedIso = pubDate.toISOString();
 
 				{
 					series && seriesPosts.length > 0 && (
-						<div class="">
-							<SeriesNav
-								seriesName={series.name}
-								currentPart={series.part}
-								posts={seriesPosts}
-							/>
-						</div>
+						<SeriesNav
+							seriesName={series.name}
+							currentPart={series.part}
+							posts={seriesPosts}
+						/>
 					)
 				}
 
