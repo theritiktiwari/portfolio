@@ -1,7 +1,7 @@
 ---
 title: "Message Queues & Async Architecture"
 description: "Learn asynchronous systems, message queues, Kafka, RabbitMQ, event-driven architecture, retries, dead letter queues, and distributed workflows."
-pubDate: 2026-05-15T12:00:00+05:30
+pubDate: 2026-05-12T12:00:00+05:30
 author: "Ritik Tiwari"
 heroImage: ../../../assets/blog/system-design-queue.avif
 tags: ["system-design", "backend", "kafka", "rabbitmq", "microservices", "distributed-systems"]
