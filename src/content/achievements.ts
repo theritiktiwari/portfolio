@@ -84,6 +84,13 @@ export const achievements: Achievement[] = [
 		link: { type: "certificate", url: certificates.awsome_day },
 	},
 	{
+		title: "CSS Fundamentals",
+		date: new Date("2022-05-26"),
+		issuer: "SoloLearn",
+		tags: ["CSS", "Web Development"],
+		link: { type: "certificate", url: certificates.sololearn_css },
+	},
+	{
 		title: "HashCode Participant",
 		date: new Date("2022-03-19"),
 		issuer: "Google",
