@@ -109,7 +109,7 @@ This would need 3 separate tables in SQL. Here it is only one document. Flexible
 Pure: a key maps to a value. Fastest possible lookups.
 
 ```
-"session:user_42"     → { "logged_in": true, "cart": [...] }
+"session:user_23"     → { "logged_in": true, "cart": [...] }
 "rate:ip:1.2.3.4"     → 47
 "cache:product:1001"  → { "name": "Laptop", "price": 45999 }
 ```
@@ -125,10 +125,10 @@ Pure: a key maps to a value. Fastest possible lookups.
 Each row can have completely different columns, runs across thousands of machines.
 
 ```
-Row key: "user_42#2026-03-02"
+Row key: "user_23#2026-03-02"
 Columns: { "page_view": "/home", "click": "buy_btn", "duration": 45 }
 
-Row key: "user_42#2026-03-19"
+Row key: "user_23#2026-03-19"
 Columns: { "page_view": "/product", "purchase": "SKU-001" }  // different columns!
 ```
 
