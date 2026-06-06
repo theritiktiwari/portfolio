@@ -82,21 +82,20 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 		window.scrollTo({ top: 0, behavior: "smooth" });
 	};
 
-	const getVisiblePages = (): (number | string)[] => {
-		const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-		if (totalPages <= 5) return pages;
-		if (safePage <= 3) return [...pages.slice(0, 4), "ellipsis-end", totalPages];
-		if (safePage >= totalPages - 2)
-			return [1, "ellipsis-start", ...pages.slice(totalPages - 4)];
-		return [
-			1,
-			"ellipsis-start",
-			safePage - 1,
-			safePage,
-			safePage + 1,
-			"ellipsis-end",
-			totalPages,
-		];
+	const getVisiblePages = (): (number | "ellipsis")[] => {
+		if (totalPages <= 5) {
+			return Array.from({ length: totalPages }, (_, i) => i + 1);
+		}
+
+		if (safePage < 3) {
+			return [1, 2, "ellipsis", totalPages];
+		}
+
+		if (safePage >= totalPages - 1) {
+			return [1, "ellipsis", totalPages - 1, totalPages];
+		}
+
+		return [1, "ellipsis", safePage, "ellipsis", totalPages];
 	};
 
 	return (
@@ -131,14 +130,14 @@ export function BlogPosts({ posts, featuredPosts }: BlogPostsProps) {
 							))}
 						</div>
 
-						<div className="flex items-center justify-between">
+						<div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
 							<p className="text-muted-foreground text-sm">
 								{filtered.length} {filtered.length === 1 ? "post" : "posts"}
 								{totalPages > 1 && ` — Page ${safePage} of ${totalPages}`}
 							</p>
 
 							{totalPages > 1 && (
-								<Pagination className="mx-0 w-auto justify-end">
+								<Pagination className="mx-0 w-auto justify-start sm:justify-end">
 									<PaginationContent>
 										<PaginationItem>
 											<PaginationPrevious
