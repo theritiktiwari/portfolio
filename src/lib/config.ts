@@ -1,3 +1,3 @@
 export const config = {
-	gtmId: "GTM-PHJC4WX5",
+	gtmId: process.env.NODE_ENV === "development" ? null : "GTM-PHJC4WX5",
 };
