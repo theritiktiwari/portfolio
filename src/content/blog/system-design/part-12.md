@@ -26,7 +26,7 @@ tags:
         "api-security",
     ]
 featured: false
-draft: true
+draft: false
 series:
     name: "System Design"
     part: 12
