@@ -4,10 +4,15 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
-	site: "https://ritiktiwari.com",
-	integrations: [mdx(), react(), sitemap()],
-	vite: {
-		plugins: [tailwindcss()],
+  site: "https://ritiktiwari.com",
+  integrations: [mdx(), react(), sitemap()],
+
+  vite: {
+      plugins: [tailwindcss()],
 	},
+
+  adapter: cloudflare(),
 });
