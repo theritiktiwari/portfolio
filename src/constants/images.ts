@@ -28,6 +28,7 @@ export const certificates = {
 	iit_php_mysql: import("@/assets/certificates/iit-php-mysql.avif"),
 	microsoft_sc900: import("@/assets/certificates/microsoft-sc900.avif"),
 	skillzcafe_excel: import("@/assets/certificates/skillzcafe-excel.avif"),
+	sololearn_cpp: import("@/assets/certificates/sololearn-cpp.avif"),
 	sololearn_css: import("@/assets/certificates/sololearn-css.avif"),
 	sololearn_html: import("@/assets/certificates/sololearn-html.avif"),
 	sse_dance: import("@/assets/certificates/sse-dance.avif"),

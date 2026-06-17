@@ -17,6 +17,13 @@ export interface Achievement {
 
 export const achievements: Achievement[] = [
 	{
+		title: "C++",
+		date: new Date("2026-06-13"),
+		issuer: "SoloLearn",
+		tags: ["C++", "Programming"],
+		link: { type: "certificate", url: certificates.sololearn_cpp },
+	},
+	{
 		title: "Research Publication: Blockchain-Based File Sharing System",
 		date: new Date("2024-07-30"),
 		issuer: "IRJMS",
