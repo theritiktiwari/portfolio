@@ -321,21 +321,21 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: api-config
+    name: api-config
 data:
-  DATABASE_HOST: "postgres-service"
-  REDIS_HOST: "redis-service"
-  LOG_LEVEL: "INFO"
+    DATABASE_HOST: "postgres-service"
+    REDIS_HOST: "redis-service"
+    LOG_LEVEL: "INFO"
 
 # secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: api-secrets
+    name: api-secrets
 type: Opaque
 data:
-  DATABASE_PASSWORD: cGFzc3dvcmQxMjM=  # base64 encoded
-  JWT_SECRET: c2VjcmV0a2V5             # base64 encoded
+    DATABASE_PASSWORD: cGFzc3dvcmQxMjM= # base64 encoded
+    JWT_SECRET: c2VjcmV0a2V5 # base64 encoded
 ```
 
 **Note:** K8s Secrets are base64 encoded, not encrypted by default. Use Sealed Secrets or AWS Secrets Manager for true encryption.
