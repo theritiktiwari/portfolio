@@ -36,7 +36,7 @@ export const projects: Project[] = [
 		year: 2024,
 		technologies: ["Next.js", "Node.js", "MongoDB", "Redis", "Auth0", "Stripe"],
 		description:
-			"High-performance auditing engine for web health, featuring distributed caching with Redis and a secure multi-tenant Stripe integration.",
+			"High-performance auditing engine for web health, featuring distributed caching with Redis and a secure Stripe integration.",
 		url: "https://webauditor.io/",
 		image: projectImages.web_auditor,
 		featured: true,
